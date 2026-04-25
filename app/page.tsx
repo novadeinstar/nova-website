@@ -11,7 +11,7 @@ export default function Home() {
       padding: "20px"
     }}>
       <h1 style={{ fontSize: "3rem", marginBottom: "20px" }}>
-        NOVA
+        NOVA (NextGen Observational Voice Assistant)
       </h1>
 
       <p style={{ fontSize: "1.2rem", maxWidth: "600px" }}>
