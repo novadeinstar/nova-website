@@ -162,12 +162,10 @@ export default function Home() {
         {/* IMAGE */}
         <video
           src="/videos/Nova_video.mp4"
-          autoPlay
-          loop
           playsInline
           style={{
             width: "100%",
-            maxWidth: "700px",
+            maxWidth: "1000px",
             borderRadius: "20px",
             objectFit: "cover",
           }}
@@ -198,12 +196,12 @@ export default function Home() {
           padding: "40px",
           borderRadius: "32px",
           background:
-            "rgba(255,255,255,0.04)",
+            "rgba(84, 82, 82, 0.17)",
           border:
-            "1px solid rgba(255,255,255,0.08)",
+            "1px solid rgba(255, 255, 255, 0.23)",
           backdropFilter: "blur(10px)",
           boxShadow:
-            "0px 20px 60px rgba(0,0,0,0.35)",
+            "0px 20px 60px rgba(86, 86, 86, 0.41)",
         }}
       >
         {/* LEFT IMAGE */}
@@ -235,7 +233,7 @@ export default function Home() {
         >
           <h2
             style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontSize: "clamp(2rem, 4vw, 2.5rem)",
               marginBottom: "20px",
             }}
           >

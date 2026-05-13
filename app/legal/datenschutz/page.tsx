@@ -52,7 +52,7 @@ export default function team() {
           fontWeight: "bold",
         }}
       >
-        Everything datacomform
+        data-compliant
       </motion.h1>
     </main>
   );

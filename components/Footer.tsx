@@ -218,7 +218,7 @@ export default function Footer() {
               style={sponsorStyle}
             >
               <Image
-                src="/images/sponsors/EasyEDA.jpg"
+                src="/images/sponsors/EasyEDA.png"
                 alt="EasyEDA"
                 width={140}
                 height={60}
