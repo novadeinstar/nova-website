@@ -16,7 +16,7 @@ export default function Contact() {
         fontFamily: "Arial",
         textAlign: "center",
         padding:
-          "clamp(40px, 6vw, 100px) clamp(20px, 6vw, 80px)",
+            "120px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
         background:
           "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
         color: "white",
@@ -77,7 +77,7 @@ export default function Contact() {
         transition={{ delay: 0.6, duration: 1 }}
         style={{
           width: "100%",
-          maxWidth: "700px",
+          maxWidth: "800px",
           marginTop: "60px",
           padding: "40px",
           borderRadius: "32px",
@@ -88,7 +88,7 @@ export default function Contact() {
             "0px 20px 60px rgba(0,0,0,0.35)",
           display: "flex",
           flexDirection: "column",
-          gap: "22px",
+          gap: "30px",
           zIndex: 1,
         }}
       >
@@ -100,7 +100,15 @@ export default function Contact() {
             textAlign: "center",
           }}
           >
-            <p>First Name</p>
+            <p
+              style={{
+                textAlign: "left",
+                opacity: 0.8,
+                marginBottom: "8px",
+              }}
+            >
+              First Name
+            </p>
             <input
               type="text"
               placeholder="First Name"
@@ -124,10 +132,18 @@ export default function Contact() {
                   "1px solid rgba(255,255,255,0.1)")
               }
             />
-            <p>Last Name</p>
+            <p
+              style={{
+                textAlign: "left",
+                opacity: 0.8,
+                marginBottom: "8px",
+              }}
+            >
+              Last Name
+            </p>
             <input
               type="text"
-              placeholder="last Name"
+              placeholder="Last Name"
               style={{
                 transition: "0.3s",
                 width: "100%",
@@ -148,7 +164,15 @@ export default function Contact() {
                   "1px solid rgba(255,255,255,0.1)")
               }
             /> 
-            <p>Email</p>
+            <p
+              style={{
+                textAlign: "left",
+                opacity: 0.8,
+                marginBottom: "8px",
+              }}
+            >
+              Email
+            </p>
             <input
               type="emil"
               placeholder="Email"
@@ -172,7 +196,15 @@ export default function Contact() {
                   "1px solid rgba(255,255,255,0.1)")
               }
             />
-            <p>Your Message</p>
+            <p
+              style={{
+                textAlign: "left",
+                opacity: 0.8,
+                marginBottom: "8px",
+              }}
+            >
+              Your Message
+            </p>
             <textarea
               placeholder="Your Message"
               rows={6}
@@ -187,6 +219,14 @@ export default function Contact() {
                 resize: "none",
                 outline: "none",
               }}
+              onFocus={(e) =>
+                (e.target.style.border =
+                  "1px solid rgba(96,165,250,0.8)")
+              }
+              onBlur={(e) =>
+                (e.target.style.border =
+                  "1px solid rgba(255,255,255,0.1)")
+              }
             />
           </div>
         <div
@@ -198,6 +238,7 @@ export default function Contact() {
             text="Send Message"
             href="/"
           />
+          <p>to: novadeinstar@gmail.com</p>
         </div>
         </motion.div>
       </section>

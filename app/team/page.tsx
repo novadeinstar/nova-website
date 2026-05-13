@@ -162,7 +162,7 @@ export default function Team() {
                 "1px solid rgba(255,255,255,0.08)",
               boxShadow:
                 "0px 20px 50px rgba(0,0,0,0.35)",
-              minHeight: hoveredD ? "220px" : "170px",
+              minHeight: hoveredD ? "150px" : "120px",
             }}
           >
             <h2
@@ -276,7 +276,7 @@ export default function Team() {
                 "1px solid rgba(255,255,255,0.08)",
               boxShadow:
                 "0px 20px 50px rgba(0,0,0,0.35)",
-              minHeight: hoveredE ? "220px" : "170px",
+              minHeight: hoveredE ? "150px" : "120px",
               
             }}
           >
@@ -390,7 +390,7 @@ export default function Team() {
                 "1px solid rgba(255,255,255,0.08)",
               boxShadow:
                 "0px 20px 50px rgba(0,0,0,0.35)",
-              minHeight: hoveredA ? "220px" : "170px",
+              minHeight: hoveredA ? "150px" : "120px",
             }}
           >
             <h2

@@ -33,7 +33,7 @@ export default function Button({
       whileHover={{
         scale: 1.08,
         y: -2,
-        boxShadow: "0px 0px 30px rgba(99,102,241,0.7)",
+        boxShadow: "0px 0px 30px rgba(127, 128, 222, 0.7)",
       }}
       whileTap={{
         scale: 0.94,
@@ -49,7 +49,7 @@ export default function Button({
         fontWeight: "600",
         letterSpacing: "0.5px",
         color: "white",
-        background: "rgb(66, 114, 127)",
+        background: "rgba(66, 114, 127, 0.61)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         boxShadow:
