@@ -156,7 +156,7 @@ export default function Team() {
               padding: "24px",
               borderRadius: "24px",
               background:
-                "rgba(6, 68, 44, 0.18)",
+                "rgba(68, 68, 68, 0.41)",
               backdropFilter: "blur(14px)",
               border:
                 "1px solid rgba(255,255,255,0.08)",
