@@ -55,7 +55,7 @@ export default function Footer() {
             }}
           >
             NextGen Observtional Voice Assistant
-            "NOVA - Dein Star"
+                    "NOVA - Dein Star"
           </p>
         </div>
 

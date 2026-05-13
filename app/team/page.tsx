@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
 
-export default function team() {
+export default function Team() {
+  const [hovered, setHovered] = useState(false);
   return (
     <main
       style={{
@@ -90,24 +92,32 @@ export default function team() {
       >
         {/* David */}
         <motion.div
+          onHoverStart={() => setHovered(true)}
+          onHoverEnd={() => setHovered(false)}
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+          }}
           whileHover={{
             y: -10,
             scale: 1.02,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 200,
-          }}
-          style={{
-            position: "relative",
           }}
         >
           {/* IMAGE */}
           <Image
             src="/images/team/David.jpg"
             alt="David Shi"
-            width={500}
-            height={700}
+            width={433.33}
+            height={650}
             style={{
               width: "100%",
               height: "500px",
@@ -117,9 +127,20 @@ export default function team() {
           />
 
           {/* INFO BOX */}
-          <div
+          <motion.div
+            whileHover={{
+              scale: 1.05,
+              y:-8,
+              paddingBottom: "40px",
+              boxShadow:
+                "0px 25px 60px rgba(59,130,246,0.25)",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 250,
+            }}
             style={{
-              position: "absolute",
+              position: "relative",
               bottom: "-30px",
               left: "50%",
               transform: "translateX(-50%)",
@@ -154,119 +175,27 @@ export default function team() {
               Hardware & Electronics
             </p>
 
-            <p
+            <motion.p
+                animate={{
+                  opacity: hovered ? 1 : 0,
+                  maxHeight: hovered ? 200 : 0,
+                }}
+              transition={{
+                duration: 0.3,
+              }}
               style={{
-                fontSize: "0.95rem",
+                overflow: "hidden",
+                marginTop: "14px",
+                fontSize: "0.92rem",
                 lineHeight: "1.6",
-                opacity: 0.7,
               }}
             >
-              test
-            </p>
-          </div>
+              Specialized in customized PCBs,
+              robotics, and modular 3D Constructions.
+            </motion.p>
+          </motion.div>
         </motion.div>
 
-        {/* Emil */}
-        <motion.div
-          whileHover={{
-            y: -10,
-            scale: 1.02,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 200,
-          }}
-          style={{
-            position: "relative",
-          }}
-        >
-          <Image
-            src="/images/team/Emil.jpeg"
-            alt="Emil"
-            width={500}
-            height={700}
-            style={{
-              width: "100%",
-              height: "500px",
-              objectFit: "cover",
-              borderRadius: "30px",
-            }}
-          />
-
-          <div
-            style={{
-              position: "absolute",
-              bottom: "-30px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "85%",
-              padding: "24px",
-              borderRadius: "24px",
-              background:
-                "rgba(255,255,255,0.08)",
-              backdropFilter: "blur(14px)",
-              border:
-                "1px solid rgba(255,255,255,0.08)",
-            }}
-          >
-            <h2>Emil Raba</h2>
-            <p style={{ opacity: 0.7 }}>
-              Co-Founder
-              AI-development
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Aarush*/}
-        <motion.div
-          whileHover={{
-            y: -10,
-            scale: 1.02,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 200,
-          }}
-          style={{
-            position: "relative",
-          }}
-        >
-          <Image
-            src="/images/team/Aarush.jpeg"
-            alt="Team Member"
-            width={500}
-            height={700}
-            style={{
-              width: "100%",
-              height: "500px",
-              objectFit: "cover",
-              borderRadius: "30px",
-            }}
-          />
-
-          <div
-            style={{
-              position: "absolute",
-              bottom: "-30px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "85%",
-              padding: "24px",
-              borderRadius: "24px",
-              background:
-                "rgba(255,255,255,0.08)",
-              backdropFilter: "blur(14px)",
-              border:
-                "1px solid rgba(255,255,255,0.08)",
-            }}
-          >
-            <h2>Aarush Mayya</h2>
-            <p style={{ opacity: 0.7 }}>
-              Co-Founder
-              Software-Engineering
-            </p>
-          </div>
-        </motion.div>
       </section>
     </main>
   );
