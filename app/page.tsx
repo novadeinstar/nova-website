@@ -159,13 +159,15 @@ export default function Home() {
           margin: "0 auto",
         }}
       >
-        {/* IMAGE */}
+        {/* Video */}
         <video
           src="/videos/Nova_video.mp4"
+          poster="/images/video-preview.jpeg"
+          controls
           playsInline
           style={{
             width: "100%",
-            maxWidth: "1000px",
+            maxWidth: "1300px",
             borderRadius: "20px",
             objectFit: "cover",
           }}
@@ -196,12 +198,12 @@ export default function Home() {
           padding: "40px",
           borderRadius: "32px",
           background:
-            "rgba(84, 82, 82, 0.17)",
+            "rgba(81, 24, 99, 0.17)",
           border:
-            "1px solid rgba(255, 255, 255, 0.23)",
+            "1px solid rgba(255, 255, 255, 0.1)",
           backdropFilter: "blur(10px)",
           boxShadow:
-            "0px 20px 60px rgba(86, 86, 86, 0.41)",
+            "0px 20px 60px rgba(86, 86, 86, 0.3)",
         }}
       >
         {/* LEFT IMAGE */}

@@ -8,7 +8,7 @@ export default function Footer() {
         background: "#041042",
         color: "white",
         padding:
-          "clamp(40px, 6vw, 80px) clamp(20px, 6vw, 80px)",
+          "clamp(40px, 6vw, 70px) clamp(20px, 6vw, 80px)",
       }}
     >
       {/* TOP AREA */}
@@ -54,9 +54,8 @@ export default function Footer() {
               lineHeight: "1.7",
             }}
           >
-            Next-generation local AI systems focused on
-            privacy, intelligence, and adaptive human
-            interaction.
+            NextGen Observtional Voice Assistant
+            "NOVA - Dein Star"
           </p>
         </div>
 
