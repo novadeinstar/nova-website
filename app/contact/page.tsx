@@ -2,8 +2,38 @@
 
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
 export default function Contact() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const sendEmail = async () => {
+  try {
+    await emailjs.send(
+      "service_uo9erau",
+      "template_w0pc3cd",
+      {
+        name: `${firstName} ${lastName}`,
+        email: email,
+        message: message,
+      },
+      "e1W7ANfk4ycF56NMt"
+    );
+
+    alert("Message sent successfully!");
+
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setMessage("");
+  } catch (error) {
+    console.error(error);
+    alert("Failed to send message.");
+  }
+};
   return (
     <main>
       <section
@@ -105,6 +135,7 @@ export default function Contact() {
                 textAlign: "left",
                 opacity: 0.8,
                 marginBottom: "8px",
+                marginTop: "0px",
               }}
             >
                 First Name
@@ -112,6 +143,8 @@ export default function Contact() {
             <input
               type="text"
               placeholder="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
               style={{
                 transition: "0.3s",
                 width: "100%",
@@ -137,6 +170,7 @@ export default function Contact() {
                 textAlign: "left",
                 opacity: 0.8,
                 marginBottom: "8px",
+                marginTop: "0px",
               }}
             >
                 Last Name
@@ -144,6 +178,8 @@ export default function Contact() {
             <input
               type="text"
               placeholder="Last Name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}              
               style={{
                 transition: "0.3s",
                 width: "100%",
@@ -169,13 +205,16 @@ export default function Contact() {
                 textAlign: "left",
                 opacity: 0.8,
                 marginBottom: "8px",
+                marginTop: "0px",
               }}
             >
                 Email
             </p>
             <input
-              type="emil"
+              type="email"
               placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               style={{
                 transition: "0.3s",
                 width: "100%",
@@ -201,6 +240,7 @@ export default function Contact() {
                 textAlign: "left",
                 opacity: 0.8,
                 marginBottom: "8px",
+                marginTop: "0px",
               }}
             >
                 Your Message
@@ -208,6 +248,8 @@ export default function Contact() {
             <textarea
               placeholder="Your Message"
               rows={6}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               style={{
                 width: "100%",
                 padding: "16px 18px",
@@ -229,17 +271,28 @@ export default function Contact() {
               }
             />
           </div>
-        <div
-          style={{
-            marginTop: "clamp(25px, 4vw, 50px)",
-          }}
-        >
-          <Button
-            text="Send Message"
-            href="/"
-          />
-          <p>to: novadeinstar@gmail.com</p>
-        </div>
+          <div
+            style={{
+              marginTop: "clamp(25px, 4vw, 50px)",
+            }}
+          >
+            <button
+              onClick={sendEmail}
+              style={{
+                padding: "16px 32px",
+                borderRadius: "18px",
+                border: "none",
+                background:
+                  "linear-gradient(90deg,#3b82f6,#8b5cf6)",
+                color: "white",
+                fontSize: "1rem",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              Send Message
+            </button>
+          </div>
         </motion.div>
       </section>
     </main>

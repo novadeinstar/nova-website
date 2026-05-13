@@ -120,13 +120,8 @@ export default function Footer() {
             }}
           >
             {/* LINKS */}
-            <a
-              href="https://novadeinstar@gmail.com/"
-              target= "_blank"
-              rel="noopener noreferrer"
-              style={linkStyle}
-            >  
-              Email
+            <a>  
+              Email: novadeinstar@gmail.com
             </a>
             <a
               href="https://www.linkedin.com/in/david-shi-b845563b5"
