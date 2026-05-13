@@ -17,7 +17,7 @@ export default function Footer() {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-between",
-          gap: "60px",
+          gap: "30px",
         }}
       >
         {/* BRAND */}
