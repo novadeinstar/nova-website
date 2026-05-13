@@ -129,8 +129,8 @@ export default function Home() {
               width={400}
               height={400}
               style={{
-                width: "100%",
-                maxWidth: "370px",
+                width: "clamp(350px, 40vw, 700px)",
+                maxWidth: "700px",
                 height: "auto",
                 borderRadius: "clamp(25px, 4vw, 45px)",
                 boxShadow:
@@ -162,7 +162,7 @@ export default function Home() {
         {/* Video */}
         <video
           src="/videos/Nova_video.mp4"
-          poster="/images/video-preview.jpeg"
+          poster="/images/video-preview.png"
           controls
           playsInline
           style={{
