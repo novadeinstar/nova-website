@@ -23,7 +23,7 @@ export default function Home() {
           justifyContent: "center",
           gap: "clamp(40px, 8vw, 120px)",
           padding:
-            "clamp(30px, 6vw, 100px) clamp(20px, 6vw, 80px)",
+            "120px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
           position: "relative",
           background:
             "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
@@ -129,7 +129,7 @@ export default function Home() {
               width={400}
               height={400}
               style={{
-                width: "100%",
+                width: "clamp(350px, 40vw, 450px)",
                 maxWidth: "550px",
                 height: "auto",
                 borderRadius: "clamp(25px, 4vw, 45px)",

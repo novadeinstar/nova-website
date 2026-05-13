@@ -17,9 +17,8 @@ export default function Team() {
         color: "white",
         overflow: "hidden",
         position: "relative",
-        paddingTop: "120px",
         padding:
-          "clamp(40px, 6vw, 100px) clamp(20px, 6vw, 80px)",
+          "120px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
       }}
     >
       {/* BACKGROUND GLOW */}
@@ -136,8 +135,7 @@ export default function Team() {
           <motion.div
             whileHover={{
               scale: 1.05,
-              y:-8,
-              paddingBottom: "40px",
+              y:-20,              
               boxShadow:
                 "0px 25px 60px rgba(59,130,246,0.25)",
             }}
@@ -147,10 +145,9 @@ export default function Team() {
             }}
             style={{
               overflow: "hidden",
-              position: "relative",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
+              marginTop: "-60px",
+              marginLeft: "auto",
+              marginRight: "auto",
               width: "85%",
               padding: "24px",
               borderRadius: "24px",
@@ -161,6 +158,7 @@ export default function Team() {
                 "1px solid rgba(255,255,255,0.08)",
               boxShadow:
                 "0px 20px 50px rgba(0,0,0,0.35)",
+              minHeight: hoveredD ? "220px" : "170px",
             }}
           >
             <h2
@@ -246,8 +244,7 @@ export default function Team() {
           <motion.div
             whileHover={{
               scale: 1.05,
-              y:-8,
-              paddingBottom: "40px",
+              y:-20,
               boxShadow:
                 "0px 25px 60px rgba(59,130,246,0.25)",
             }}
@@ -257,10 +254,9 @@ export default function Team() {
             }}
             style={{
               overflow: "hidden",
-              position: "relative",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
+              marginTop: "-60px",
+              marginLeft: "auto",
+              marginRight: "auto",
               width: "85%",
               padding: "24px",
               borderRadius: "24px",
@@ -271,6 +267,7 @@ export default function Team() {
                 "1px solid rgba(255,255,255,0.08)",
               boxShadow:
                 "0px 20px 50px rgba(0,0,0,0.35)",
+              minHeight: hoveredE ? "220px" : "170px",
               
             }}
           >
@@ -341,12 +338,12 @@ export default function Team() {
           {/* IMAGE */}
           <Image
             src="/images/team/Aarush.jpeg"
-            alt="David Shi"
+            alt="Aarush Mayya"
             width={433.33}
             height={650}
             style={{
               width: "100%",
-              height: "500px",
+              aspectRatio: "2 / 3",
               objectFit: "cover",
               borderRadius: "30px",
             }}
@@ -356,8 +353,7 @@ export default function Team() {
           <motion.div
             whileHover={{
               scale: 1.05,
-              y:-8,
-              paddingBottom: "40px",
+              y:-20,
               boxShadow:
                 "0px 25px 60px rgba(59,130,246,0.25)",
             }}
@@ -366,11 +362,10 @@ export default function Team() {
               stiffness: 250,
             }}
             style={{
-              position: "relative",
               overflow: "hidden",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
+              marginTop: "-60px",
+              marginLeft: "auto",
+              marginRight: "auto",
               width: "85%",
               padding: "24px",
               borderRadius: "24px",
@@ -381,6 +376,7 @@ export default function Team() {
                 "1px solid rgba(255,255,255,0.08)",
               boxShadow:
                 "0px 20px 50px rgba(0,0,0,0.35)",
+              minHeight: hoveredA ? "220px" : "170px",
             }}
           >
             <h2
