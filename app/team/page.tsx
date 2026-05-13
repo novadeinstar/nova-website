@@ -98,6 +98,7 @@ export default function Team() {
           onHoverEnd={() => setHoveredD(false)}
           style={{
             position: "relative",
+            height: "clamp(620px, 80vw, 760px)",
           }}          
           initial={{
             opacity: 0,
@@ -134,16 +135,15 @@ export default function Team() {
           {/* INFO BOX */}
           <motion.div
             whileHover={{
-              scale: 1.05,
-              y:-20,              
-              boxShadow:
-                "0px 25px 60px rgba(59,130,246,0.25)",
+              y: -25,
+              scale: 1.03,
             }}
             transition={{
               type: "spring",
               stiffness: 250,
             }}
             style={{
+              position: "absolute",
               overflow: "hidden",
               marginTop: "-60px",
               marginLeft: "auto",
@@ -182,13 +182,14 @@ export default function Team() {
 
             <motion.p
                 animate={{
+                  y: hoveredD ? 0 : 10,
                   opacity: hoveredD ? 1 : 0,
-                  maxHeight: hoveredD ? 200 : 0,
                 }}
               transition={{
                 duration: 0.3,
               }}
               style={{
+                position:"relative",
                 overflow: "hidden",
                 marginTop: "14px",
                 fontSize: "0.92rem",
@@ -207,6 +208,7 @@ export default function Team() {
           onHoverEnd={() => setHoveredE(false)}
           style={{
             position: "relative",
+            height: "clamp(620px, 80vw, 760px)",
           }}
           initial={{
             opacity: 0,
@@ -243,16 +245,15 @@ export default function Team() {
           {/* INFO BOX */}
           <motion.div
             whileHover={{
-              scale: 1.05,
-              y:-20,
-              boxShadow:
-                "0px 25px 60px rgba(59,130,246,0.25)",
+              y: -25,
+              scale: 1.03,
             }}
             transition={{
               type: "spring",
               stiffness: 250,
             }}
             style={{
+              position: "absolute",
               overflow: "hidden",
               marginTop: "-60px",
               marginLeft: "auto",
@@ -292,13 +293,14 @@ export default function Team() {
 
             <motion.p
                 animate={{
-                  opacity: hoveredE ? 1 : 0,
-                  maxHeight: hoveredE ? 200 : 0,
+                  y: hoveredD ? 0 : 10,
+                  opacity: hoveredD ? 1 : 0,
                 }}
               transition={{
                 duration: 0.3,
               }}
               style={{
+                position:"relative",
                 overflow: "hidden",
                 marginTop: "14px",
                 fontSize: "0.92rem",
@@ -316,6 +318,7 @@ export default function Team() {
           onHoverEnd={() => setHoveredA(false)}
           style={{
             position: "relative",
+            height: "clamp(620px, 80vw, 760px)",
           }}          
           initial={{
             opacity: 0,
@@ -352,16 +355,15 @@ export default function Team() {
           {/* INFO BOX */}
           <motion.div
             whileHover={{
-              scale: 1.05,
-              y:-20,
-              boxShadow:
-                "0px 25px 60px rgba(59,130,246,0.25)",
+              y: -25,
+              scale: 1.03,
             }}
             transition={{
               type: "spring",
               stiffness: 250,
             }}
             style={{
+              position: "absolute",
               overflow: "hidden",
               marginTop: "-60px",
               marginLeft: "auto",
@@ -400,13 +402,14 @@ export default function Team() {
 
             <motion.p
                 animate={{
-                  opacity: hoveredA ? 1 : 0,
-                  maxHeight: hoveredA ? 200 : 0,
+                  y: hoveredD ? 0 : 10,
+                  opacity: hoveredD ? 1 : 0,
                 }}
               transition={{
                 duration: 0.3,
               }}
               style={{
+                position:"relative",
                 overflow: "hidden",
                 marginTop: "14px",
                 fontSize: "0.92rem",
