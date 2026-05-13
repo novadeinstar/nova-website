@@ -29,6 +29,8 @@ export default function Home() {
             "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
           color: "white",
           overflow: "hidden",
+          maxWidth: "1600px",
+          margin: "0 auto",
         }}
       >
         {/* glowing background orb */}
@@ -71,7 +73,7 @@ export default function Home() {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               fontWeight: "bold",
-              letterSpacing: "-2px",
+              letterSpacing: "clamp(-1px, -0.15vw, -2px)",
             }}
           >
             NOVA
@@ -101,8 +103,8 @@ export default function Home() {
             }}
           >
             <Button
-              text="Our Team"
-              href="/team"
+              text="Robot"
+              href="/product"
             />
           </div>
         </div>
@@ -116,18 +118,26 @@ export default function Home() {
             zIndex: 1,
           }}
         >
-          <Image
-            src="/images/nova.jpeg"
-            alt="NOVA AI"
-            width={400}
-            height={400}
-            style={{
-              width: "100%",
-              maxWidth: "370px",
-              height: "auto",
-              borderRadius: "clamp(25px, 4vw, 45px)",
-            }}
-          />
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <Image
+              src="/images/nova.jpeg"
+              alt="NOVA AI"
+              width={400}
+              height={400}
+              style={{
+                width: "100%",
+                maxWidth: "370px",
+                height: "auto",
+                borderRadius: "clamp(25px, 4vw, 45px)",
+                boxShadow:
+                  "0px 20px 60px rgba(0,0,0,0.45)"
+              }}
+            />
+          </motion.div>
         </div>
       </section>
 
@@ -145,6 +155,8 @@ export default function Home() {
           background:
             "linear-gradient(to bottom, #f8fafc, #e2e8f0)",
           color: "black",
+          maxWidth: "1600px",
+          margin: "0 auto",
         }}
       >
         {/* IMAGE */}
@@ -157,6 +169,7 @@ export default function Home() {
             width: "100%",
             maxWidth: "700px",
             borderRadius: "20px",
+            objectFit: "cover",
           }}
         />
       </section>
@@ -164,14 +177,17 @@ export default function Home() {
       {/* FINAL SECTION */}
       <section
       style={{
-        padding: "120px 20px",
+        padding:
+          "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
         background: "#020617",
         display: "flex",
         justifyContent: "center",
+        maxWidth: "1600px",
+        margin: "0 auto",
       }}
     >
       {/* CARD */}
-      <div
+      <motion.div
         style={{
           width: "100%",
           maxWidth: "1200px",
@@ -197,7 +213,7 @@ export default function Home() {
           }}
         >
           <Image
-            src="/images/JuFo.jpeg"
+            src="/images/JuFo.jpg"
             alt="NOVA Technology"
             width={500}
             height={400}
@@ -223,7 +239,7 @@ export default function Home() {
               marginBottom: "20px",
             }}
           >
-            Intelligent Local AI
+            3. prize on state level of "Jugend Forscht" competition 
           </h2>
 
           <p
@@ -234,17 +250,15 @@ export default function Home() {
               marginBottom: "30px",
             }}
           >
-            NOVA combines privacy-focused local AI with
-            adaptive voice intelligence for next-generation
-            interaction systems.
+            Perfect teamwork combined with individuall strength makes NOVA a successful project. Our vision is going far beyond!
           </p>
 
           <Button
-            text="Learn More"
-            href="/product"
+            text="Our Team"
+            href="/team"
           />
         </div>
-      </div>
+      </motion.div>
     </section>
     </main>
   );

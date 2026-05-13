@@ -123,8 +123,9 @@ export default function Footer() {
             {/* LINKS */}
 
             <a
-              href="www.linkedin.com/in/david-shi-b845563b5"
+              href="https://www.linkedin.com/in/david-shi-b845563b5"
               target="_blank"
+              rel="noopener noreferrer"
               style={linkStyle}
             >
               LinkedIn
@@ -133,9 +134,17 @@ export default function Footer() {
             <a
               href="https://youtube.com/"
               target="_blank"
+              rel="noopener noreferrer"
               style={linkStyle}
             >
               YouTube (comming soon)
+            </a>
+            <a
+              href="https://instagram.com/"
+              target= "_blank"
+              rel="noopener noreferrer"
+              style={linkStyle}
+            >  
             </a>
           </div>
         </div>
@@ -164,6 +173,7 @@ export default function Footer() {
             <a
               href="https://www.sfz-hamburg.de/"
               target="_blank"
+              rel="noopener noreferrer"
               style={sponsorStyle}
             >
               <Image
@@ -184,6 +194,7 @@ export default function Footer() {
             <a
               href="https://www.akquinet.de/"
               target="_blank"
+              rel="noopener noreferrer"
               style={sponsorStyle}
             >
               <Image
@@ -203,6 +214,7 @@ export default function Footer() {
             <a
               href="https://easyeda.com/"
               target="_blank"
+              rel="noopener noreferrer"
               style={sponsorStyle}
             >
               <Image
@@ -248,19 +260,19 @@ export default function Footer() {
             gap: "20px",
           }}
         >
-          <Link href="/impressum" style={linkStyle}>
+          <Link href="/legal/impressum" style={linkStyle}>
             Impressum
           </Link>
 
-          <Link href="/datenschutz" style={linkStyle}>
+          <Link href="/legal/datenschutz" style={linkStyle}>
             Datenschutz
           </Link>
 
-          <Link href="/terms" style={linkStyle}>
+          <Link href="/legal/terms" style={linkStyle}>
             Terms
           </Link>
 
-          <Link href="/cookies" style={linkStyle}>
+          <Link href="/legal/cookies" style={linkStyle}>
             Cookies
           </Link>
         </div>
