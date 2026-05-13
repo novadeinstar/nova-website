@@ -207,7 +207,7 @@ export default function Footer() {
                   objectFit: "contain",
                 }}
               />
-              <span>akquinet</span>
+              <span>Akquinet</span>
             </a>
 
             <a

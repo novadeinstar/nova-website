@@ -92,8 +92,8 @@ export default function Home() {
               lineHeight: "1.6",
             }}
           >
-            NextGen Observational Voice Assistant —
-            private, local, and truly intelligent.
+            NextGen Observational Voice Assistant
+            Helping you to be more productive in your life!
           </motion.p>
 
           {/* BUTTON */}
@@ -103,7 +103,7 @@ export default function Home() {
             }}
           >
             <Button
-              text="Robot"
+              text="Our Robot"
               href="/product"
             />
           </div>
@@ -124,13 +124,13 @@ export default function Home() {
             transition={{ duration: 1 }}
           >
             <Image
-              src="/images/nova.jpeg"
+              src="/images/homepage/nova.jpeg"
               alt="NOVA AI"
               width={400}
               height={400}
               style={{
-                width: "clamp(350px, 40vw, 700px)",
-                maxWidth: "700px",
+                width: "clamp(350px, 40vw, 550px)",
+                maxWidth: "550px",
                 height: "auto",
                 borderRadius: "clamp(25px, 4vw, 45px)",
                 boxShadow:
@@ -162,7 +162,7 @@ export default function Home() {
         {/* Video */}
         <video
           src="/videos/Nova_video.mp4"
-          poster="/images/video-preview.png"
+          poster="/images/homepage/video-preview.png"
           controls
           playsInline
           style={{
@@ -213,7 +213,7 @@ export default function Home() {
           }}
         >
           <Image
-            src="/images/JuFo.jpg"
+            src="/images/homepage/JuFo.jpg"
             alt="NOVA Technology"
             width={500}
             height={400}
