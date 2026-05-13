@@ -5,7 +5,9 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Team() {
-  const [hovered, setHovered] = useState(false);
+  const [hoveredD, setHoveredD] = useState(false);
+  const [hoveredE, setHoveredE] = useState(false);
+  const [hoveredA, setHoveredA] = useState(false);
   return (
     <main
       style={{
@@ -15,6 +17,7 @@ export default function Team() {
         color: "white",
         overflow: "hidden",
         position: "relative",
+        paddingTop: "120px",
         padding:
           "clamp(40px, 6vw, 100px) clamp(20px, 6vw, 80px)",
       }}
@@ -92,8 +95,11 @@ export default function Team() {
       >
         {/* David */}
         <motion.div
-          onHoverStart={() => setHovered(true)}
-          onHoverEnd={() => setHovered(false)}
+          onHoverStart={() => setHoveredD(true)}
+          onHoverEnd={() => setHoveredD(false)}
+          style={{
+            position: "relative",
+          }}          
           initial={{
             opacity: 0,
             y: 80,
@@ -120,7 +126,7 @@ export default function Team() {
             height={650}
             style={{
               width: "100%",
-              height: "500px",
+              aspectRatio: "2 / 3",
               objectFit: "cover",
               borderRadius: "30px",
             }}
@@ -140,8 +146,9 @@ export default function Team() {
               stiffness: 250,
             }}
             style={{
+              overflow: "hidden",
               position: "relative",
-              bottom: "-30px",
+              bottom: "20px",
               left: "50%",
               transform: "translateX(-50%)",
               width: "85%",
@@ -177,8 +184,8 @@ export default function Team() {
 
             <motion.p
                 animate={{
-                  opacity: hovered ? 1 : 0,
-                  maxHeight: hovered ? 200 : 0,
+                  opacity: hoveredD ? 1 : 0,
+                  maxHeight: hoveredD ? 200 : 0,
                 }}
               transition={{
                 duration: 0.3,
@@ -198,8 +205,11 @@ export default function Team() {
 
         {/* Emil */}
         <motion.div
-          onHoverStart={() => setHovered(true)}
-          onHoverEnd={() => setHovered(false)}
+          onHoverStart={() => setHoveredE(true)}
+          onHoverEnd={() => setHoveredE(false)}
+          style={{
+            position: "relative",
+          }}
           initial={{
             opacity: 0,
             y: 80,
@@ -226,7 +236,7 @@ export default function Team() {
             height={650}
             style={{
               width: "100%",
-              height: "500px",
+              aspectRatio: "2 / 3",
               objectFit: "cover",
               borderRadius: "30px",
             }}
@@ -246,8 +256,9 @@ export default function Team() {
               stiffness: 250,
             }}
             style={{
+              overflow: "hidden",
               position: "relative",
-              bottom: "-30px",
+              bottom: "20px",
               left: "50%",
               transform: "translateX(-50%)",
               width: "85%",
@@ -260,6 +271,7 @@ export default function Team() {
                 "1px solid rgba(255,255,255,0.08)",
               boxShadow:
                 "0px 20px 50px rgba(0,0,0,0.35)",
+              
             }}
           >
             <h2
@@ -283,8 +295,8 @@ export default function Team() {
 
             <motion.p
                 animate={{
-                  opacity: hovered ? 1 : 0,
-                  maxHeight: hovered ? 200 : 0,
+                  opacity: hoveredE ? 1 : 0,
+                  maxHeight: hoveredE ? 200 : 0,
                 }}
               transition={{
                 duration: 0.3,
@@ -303,8 +315,11 @@ export default function Team() {
 
         {/* Aarush */}
         <motion.div
-          onHoverStart={() => setHovered(true)}
-          onHoverEnd={() => setHovered(false)}
+          onHoverStart={() => setHoveredA(true)}
+          onHoverEnd={() => setHoveredA(false)}
+          style={{
+            position: "relative",
+          }}          
           initial={{
             opacity: 0,
             y: 80,
@@ -352,7 +367,8 @@ export default function Team() {
             }}
             style={{
               position: "relative",
-              bottom: "-30px",
+              overflow: "hidden",
+              bottom: "20px",
               left: "50%",
               transform: "translateX(-50%)",
               width: "85%",
@@ -388,8 +404,8 @@ export default function Team() {
 
             <motion.p
                 animate={{
-                  opacity: hovered ? 1 : 0,
-                  maxHeight: hovered ? 200 : 0,
+                  opacity: hoveredA ? 1 : 0,
+                  maxHeight: hoveredA ? 200 : 0,
                 }}
               transition={{
                 duration: 0.3,

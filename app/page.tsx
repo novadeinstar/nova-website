@@ -129,7 +129,7 @@ export default function Home() {
               width={400}
               height={400}
               style={{
-                width: "clamp(350px, 40vw, 550px)",
+                width: "100%",
                 maxWidth: "550px",
                 height: "auto",
                 borderRadius: "clamp(25px, 4vw, 45px)",
