@@ -18,7 +18,7 @@ export default function Team() {
         overflow: "hidden",
         position: "relative",
         padding:
-          "120px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
+          "160px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
       }}
     >
       {/* BACKGROUND GLOW */}
@@ -134,13 +134,17 @@ export default function Team() {
 
           {/* INFO BOX */}
           <motion.div
-            whileHover={{
-              y: -25,
-              scale: 1.03,
+            animate={{
+              y: hoveredD ? -25 : 0,
+              scale: hoveredD ? 1.03 : 1,
+              boxShadow: hoveredD
+                ? "0px 25px 60px rgba(59,130,246,0.25)"
+                : "0px 20px 50px rgba(0,0,0,0.35)",
             }}
             transition={{
               type: "spring",
-              stiffness: 250,
+              stiffness: 220,
+              damping: 18,
             }}
             style={{
               position: "absolute",
@@ -244,13 +248,17 @@ export default function Team() {
 
           {/* INFO BOX */}
           <motion.div
-            whileHover={{
-              y: -25,
-              scale: 1.03,
+            animate={{
+              y: hoveredD ? -25 : 0,
+              scale: hoveredD ? 1.03 : 1,
+              boxShadow: hoveredD
+                ? "0px 25px 60px rgba(59,130,246,0.25)"
+                : "0px 20px 50px rgba(0,0,0,0.35)",
             }}
             transition={{
               type: "spring",
-              stiffness: 250,
+              stiffness: 220,
+              damping: 18,
             }}
             style={{
               position: "absolute",
@@ -293,8 +301,8 @@ export default function Team() {
 
             <motion.p
                 animate={{
-                  y: hoveredD ? 0 : 10,
-                  opacity: hoveredD ? 1 : 0,
+                  y: hoveredE ? 0 : 10,
+                  opacity: hoveredE ? 1 : 0,
                 }}
               transition={{
                 duration: 0.3,
@@ -354,13 +362,17 @@ export default function Team() {
 
           {/* INFO BOX */}
           <motion.div
-            whileHover={{
-              y: -25,
-              scale: 1.03,
+            animate={{
+              y: hoveredD ? -25 : 0,
+              scale: hoveredD ? 1.03 : 1,
+              boxShadow: hoveredD
+                ? "0px 25px 60px rgba(59,130,246,0.25)"
+                : "0px 20px 50px rgba(0,0,0,0.35)",
             }}
             transition={{
               type: "spring",
-              stiffness: 250,
+              stiffness: 220,
+              damping: 18,
             }}
             style={{
               position: "absolute",
@@ -402,8 +414,8 @@ export default function Team() {
 
             <motion.p
                 animate={{
-                  y: hoveredD ? 0 : 10,
-                  opacity: hoveredD ? 1 : 0,
+                  y: hoveredA ? 0 : 10,
+                  opacity: hoveredA ? 1 : 0,
                 }}
               transition={{
                 duration: 0.3,
