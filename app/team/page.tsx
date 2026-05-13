@@ -156,7 +156,7 @@ export default function Team() {
               padding: "24px",
               borderRadius: "24px",
               background:
-                "rgba(255,255,255,0.08)",
+                "rgba(6, 68, 44, 0.18)",
               backdropFilter: "blur(14px)",
               border:
                 "1px solid rgba(255,255,255,0.08)",
@@ -363,9 +363,9 @@ export default function Team() {
           {/* INFO BOX */}
           <motion.div
             animate={{
-              y: hoveredE ? -25 : 0,
-              scale: hoveredE ? 1.03 : 1,
-              boxShadow: hoveredE
+              y: hoveredA ? -25 : 0,
+              scale: hoveredA ? 1.03 : 1,
+              boxShadow: hoveredA
                 ? "0px 25px 60px rgba(59,130,246,0.25)"
                 : "0px 20px 50px rgba(0,0,0,0.35)",
             }}
