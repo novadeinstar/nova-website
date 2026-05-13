@@ -98,7 +98,7 @@ export default function Team() {
           onHoverEnd={() => setHoveredD(false)}
           style={{
             position: "relative",
-            height: "clamp(620px, 80vw, 760px)",
+            height: "clamp(620px, 80vw, 820px)",
           }}          
           initial={{
             opacity: 0,
@@ -212,7 +212,7 @@ export default function Team() {
           onHoverEnd={() => setHoveredE(false)}
           style={{
             position: "relative",
-            height: "clamp(620px, 80vw, 760px)",
+            height: "clamp(620px, 80vw, 820px)",
           }}
           initial={{
             opacity: 0,
@@ -249,9 +249,9 @@ export default function Team() {
           {/* INFO BOX */}
           <motion.div
             animate={{
-              y: hoveredD ? -25 : 0,
-              scale: hoveredD ? 1.03 : 1,
-              boxShadow: hoveredD
+              y: hoveredE ? -25 : 0,
+              scale: hoveredE ? 1.03 : 1,
+              boxShadow: hoveredE
                 ? "0px 25px 60px rgba(59,130,246,0.25)"
                 : "0px 20px 50px rgba(0,0,0,0.35)",
             }}
@@ -326,7 +326,7 @@ export default function Team() {
           onHoverEnd={() => setHoveredA(false)}
           style={{
             position: "relative",
-            height: "clamp(620px, 80vw, 760px)",
+            height: "clamp(620px, 80vw, 820px)",
           }}          
           initial={{
             opacity: 0,
@@ -363,9 +363,9 @@ export default function Team() {
           {/* INFO BOX */}
           <motion.div
             animate={{
-              y: hoveredD ? -25 : 0,
-              scale: hoveredD ? 1.03 : 1,
-              boxShadow: hoveredD
+              y: hoveredE ? -25 : 0,
+              scale: hoveredE ? 1.03 : 1,
+              boxShadow: hoveredE
                 ? "0px 25px 60px rgba(59,130,246,0.25)"
                 : "0px 20px 50px rgba(0,0,0,0.35)",
             }}
