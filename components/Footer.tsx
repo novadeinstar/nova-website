@@ -8,7 +8,7 @@ export default function Footer() {
         background: "#041042",
         color: "white",
         padding:
-          "clamp(40px, 6vw, 70px) clamp(20px, 6vw, 80px)",
+          "clamp(20px, 6vw, 50px) clamp(20px, 6vw, 80px)",
       }}
     >
       {/* TOP AREA */}
@@ -17,7 +17,7 @@ export default function Footer() {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-between",
-          gap: "30px",
+          gap: "20px",
         }}
       >
         {/* BRAND */}
@@ -33,7 +33,7 @@ export default function Footer() {
             width={70}
             height={70}
             style={{
-              marginBottom: "20px",
+              marginBottom: "10px",
               width: "clamp(50px, 6vw, 70px)",
               height: "auto",
             }}
@@ -120,7 +120,14 @@ export default function Footer() {
             }}
           >
             {/* LINKS */}
-
+            <a
+              href="https://novadeinstar@gmail.com/"
+              target= "_blank"
+              rel="noopener noreferrer"
+              style={linkStyle}
+            >  
+              Email
+            </a>
             <a
               href="https://www.linkedin.com/in/david-shi-b845563b5"
               target="_blank"
@@ -144,6 +151,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               style={linkStyle}
             >  
+              Instagram (comming soon)
             </a>
           </div>
         </div>
@@ -237,8 +245,8 @@ export default function Footer() {
       {/* BOTTOM AREA */}
       <div
         style={{
-          marginTop: "60px",
-          paddingTop: "30px",
+          marginTop: "30px",
+          paddingTop: "20px",
           borderTop:
             "1px solid rgba(255,255,255,0.08)",
 

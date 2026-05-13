@@ -180,7 +180,7 @@ export default function Team() {
                 marginBottom: "12px",
               }}
             >
-              Co-Founder 
+              Co-Founder -
               Hardware & Electronics
             </p>
 
@@ -295,7 +295,7 @@ export default function Team() {
                 marginBottom: "12px",
               }}
             >
-              Co-Founder 
+              Co-Founder -
               AI-Engineering
             </p>
 
@@ -408,7 +408,7 @@ export default function Team() {
                 marginBottom: "12px",
               }}
             >
-              Co-Founder 
+              Co-Founder -
               Software & APP
             </p>
 

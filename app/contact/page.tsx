@@ -107,7 +107,7 @@ export default function Contact() {
                 marginBottom: "8px",
               }}
             >
-              First Name
+                First Name
             </p>
             <input
               type="text"
@@ -139,7 +139,7 @@ export default function Contact() {
                 marginBottom: "8px",
               }}
             >
-              Last Name
+                Last Name
             </p>
             <input
               type="text"
@@ -171,7 +171,7 @@ export default function Contact() {
                 marginBottom: "8px",
               }}
             >
-              Email
+                Email
             </p>
             <input
               type="emil"
@@ -203,7 +203,7 @@ export default function Contact() {
                 marginBottom: "8px",
               }}
             >
-              Your Message
+                Your Message
             </p>
             <textarea
               placeholder="Your Message"
