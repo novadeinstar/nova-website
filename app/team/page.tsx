@@ -2,12 +2,35 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Team() {
+  // DESKTOP HOVER STATES
   const [hoveredD, setHoveredD] = useState(false);
   const [hoveredE, setHoveredE] = useState(false);
   const [hoveredA, setHoveredA] = useState(false);
+
+  // MOBILE DETECTION
+  const [isMobile, setIsMobile] = useState(false);
+
+  // MOBILE OPEN STATES
+  const [openD, setOpenD] = useState(false);
+  const [openE, setOpenE] = useState(false);
+  const [openA, setOpenA] = useState(false);
+
+  // DETECT SCREEN SIZE
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <main
       style={{
@@ -18,7 +41,8 @@ export default function Team() {
         overflow: "hidden",
         position: "relative",
         padding:
-          "160px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
+          "140px clamp(18px, 5vw, 80px) clamp(40px, 6vw, 100px)",
+        boxSizing: "border-box",
       }}
     >
       {/* BACKGROUND GLOW */}
@@ -52,13 +76,14 @@ export default function Team() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           style={{
-            fontSize: "clamp(3rem, 7vw, 5.5rem)",
+            fontSize: "clamp(2.6rem, 9vw, 5.5rem)",
             fontWeight: "bold",
             marginBottom: "24px",
             background:
               "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
+            lineHeight: "1.1",
           }}
         >
           Meet The Team
@@ -75,31 +100,33 @@ export default function Team() {
           }}
         >
           NOVA is built by a passionate interdisciplinary team
-          combining AI, robotics, and modern
-          software engineering.
+          combining AI, robotics, and modern software engineering.
         </motion.p>
       </section>
 
       {/* TEAM GRID */}
       <section
         style={{
-          marginTop: "100px",
+          marginTop: "80px",
           display: "grid",
           gridTemplateColumns:
-            "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "50px",
+            "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+          gap: "40px",
           position: "relative",
           zIndex: 1,
         }}
       >
-        {/* David */}
+
+        {/* DAVID */}
         <motion.div
-          onHoverStart={() => setHoveredD(true)}
-          onHoverEnd={() => setHoveredD(false)}
+          onHoverStart={() => !isMobile && setHoveredD(true)}
+          onHoverEnd={() => !isMobile && setHoveredD(false)}
+          onClick={() => isMobile && setOpenD(!openD)}
           style={{
             position: "relative",
-            height: "clamp(620px, 80vw, 820px)",
-          }}          
+            height: isMobile ? "auto" : "clamp(620px, 80vw, 820px)",
+            cursor: isMobile ? "pointer" : "default",
+          }}
           initial={{
             opacity: 0,
             y: 80,
@@ -113,16 +140,20 @@ export default function Team() {
             duration: 0.8,
             ease: "easeOut",
           }}
-          whileHover={{
-            y: -10,
-            scale: 1.02,
-          }}
+          whileHover={
+            !isMobile
+              ? {
+                  y: -10,
+                  scale: 1.02,
+                }
+              : {}
+          }
         >
           {/* IMAGE */}
           <Image
             src="/images/team/David.jpg"
             alt="David Shi"
-            width={433.33}
+            width={433}
             height={650}
             style={{
               width: "100%",
@@ -135,11 +166,20 @@ export default function Team() {
           {/* INFO BOX */}
           <motion.div
             animate={{
-              y: hoveredD ? -25 : 0,
-              scale: hoveredD ? 1.03 : 1,
-              boxShadow: hoveredD
-                ? "0px 25px 60px rgba(59,130,246,0.25)"
-                : "0px 20px 50px rgba(0,0,0,0.35)",
+              y:
+                hoveredD || openD
+                  ? -25
+                  : 0,
+
+              scale:
+                hoveredD || openD
+                  ? 1.03
+                  : 1,
+
+              boxShadow:
+                hoveredD || openD
+                  ? "0px 25px 60px rgba(59,130,246,0.25)"
+                  : "0px 20px 50px rgba(0,0,0,0.35)",
             }}
             transition={{
               type: "spring",
@@ -147,11 +187,13 @@ export default function Team() {
               damping: 18,
             }}
             style={{
-              position: "absolute",
+              position: isMobile ? "relative" : "absolute",
               overflow: "hidden",
-              marginTop: "-60px",
+              marginTop: isMobile ? "-40px" : "-60px",
               marginLeft: "auto",
               marginRight: "auto",
+              left: 0,
+              right: 0,
               width: "85%",
               padding: "24px",
               borderRadius: "24px",
@@ -162,7 +204,10 @@ export default function Team() {
                 "1px solid rgba(255,255,255,0.08)",
               boxShadow:
                 "0px 20px 50px rgba(0,0,0,0.35)",
-              minHeight: hoveredD ? "150px" : "120px",
+              minHeight:
+                hoveredD || openD
+                  ? "170px"
+                  : "120px",
             }}
           >
             <h2
@@ -180,20 +225,26 @@ export default function Team() {
                 marginBottom: "12px",
               }}
             >
-              Co-Founder -
-              Hardware & Electronics
+              Co-Founder - Hardware & Electronics
             </p>
 
             <motion.p
-                animate={{
-                  y: hoveredD ? 0 : 10,
-                  opacity: hoveredD ? 1 : 0,
-                }}
+              animate={{
+                y:
+                  hoveredD || openD
+                    ? 0
+                    : 10,
+
+                opacity:
+                  hoveredD || openD
+                    ? 1
+                    : 0,
+              }}
               transition={{
                 duration: 0.3,
               }}
               style={{
-                position:"relative",
+                position: "relative",
                 overflow: "hidden",
                 marginTop: "14px",
                 fontSize: "0.92rem",
@@ -201,18 +252,20 @@ export default function Team() {
               }}
             >
               Specialized in customized PCBs,
-              robotics, and modular 3D Constructions.
+              robotics, and modular 3D constructions.
             </motion.p>
           </motion.div>
         </motion.div>
 
-        {/* Emil */}
+        {/* EMIL */}
         <motion.div
-          onHoverStart={() => setHoveredE(true)}
-          onHoverEnd={() => setHoveredE(false)}
+          onHoverStart={() => !isMobile && setHoveredE(true)}
+          onHoverEnd={() => !isMobile && setHoveredE(false)}
+          onClick={() => isMobile && setOpenE(!openE)}
           style={{
             position: "relative",
-            height: "clamp(620px, 80vw, 820px)",
+            height: isMobile ? "auto" : "clamp(620px, 80vw, 820px)",
+            cursor: isMobile ? "pointer" : "default",
           }}
           initial={{
             opacity: 0,
@@ -227,16 +280,19 @@ export default function Team() {
             duration: 0.8,
             ease: "easeOut",
           }}
-          whileHover={{
-            y: -10,
-            scale: 1.02,
-          }}
+          whileHover={
+            !isMobile
+              ? {
+                  y: -10,
+                  scale: 1.02,
+                }
+              : {}
+          }
         >
-          {/* IMAGE */}
           <Image
             src="/images/team/Emil.jpeg"
-            alt="David Shi"
-            width={433.33}
+            alt="Emil Raba"
+            width={433}
             height={650}
             style={{
               width: "100%",
@@ -246,14 +302,22 @@ export default function Team() {
             }}
           />
 
-          {/* INFO BOX */}
           <motion.div
             animate={{
-              y: hoveredE ? -25 : 0,
-              scale: hoveredE ? 1.03 : 1,
-              boxShadow: hoveredE
-                ? "0px 25px 60px rgba(59,130,246,0.25)"
-                : "0px 20px 50px rgba(0,0,0,0.35)",
+              y:
+                hoveredE || openE
+                  ? -25
+                  : 0,
+
+              scale:
+                hoveredE || openE
+                  ? 1.03
+                  : 1,
+
+              boxShadow:
+                hoveredE || openE
+                  ? "0px 25px 60px rgba(59,130,246,0.25)"
+                  : "0px 20px 50px rgba(0,0,0,0.35)",
             }}
             transition={{
               type: "spring",
@@ -261,11 +325,13 @@ export default function Team() {
               damping: 18,
             }}
             style={{
-              position: "absolute",
+              position: isMobile ? "relative" : "absolute",
               overflow: "hidden",
-              marginTop: "-60px",
+              marginTop: isMobile ? "-40px" : "-60px",
               marginLeft: "auto",
               marginRight: "auto",
+              left: 0,
+              right: 0,
               width: "85%",
               padding: "24px",
               borderRadius: "24px",
@@ -276,8 +342,10 @@ export default function Team() {
                 "1px solid rgba(255,255,255,0.08)",
               boxShadow:
                 "0px 20px 50px rgba(0,0,0,0.35)",
-              minHeight: hoveredE ? "150px" : "120px",
-              
+              minHeight:
+                hoveredE || openE
+                  ? "170px"
+                  : "120px",
             }}
           >
             <h2
@@ -295,20 +363,26 @@ export default function Team() {
                 marginBottom: "12px",
               }}
             >
-              Co-Founder -
-              AI-Engineering
+              Co-Founder - AI Engineering
             </p>
 
             <motion.p
-                animate={{
-                  y: hoveredE ? 0 : 10,
-                  opacity: hoveredE ? 1 : 0,
-                }}
+              animate={{
+                y:
+                  hoveredE || openE
+                    ? 0
+                    : 10,
+
+                opacity:
+                  hoveredE || openE
+                    ? 1
+                    : 0,
+              }}
               transition={{
                 duration: 0.3,
               }}
               style={{
-                position:"relative",
+                position: "relative",
                 overflow: "hidden",
                 marginTop: "14px",
                 fontSize: "0.92rem",
@@ -320,14 +394,16 @@ export default function Team() {
           </motion.div>
         </motion.div>
 
-        {/* Aarush */}
+        {/* AARUSH */}
         <motion.div
-          onHoverStart={() => setHoveredA(true)}
-          onHoverEnd={() => setHoveredA(false)}
+          onHoverStart={() => !isMobile && setHoveredA(true)}
+          onHoverEnd={() => !isMobile && setHoveredA(false)}
+          onClick={() => isMobile && setOpenA(!openA)}
           style={{
             position: "relative",
-            height: "clamp(620px, 80vw, 820px)",
-          }}          
+            height: isMobile ? "auto" : "clamp(620px, 80vw, 820px)",
+            cursor: isMobile ? "pointer" : "default",
+          }}
           initial={{
             opacity: 0,
             y: 80,
@@ -341,16 +417,19 @@ export default function Team() {
             duration: 0.8,
             ease: "easeOut",
           }}
-          whileHover={{
-            y: -10,
-            scale: 1.02,
-          }}
+          whileHover={
+            !isMobile
+              ? {
+                  y: -10,
+                  scale: 1.02,
+                }
+              : {}
+          }
         >
-          {/* IMAGE */}
           <Image
             src="/images/team/Aarush.jpeg"
             alt="Aarush Mayya"
-            width={433.33}
+            width={433}
             height={650}
             style={{
               width: "100%",
@@ -360,14 +439,22 @@ export default function Team() {
             }}
           />
 
-          {/* INFO BOX */}
           <motion.div
             animate={{
-              y: hoveredA ? -25 : 0,
-              scale: hoveredA ? 1.03 : 1,
-              boxShadow: hoveredA
-                ? "0px 25px 60px rgba(59,130,246,0.25)"
-                : "0px 20px 50px rgba(0,0,0,0.35)",
+              y:
+                hoveredA || openA
+                  ? -25
+                  : 0,
+
+              scale:
+                hoveredA || openA
+                  ? 1.03
+                  : 1,
+
+              boxShadow:
+                hoveredA || openA
+                  ? "0px 25px 60px rgba(59,130,246,0.25)"
+                  : "0px 20px 50px rgba(0,0,0,0.35)",
             }}
             transition={{
               type: "spring",
@@ -375,11 +462,13 @@ export default function Team() {
               damping: 18,
             }}
             style={{
-              position: "absolute",
+              position: isMobile ? "relative" : "absolute",
               overflow: "hidden",
-              marginTop: "-60px",
+              marginTop: isMobile ? "-40px" : "-60px",
               marginLeft: "auto",
               marginRight: "auto",
+              left: 0,
+              right: 0,
               width: "85%",
               padding: "24px",
               borderRadius: "24px",
@@ -390,7 +479,10 @@ export default function Team() {
                 "1px solid rgba(255,255,255,0.08)",
               boxShadow:
                 "0px 20px 50px rgba(0,0,0,0.35)",
-              minHeight: hoveredA ? "150px" : "120px",
+              minHeight:
+                hoveredA || openA
+                  ? "170px"
+                  : "120px",
             }}
           >
             <h2
@@ -408,27 +500,33 @@ export default function Team() {
                 marginBottom: "12px",
               }}
             >
-              Co-Founder -
-              Software & APP
+              Co-Founder - Software & App
             </p>
 
             <motion.p
-                animate={{
-                  y: hoveredA ? 0 : 10,
-                  opacity: hoveredA ? 1 : 0,
-                }}
+              animate={{
+                y:
+                  hoveredA || openA
+                    ? 0
+                    : 10,
+
+                opacity:
+                  hoveredA || openA
+                    ? 1
+                    : 0,
+              }}
               transition={{
                 duration: 0.3,
               }}
               style={{
-                position:"relative",
+                position: "relative",
                 overflow: "hidden",
                 marginTop: "14px",
                 fontSize: "0.92rem",
                 lineHeight: "1.6",
               }}
             >
-              Specialized in Softwaresystem.
+              Specialized in software systems.
             </motion.p>
           </motion.div>
         </motion.div>
