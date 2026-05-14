@@ -281,7 +281,9 @@ export default function Footer() {
 
         {/* COPYRIGHT */}
         <div>
-          © 2026 NOVA. All rights reserved.
+          <Link href="/fun/1" style={linkStyle}>
+            © 2026 NOVA. All rights reserved.
+          </Link>
         </div>
       </div>
     </footer>

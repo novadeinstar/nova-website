@@ -214,7 +214,7 @@ export default function team() {
             <p
               style={{
                 fontSize: "0.95rem",
-                lineHeight: "1.6",
+                lineHeight: "1",
                 opacity: 0.85,
                 textAlign: "center",
               }}
