@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image"
+import Button from "@/components/Button";
 
 export default function team() {
   return (
@@ -12,7 +13,7 @@ export default function team() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        fontFamily: "Inter",
+        fontFamily: "Arial",
         textAlign: "center",
         padding: "20px",
         background:
@@ -32,11 +33,11 @@ export default function team() {
           height: "600px",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, #3b82f6 0%, #8b5cf6 40%, transparent 70%)",
+            "linear-gradient(to bottom, #5c93ec9c 0%, #8a5cf6d6 100%, transparent 70%)",
           filter: "blur(120px)",
           zIndex: 0,
           backgroundSize: "200% 200%",
-          animation: "gradientMova 12s infinite"
+          animation: "gradientMove 12s infinite"
         }}
       />
 
@@ -117,7 +118,7 @@ export default function team() {
               transform: "translateY(-40px)",
             }}
           >
-            NextGen Observational Voice Assistant
+            Our Robot
           </h1>
 
           <p
@@ -127,7 +128,7 @@ export default function team() {
               marginTop: "20px",
             }}
           >
-            Next-generation observational AI systems
+            "NOVA - Dein star"
           </p>
         </motion.div>
       </section>
@@ -154,7 +155,7 @@ export default function team() {
             height: "clamp(300px, 50vw, 700px)",
             borderRadius: "50%",
             background:
-              "linear-gradient(#020617 0%, #9fa1a3 100%, transparent 70%)",
+              "linear-gradient(to bottom, #02061769 0%, #9fa1a3 100%, transparent 70%)",
             filter: "blur(120px)",
             zIndex: 0,
           }}
@@ -182,7 +183,7 @@ export default function team() {
               height={400}
               style={{
                 width: "100%",
-                maxWidth: "620px",
+                maxWidth: "750px",
                 aspectRatio:"16/9",
                 objectFit: "cover",
                 borderRadius: "clamp(25px, 4vw, 45px)",
@@ -205,7 +206,7 @@ export default function team() {
           {/*Label above */}
           <motion.p
             style={{
-              color: "#194171",
+              color: "#798ca4",
               letterSpacing: "3px",
               textTransform: "uppercase",
               fontWeight: "600",
@@ -221,7 +222,7 @@ export default function team() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             style={{
-              fontSize: "clamp(3rem, 10vw, 5.5rem)",
+              fontSize: "clamp(2.4rem, 10vw, 4.2rem)",
               marginBottom: "20px",
               lineHeight: "1",
               background:
@@ -241,18 +242,138 @@ export default function team() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
             style={{
-              fontSize: "clamp(1rem, 2.5vw, 2rem)",
+              fontSize: "clamp(0.7rem, 2.5vw, 1.3rem)",
               maxWidth: "900px",
               margin: "0 auto",
               opacity: 0.9,
-              lineHeight: "1.6",
+              lineHeight: "1.2",
             }}
           >
-            NextGen Observational Voice Assistant
-            <br />Helping you to be more productive in your life!
+            Distractions and mental overload reduce our productivity and
+            lead to procrastination. NOVA solves this problem with a proactive, AI-powered assistant
+            that recognizes situations and provides the right prompt at the right time. Thanks to local data processing,
+            we guarantee assistance without the need for the cloud. Optimize your focus and transform your
+            workflow into a supernova of efficiency!
           </motion.p>
         </div>
       </section>
+      <section
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "clamp(40px, 8vw, 100px)",
+          padding:
+            "clamp(40px, 8vw, 100px) clamp(20px, 6vw, 80px)",
+          background:
+            "linear-gradient(to bottom, #d0eee2, #bae9ed)",
+          color: "black",
+          maxWidth: "1600px",
+          margin: "0 auto",
+        }}
+      >
+        {/* Video */}
+        <video
+          src="/videos/Demo.mp4"
+          poster="/images/product/demo-preview.jpg"
+          controls
+          playsInline
+          style={{
+            width: "100%",
+            maxWidth: "1300px",
+            borderRadius: "20px",
+            objectFit: "cover",
+          }}
+        />
+      </section>
+      {/* FINAL SECTION */}
+      <section
+      style={{
+        padding:
+          "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
+        background: "#1b5051",
+        display: "flex",
+        justifyContent: "center",
+        maxWidth: "1600px",
+        margin: "0 auto",
+      }}
+    >
+      {/* CARD */}
+      <motion.div
+        style={{
+          width: "100%",
+          maxWidth: "1200px",
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          gap: "60px",
+          padding: "40px",
+          borderRadius: "32px",
+          background:
+            "rgba(81, 24, 99, 0.29)",
+          border:
+            "1px solid rgba(255, 255, 255, 0.3)",
+          backdropFilter: "blur(10px)",
+          boxShadow:
+            "0px 20px 60px rgba(86, 86, 86, 0.32)",
+        }}
+      >
+
+        {/* Left TEXT */}
+        <div
+          style={{
+            flex: "1 1 400px",
+            color: "white",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "clamp(2rem, 4vw, 2.5rem)",
+              marginBottom: "20px",
+            }}
+          >
+            Our Vision 
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.8",
+              opacity: 0.8,
+              marginBottom: "30px",
+            }}
+          >
+            We want to build a StartUp and bring NOVA to you!
+          </p>
+
+          <Button
+            text="Support Us"
+            href="/contact"
+          />
+        </div>
+        {/* Right IMAGE */}
+        <div
+          style={{
+            flex: "1 1 320px",
+          }}
+        >
+          <Image
+            src="/images/product/Produkt.png"
+            alt="NOVA Technology"
+            width={500}
+            height={400}
+            style={{
+              width: "100%",
+              height: "auto",
+              borderRadius: "24px",
+              objectFit: "cover",
+            }}
+          />
+        </div>
+      </motion.div>
+    </section>
     </main>
   );
 }

@@ -141,7 +141,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TECHNOLOGY SECTION */}
+      {/* video SECTION */}
       <section
         style={{
           minHeight: "100vh",
