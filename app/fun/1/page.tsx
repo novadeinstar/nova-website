@@ -51,7 +51,7 @@ export default function Datenschutz() {
       >
         <h1
           style={{
-            fontSize: "clamp(3rem, 7vw, 5rem)",
+            fontSize: "clamp(1rem, 7vw, 3rem)",
             marginBottom: "24px",
             background:
               "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
@@ -60,7 +60,7 @@ export default function Datenschutz() {
             fontWeight: "bold",
           }}
         >
-          Gratulation!! Du hast den Easteregg dieser Website gefunden. Kontaktiere uns und erhalte mit ≈100% Wahrscheinlichkeit 200€!
+          Congratulations!! You've found this website's Easter egg. Contact us and you will get 20€! (≈100% )
         </h1>
 
         <p
@@ -68,9 +68,10 @@ export default function Datenschutz() {
             fontSize: "clamp(1rem, 2vw, 1.3rem)",
             opacity: 0.8,
             lineHeight: "1.8",
+            marginBottom:"16px",
           }}
         >
-          Du bist wirklich KLUG!
+          You are smart!
         </p>
         <Button text="Get your money" href="/contact"/>
       </motion.div>
