@@ -47,7 +47,6 @@ export default function team() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          maxWidth: "1500px",
           margin: "0 auto",
         }}
       >
@@ -72,7 +71,7 @@ export default function team() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            filter: "blur(0.5px) brightness(0.2)",
+            filter: "blur(0.5px) brightness(0.4)",
             zIndex: 0,
           }}
         />
@@ -81,7 +80,7 @@ export default function team() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to bottom, rgba(40, 39, 39, 0.45), rgba(45, 45, 45, 0.7))",
+              "linear-gradient(to bottom, rgba(40, 39, 39, 0.07), rgba(45, 45, 45, 0.37))",
             zIndex: 1,
           }}>
         </div>
@@ -143,7 +142,6 @@ export default function team() {
           padding: "160px clamp(20px, 6vw, 100px)",
           position:"relative",
           overflow:"hidden",
-          maxWidth: "1500px",
         }}
       >
         {/* glowing background orb */}
@@ -268,15 +266,14 @@ export default function team() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: "clamp(40px, 8vw, 100px)",
+          gap: "20px",
           padding:
-            "clamp(40px, 8vw, 100px) clamp(20px, 6vw, 80px)",
+            "clamp(30px, 8vw, 60px) clamp(20px, 6vw, 80px)",
           background:
             "linear-gradient(to bottom, #d0eee2, #bae9ed)",
           color: "black",
           position:"relative",
           overflow:"hidden",
-          maxWidth: "1500px",
           margin: "0 auto",
         }}
       >
@@ -287,8 +284,9 @@ export default function team() {
             letterSpacing: "3px",
             textTransform: "uppercase",
             fontWeight: "600",
-            marginBottom: "20px",
-            flexDirection: "column",
+            marginBottom: "6px",
+            marginTop: "0px",
+            lineHeight: "1",
             opacity: 0.9,
           }}
         >
