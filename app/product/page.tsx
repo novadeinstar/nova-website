@@ -195,19 +195,16 @@ export default function team() {
             }}
             style={{
               position: "absolute",
-              bottom: "30px",
+              bottom: "-10px",
               left: "30px",
-
               padding: "18px 22px",
               borderRadius: "20px",
-
               background: "rgba(10,10,10,0.65)",
               backdropFilter: "blur(14px)",
-
               border: "1px solid rgba(255,255,255,0.15)",
 
               color: "white",
-              maxWidth: "320px",
+              maxWidth: "700px",
 
               boxShadow: "0px 10px 40px rgba(0,0,0,0.35)",
             }}
