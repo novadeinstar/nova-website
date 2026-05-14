@@ -1,10 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Button from "@/components/Button";
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
-export default function team() {
+export default function Contact() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const sendEmail = async () => {
+  try {
+    await emailjs.send(
+      "service_uo9erau",
+      "template_w0pc3cd",
+      {
+        name: `${firstName} ${lastName}`,
+        email: email,
+        message: message,
+      },
+      "e1W7ANfk4ycF56NMt"
+    );
+
+    alert("Message sent successfully!");
+
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setMessage("");
+  } catch (error) {
+    console.error(error);
+    alert("Failed to send message.");
+  }
+};
   return (
-    <main
+    <main>
+      <section
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -13,13 +45,13 @@ export default function team() {
         alignItems: "center",
         fontFamily: "Arial",
         textAlign: "center",
-        padding: "20px",
+        padding:
+            "120px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
         background:
           "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
         color: "white",
         overflow: "hidden",
-      }}
-    >
+      }}>
       {/* glowing background orb */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -67,35 +99,198 @@ export default function team() {
           zIndex: 1,
         }}
       >
-        NextGen Observational Voice Assistant — private, local, and truly intelligent.
+        Lets cooperate and bring NOVA to the people in need!
       </motion.p>
-
-      {/* animated button */}
-      <motion.button
-        initial={{ opacity: 0, y: 30 }}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 1 }}
-        whileHover={{
-          scale: 1.08,
-          boxShadow: "0px 0px 25px rgba(99,102,241,0.8)",
-        }}
-        whileTap={{ scale: 0.96 }}
+        transition={{ delay: 0.6, duration: 1 }}
         style={{
-          marginTop: "40px",
-          padding: "14px 28px",
-          fontSize: "1rem",
-          borderRadius: "12px",
-          border: "1px solid rgba(255,255,255,0.2)",
-          cursor: "pointer",
-          background: "rgba(255,255,255,0.05)",
-          backdropFilter: "blur(10px)",
-          color: "white",
+          width: "100%",
+          maxWidth: "800px",
+          marginTop: "60px",
+          padding: "40px",
+          borderRadius: "32px",
+          background: "rgba(147, 147, 147, 0.24)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          backdropFilter: "blur(18px)",
+          boxShadow:
+            "0px 20px 60px rgba(0,0,0,0.35)",
+          display: "flex",
+          flexDirection: "column",
+          gap: "30px",
           zIndex: 1,
-          transition: "0.2s",
         }}
       >
-        Learn more
-      </motion.button>
+        <div
+          style={{
+            flex: "1 1 500px",
+            maxWidth: "800px",
+            zIndex: 1,
+            textAlign: "center",
+          }}
+          >
+            <p
+              style={{
+                textAlign: "left",
+                opacity: 0.8,
+                margin: "18px 0 8px 0",
+              }}
+            >
+                First Name*
+            </p>
+            <input
+              type="text"
+              placeholder="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              style={{
+                transition: "0.3s",
+                width: "100%",
+                padding: "16px 18px",
+                borderRadius: "16px",
+                border: "1px solid rgba(255,255,255,0.1)",
+                background: "rgba(255,255,255,0.05)",
+                color: "white",
+                fontSize: "1rem",
+                outline: "none",
+              }}
+              onFocus={(e) =>
+                (e.target.style.border =
+                  "1px solid rgba(96,165,250,0.8)")
+              }
+              onBlur={(e) =>
+                (e.target.style.border =
+                  "1px solid rgba(255,255,255,0.1)")
+              }
+            />
+            <p
+              style={{
+                textAlign: "left",
+                opacity: 0.8,
+                margin: "18px 0 8px 0",
+              }}
+            >
+                Last Name*
+            </p>
+            <input
+              type="text"
+              placeholder="Last Name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}              
+              style={{
+                transition: "0.3s",
+                width: "100%",
+                padding: "16px 18px",
+                borderRadius: "16px",
+                border: "1px solid rgba(255,255,255,0.1)",
+                background: "rgba(255,255,255,0.05)",
+                color: "white",
+                fontSize: "1rem",
+                outline: "none",
+              }}
+              onFocus={(e) =>
+                (e.target.style.border =
+                  "1px solid rgba(96,165,250,0.8)")
+              }
+              onBlur={(e) =>
+                (e.target.style.border =
+                  "1px solid rgba(255,255,255,0.1)")
+              }
+            /> 
+            <p
+              style={{
+                textAlign: "left",
+                opacity: 0.8,
+                margin: "18px 0 8px 0",
+              }}
+            >
+                Email*
+            </p>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              style={{
+                transition: "0.3s",
+                width: "100%",
+                padding: "16px 18px",
+                borderRadius: "16px",
+                border: "1px solid rgba(255,255,255,0.1)",
+                background: "rgba(255,255,255,0.05)",
+                color: "white",
+                fontSize: "1rem",
+                outline: "none",
+              }}       
+              onFocus={(e) =>
+                (e.target.style.border =
+                  "1px solid rgba(96,165,250,0.8)")
+              }
+              onBlur={(e) =>
+                (e.target.style.border =
+                  "1px solid rgba(255,255,255,0.1)")
+              }
+            />
+            <p
+              style={{
+                textAlign: "left",
+                opacity: 0.8,
+                margin: "18px 0 8px 0",
+              }}
+            >
+                Your Message*
+            </p>
+            <textarea
+              placeholder="Your Message"
+              rows={6}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "16px 18px",
+                borderRadius: "16px",
+                border: "1px solid rgba(255,255,255,0.1)",
+                background: "rgba(255,255,255,0.05)",
+                color: "white",
+                fontSize: "1rem",
+                resize: "none",
+                outline: "none",
+              }}
+              onFocus={(e) =>
+                (e.target.style.border =
+                  "1px solid rgba(96,165,250,0.8)")
+              }
+              onBlur={(e) =>
+                (e.target.style.border =
+                  "1px solid rgba(255,255,255,0.1)")
+              }
+            />
+          </div>
+          <div
+            style={{
+              marginTop: "clamp(25px, 4vw, 50px)",
+            }}
+          >
+            <button
+              onClick={sendEmail}
+              style={{
+                padding: "16px 32px",
+                borderRadius: "18px",
+                border: "none",
+                background:
+                  "linear-gradient(90deg,#3b82f6,#8b5cf6)",
+                color: "white",
+                fontSize: "1rem",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              Send Message
+            </button>
+          </div>
+        </motion.div>
+      </section>
     </main>
   );
 }

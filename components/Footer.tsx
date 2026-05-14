@@ -8,7 +8,7 @@ export default function Footer() {
         background: "#041042",
         color: "white",
         padding:
-          "clamp(40px, 6vw, 80px) clamp(20px, 6vw, 80px)",
+          "clamp(15px, 3vw, 35px) clamp(20px, 6vw, 80px)",
       }}
     >
       {/* TOP AREA */}
@@ -17,7 +17,7 @@ export default function Footer() {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-between",
-          gap: "60px",
+          gap: "15px",
         }}
       >
         {/* BRAND */}
@@ -33,7 +33,7 @@ export default function Footer() {
             width={70}
             height={70}
             style={{
-              marginBottom: "20px",
+              marginBottom: "10px",
               width: "clamp(50px, 6vw, 70px)",
               height: "auto",
             }}
@@ -54,9 +54,8 @@ export default function Footer() {
               lineHeight: "1.7",
             }}
           >
-            Next-generation local AI systems focused on
-            privacy, intelligence, and adaptive human
-            interaction.
+            NextGen Observtional Voice Assistant
+            <br />"NOVA - Dein Star"
           </p>
         </div>
 
@@ -107,7 +106,7 @@ export default function Footer() {
         >
           <h3
             style={{
-              marginBottom: "18px",
+              marginBottom: "10px",
             }}
           >
             Social Media
@@ -121,10 +120,13 @@ export default function Footer() {
             }}
           >
             {/* LINKS */}
-
+            <a>  
+              Email: novadeinstar@gmail.com
+            </a>
             <a
-              href="www.linkedin.com/in/david-shi-b845563b5"
+              href="https://www.linkedin.com/in/david-shi-b845563b5"
               target="_blank"
+              rel="noopener noreferrer"
               style={linkStyle}
             >
               LinkedIn
@@ -133,9 +135,18 @@ export default function Footer() {
             <a
               href="https://youtube.com/"
               target="_blank"
+              rel="noopener noreferrer"
               style={linkStyle}
             >
               YouTube (comming soon)
+            </a>
+            <a
+              href="https://instagram.com/"
+              target= "_blank"
+              rel="noopener noreferrer"
+              style={linkStyle}
+            >  
+              Instagram (comming soon)
             </a>
           </div>
         </div>
@@ -164,6 +175,7 @@ export default function Footer() {
             <a
               href="https://www.sfz-hamburg.de/"
               target="_blank"
+              rel="noopener noreferrer"
               style={sponsorStyle}
             >
               <Image
@@ -184,6 +196,7 @@ export default function Footer() {
             <a
               href="https://www.akquinet.de/"
               target="_blank"
+              rel="noopener noreferrer"
               style={sponsorStyle}
             >
               <Image
@@ -197,16 +210,17 @@ export default function Footer() {
                   objectFit: "contain",
                 }}
               />
-              <span>akquinet</span>
+              <span>Akquinet</span>
             </a>
 
             <a
               href="https://easyeda.com/"
               target="_blank"
+              rel="noopener noreferrer"
               style={sponsorStyle}
             >
               <Image
-                src="/images/sponsors/EasyEDA.jpg"
+                src="/images/sponsors/EasyEDA.png"
                 alt="EasyEDA"
                 width={140}
                 height={60}
@@ -226,8 +240,8 @@ export default function Footer() {
       {/* BOTTOM AREA */}
       <div
         style={{
-          marginTop: "60px",
-          paddingTop: "30px",
+          marginTop: "30px",
+          paddingTop: "20px",
           borderTop:
             "1px solid rgba(255,255,255,0.08)",
 
@@ -248,26 +262,28 @@ export default function Footer() {
             gap: "20px",
           }}
         >
-          <Link href="/impressum" style={linkStyle}>
+          <Link href="/legal/impressum" style={linkStyle}>
             Impressum
           </Link>
 
-          <Link href="/datenschutz" style={linkStyle}>
+          <Link href="/legal/datenschutz" style={linkStyle}>
             Datenschutz
           </Link>
 
-          <Link href="/terms" style={linkStyle}>
+          <Link href="/legal/terms" style={linkStyle}>
             Terms
           </Link>
 
-          <Link href="/cookies" style={linkStyle}>
+          <Link href="/legal/cookies" style={linkStyle}>
             Cookies
           </Link>
         </div>
 
         {/* COPYRIGHT */}
         <div>
-          © 2026 NOVA. All rights reserved.
+          <Link href="/fun/1" style={linkStyle}>
+            © 2026 NOVA. All rights reserved.
+          </Link>
         </div>
       </div>
     </footer>

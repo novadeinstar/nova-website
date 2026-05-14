@@ -1,101 +1,439 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useState } from "react";
 
-export default function team() {
+export default function Team() {
+  const [hoveredD, setHoveredD] = useState(false);
+  const [hoveredE, setHoveredE] = useState(false);
+  const [hoveredA, setHoveredA] = useState(false);
   return (
     <main
       style={{
         minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "Arial",
-        textAlign: "center",
-        padding: "20px",
         background:
-          "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
+          "radial-gradient(circle at top left, #1e293b 0%, #020617 55%, #000 100%)",
         color: "white",
         overflow: "hidden",
+        position: "relative",
+        padding:
+          "160px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
       }}
     >
-      {/* glowing background orb */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        transition={{ duration: 2 }}
+      {/* BACKGROUND GLOW */}
+      <div
         style={{
           position: "absolute",
-          width: "600px",
-          height: "600px",
+          top: "-200px",
+          left: "-150px",
+          width: "500px",
+          height: "500px",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, #3b82f6 0%, #8b5cf6 40%, transparent 70%)",
-          filter: "blur(120px)",
+            "radial-gradient(circle, rgba(59,130,246,0.35), transparent 70%)",
+          filter: "blur(100px)",
           zIndex: 0,
         }}
       />
 
-      {/* title */}
-      <motion.h1
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+      {/* INTRO */}
+      <section
         style={{
-          fontSize: "3rem",
-          marginBottom: "20px",
+          position: "relative",
           zIndex: 1,
-          background: "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          fontWeight: "bold",
+          textAlign: "center",
+          maxWidth: "900px",
+          margin: "0 auto",
         }}
       >
-        Team
-      </motion.h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          style={{
+            fontSize: "clamp(3rem, 7vw, 5.5rem)",
+            fontWeight: "bold",
+            marginBottom: "24px",
+            background:
+              "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Meet The Team
+        </motion.h1>
 
-      {/* subtitle */}
-      <motion.p
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 1 }}
-        style={{
-          fontSize: "1.2rem",
-          maxWidth: "600px",
-          opacity: 0.9,
-          zIndex: 1,
-        }}
-      >
-        NextGen Observational Voice Assistant — private, local, and truly intelligent.
-      </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 1 }}
+          style={{
+            fontSize: "clamp(1rem, 2vw, 1.3rem)",
+            lineHeight: "1.8",
+            opacity: 0.8,
+          }}
+        >
+          NOVA is built by a passionate interdisciplinary team
+          combining AI, robotics, and modern
+          software engineering.
+        </motion.p>
+      </section>
 
-      {/* animated button */}
-      <motion.button
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 1 }}
-        whileHover={{
-          scale: 1.08,
-          boxShadow: "0px 0px 25px rgba(99,102,241,0.8)",
-        }}
-        whileTap={{ scale: 0.96 }}
+      {/* TEAM GRID */}
+      <section
         style={{
-          marginTop: "40px",
-          padding: "14px 28px",
-          fontSize: "1rem",
-          borderRadius: "12px",
-          border: "1px solid rgba(255,255,255,0.2)",
-          cursor: "pointer",
-          background: "rgba(255,255,255,0.05)",
-          backdropFilter: "blur(10px)",
-          color: "white",
+          marginTop: "100px",
+          display: "grid",
+          gridTemplateColumns:
+            "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "50px",
+          position: "relative",
           zIndex: 1,
-          transition: "0.2s",
         }}
       >
-        Learn more
-      </motion.button>
+        {/* David */}
+        <motion.div
+          onHoverStart={() => setHoveredD(true)}
+          onHoverEnd={() => setHoveredD(false)}
+          style={{
+            position: "relative",
+            height: "clamp(620px, 80vw, 820px)",
+          }}          
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+          }}
+          whileHover={{
+            y: -10,
+            scale: 1.02,
+          }}
+        >
+          {/* IMAGE */}
+          <Image
+            src="/images/team/David.jpg"
+            alt="David Shi"
+            width={433.33}
+            height={650}
+            style={{
+              width: "100%",
+              aspectRatio: "2 / 3",
+              objectFit: "cover",
+              borderRadius: "30px",
+            }}
+          />
+
+          {/* INFO BOX */}
+          <motion.div
+            animate={{
+              y: hoveredD ? -25 : 0,
+              scale: hoveredD ? 1.03 : 1,
+              boxShadow: hoveredD
+                ? "0px 25px 60px rgba(59,130,246,0.25)"
+                : "0px 20px 50px rgba(0,0,0,0.35)",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 220,
+              damping: 18,
+            }}
+            style={{
+              position: "absolute",
+              overflow: "hidden",
+              marginTop: "-60px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              width: "85%",
+              padding: "24px",
+              borderRadius: "24px",
+              background:
+                "rgba(80, 83, 83, 0.41)",
+              backdropFilter: "blur(14px)",
+              border:
+                "1px solid rgba(255,255,255,0.08)",
+              boxShadow:
+                "0px 20px 50px rgba(0,0,0,0.35)",
+              minHeight: hoveredD ? "150px" : "120px",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.4rem",
+                marginBottom: "8px",
+              }}
+            >
+              David Shi
+            </h2>
+
+            <p
+              style={{
+                opacity: 0.75,
+                marginBottom: "12px",
+              }}
+            >
+              Co-Founder -
+              Hardware & Electronics
+            </p>
+
+            <motion.p
+                animate={{
+                  y: hoveredD ? 0 : 10,
+                  opacity: hoveredD ? 1 : 0,
+                }}
+              transition={{
+                duration: 0.3,
+              }}
+              style={{
+                position:"relative",
+                overflow: "hidden",
+                marginTop: "14px",
+                fontSize: "0.92rem",
+                lineHeight: "1.6",
+              }}
+            >
+              Specialized in customized PCBs,
+              robotics, and modular 3D Constructions.
+            </motion.p>
+          </motion.div>
+        </motion.div>
+
+        {/* Emil */}
+        <motion.div
+          onHoverStart={() => setHoveredE(true)}
+          onHoverEnd={() => setHoveredE(false)}
+          style={{
+            position: "relative",
+            height: "clamp(620px, 80vw, 820px)",
+          }}
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+          }}
+          whileHover={{
+            y: -10,
+            scale: 1.02,
+          }}
+        >
+          {/* IMAGE */}
+          <Image
+            src="/images/team/Emil.jpeg"
+            alt="David Shi"
+            width={433.33}
+            height={650}
+            style={{
+              width: "100%",
+              aspectRatio: "2 / 3",
+              objectFit: "cover",
+              borderRadius: "30px",
+            }}
+          />
+
+          {/* INFO BOX */}
+          <motion.div
+            animate={{
+              y: hoveredE ? -25 : 0,
+              scale: hoveredE ? 1.03 : 1,
+              boxShadow: hoveredE
+                ? "0px 25px 60px rgba(59,130,246,0.25)"
+                : "0px 20px 50px rgba(0,0,0,0.35)",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 220,
+              damping: 18,
+            }}
+            style={{
+              position: "absolute",
+              overflow: "hidden",
+              marginTop: "-60px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              width: "85%",
+              padding: "24px",
+              borderRadius: "24px",
+              background:
+                "rgba(80, 83, 83, 0.41)",
+              backdropFilter: "blur(14px)",
+              border:
+                "1px solid rgba(255,255,255,0.08)",
+              boxShadow:
+                "0px 20px 50px rgba(0,0,0,0.35)",
+              minHeight: hoveredE ? "150px" : "120px",
+              
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.4rem",
+                marginBottom: "8px",
+              }}
+            >
+              Emil Raba
+            </h2>
+
+            <p
+              style={{
+                opacity: 0.75,
+                marginBottom: "12px",
+              }}
+            >
+              Co-Founder -
+              AI-Engineering
+            </p>
+
+            <motion.p
+                animate={{
+                  y: hoveredE ? 0 : 10,
+                  opacity: hoveredE ? 1 : 0,
+                }}
+              transition={{
+                duration: 0.3,
+              }}
+              style={{
+                position:"relative",
+                overflow: "hidden",
+                marginTop: "14px",
+                fontSize: "0.92rem",
+                lineHeight: "1.6",
+              }}
+            >
+              Specialized in AI development.
+            </motion.p>
+          </motion.div>
+        </motion.div>
+
+        {/* Aarush */}
+        <motion.div
+          onHoverStart={() => setHoveredA(true)}
+          onHoverEnd={() => setHoveredA(false)}
+          style={{
+            position: "relative",
+            height: "clamp(620px, 80vw, 820px)",
+          }}          
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+          }}
+          whileHover={{
+            y: -10,
+            scale: 1.02,
+          }}
+        >
+          {/* IMAGE */}
+          <Image
+            src="/images/team/Aarush.jpeg"
+            alt="Aarush Mayya"
+            width={433.33}
+            height={650}
+            style={{
+              width: "100%",
+              aspectRatio: "2 / 3",
+              objectFit: "cover",
+              borderRadius: "30px",
+            }}
+          />
+
+          {/* INFO BOX */}
+          <motion.div
+            animate={{
+              y: hoveredA ? -25 : 0,
+              scale: hoveredA ? 1.03 : 1,
+              boxShadow: hoveredA
+                ? "0px 25px 60px rgba(59,130,246,0.25)"
+                : "0px 20px 50px rgba(0,0,0,0.35)",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 220,
+              damping: 18,
+            }}
+            style={{
+              position: "absolute",
+              overflow: "hidden",
+              marginTop: "-60px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              width: "85%",
+              padding: "24px",
+              borderRadius: "24px",
+              background:
+                "rgba(80, 83, 83, 0.41)",
+              backdropFilter: "blur(14px)",
+              border:
+                "1px solid rgba(255,255,255,0.08)",
+              boxShadow:
+                "0px 20px 50px rgba(0,0,0,0.35)",
+              minHeight: hoveredA ? "150px" : "120px",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.4rem",
+                marginBottom: "8px",
+              }}
+            >
+              Aarush Mayya
+            </h2>
+
+            <p
+              style={{
+                opacity: 0.75,
+                marginBottom: "12px",
+              }}
+            >
+              Co-Founder -
+              Software & APP
+            </p>
+
+            <motion.p
+                animate={{
+                  y: hoveredA ? 0 : 10,
+                  opacity: hoveredA ? 1 : 0,
+                }}
+              transition={{
+                duration: 0.3,
+              }}
+              style={{
+                position:"relative",
+                overflow: "hidden",
+                marginTop: "14px",
+                fontSize: "0.92rem",
+                lineHeight: "1.6",
+              }}
+            >
+              Specialized in Softwaresystem.
+            </motion.p>
+          </motion.div>
+        </motion.div>
+
+      </section>
     </main>
   );
 }
