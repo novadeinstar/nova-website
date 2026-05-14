@@ -134,11 +134,10 @@ export default function Contact() {
               style={{
                 textAlign: "left",
                 opacity: 0.8,
-                marginBottom: "8px",
-                marginTop: "0px",
+                margin: "18px 0 8px 0",
               }}
             >
-                First Name
+                First Name*
             </p>
             <input
               type="text"
@@ -169,11 +168,10 @@ export default function Contact() {
               style={{
                 textAlign: "left",
                 opacity: 0.8,
-                marginBottom: "8px",
-                marginTop: "0px",
+                margin: "18px 0 8px 0",
               }}
             >
-                Last Name
+                Last Name*
             </p>
             <input
               type="text"
@@ -204,11 +202,10 @@ export default function Contact() {
               style={{
                 textAlign: "left",
                 opacity: 0.8,
-                marginBottom: "8px",
-                marginTop: "0px",
+                margin: "18px 0 8px 0",
               }}
             >
-                Email
+                Email*
             </p>
             <input
               type="email"
@@ -239,11 +236,10 @@ export default function Contact() {
               style={{
                 textAlign: "left",
                 opacity: 0.8,
-                marginBottom: "8px",
-                marginTop: "0px",
+                margin: "18px 0 8px 0",
               }}
             >
-                Your Message
+                Your Message*
             </p>
             <textarea
               placeholder="Your Message"
