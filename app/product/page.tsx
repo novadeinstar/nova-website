@@ -195,8 +195,9 @@ export default function team() {
             }}
             style={{
               position: "absolute",
-              bottom: "-10px",
+              bottom: "-30px",
               left: "30px",
+              right: "30px",
               padding: "18px 22px",
               borderRadius: "20px",
               background: "rgba(10,10,10,0.65)",
@@ -215,6 +216,7 @@ export default function team() {
                 fontSize: "0.95rem",
                 lineHeight: "1.6",
                 opacity: 0.85,
+                textAlign: "center",
               }}
             >
               The structure is a selfmade, modular 3D print
