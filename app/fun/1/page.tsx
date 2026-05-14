@@ -58,7 +58,7 @@ export default function Datenschutz() {
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             fontWeight: "bold",
-            marginTop: "35px",
+            marginTop: "50px",
           }}
         >
           Congratulations!! You've found this website's Easter egg. Contact us and you will get 20€! (≈100% )
