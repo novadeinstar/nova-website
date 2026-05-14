@@ -262,6 +262,7 @@ export default function team() {
       <section
         style={{
           minHeight: "100vh",
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -325,7 +326,7 @@ export default function team() {
       <motion.div
         style={{
           width: "100%",
-          maxWidth: "1200px",
+          maxWidth: "1400px",
           display: "flex",
           flexWrap: "wrap",
           alignItems: "center",
@@ -345,7 +346,7 @@ export default function team() {
         {/* Left TEXT */}
         <div
           style={{
-            flex: "1 1 400px",
+            flex: "1 1 350px",
             color: "white",
           }}
         >
@@ -377,7 +378,7 @@ export default function team() {
         {/* Right IMAGE */}
         <div
           style={{
-            flex: "1 1 320px",
+            flex: "1 1 500px",
           }}
         >
           <Image
@@ -386,10 +387,11 @@ export default function team() {
             width={500}
             height={400}
             style={{
-              width: "100%",
-              height: "auto",
+              display: "block",
+              flex: "1 1 320px",
               borderRadius: "24px",
-              objectFit: "cover",
+              overflow: "hidden",
+              minHeight: "420px",
             }}
           />
         </div>
