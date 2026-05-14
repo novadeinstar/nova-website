@@ -159,6 +159,19 @@ export default function Home() {
           margin: "0 auto",
         }}
       >
+        {/*Label above */}
+          <motion.p
+            style={{
+              color: "#798ca4",
+              letterSpacing: "3px",
+              textTransform: "uppercase",
+              fontWeight: "600",
+              marginBottom: "20px",
+              opacity: 0.9,
+            }}
+          >
+            Pitch Video
+          </motion.p>
         {/* Video */}
         <video
           src="/videos/Nova_video.mp4"

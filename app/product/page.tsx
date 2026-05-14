@@ -15,7 +15,7 @@ export default function team() {
         alignItems: "center",
         fontFamily: "Arial",
         textAlign: "center",
-        padding: "20px",
+        padding: "0px",
         background:
           "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
         color: "white",
@@ -45,7 +45,7 @@ export default function team() {
         style={{
           position: "relative",
           width: "100%",
-          height: "100vh",
+          minHeight: "100vh",
           overflow: "hidden",
           display: "flex",
           alignItems: "center",
@@ -123,12 +123,12 @@ export default function team() {
 
           <p
             style={{
-              fontSize: "clamp(1rem, 2vw, 1.4rem)",
+              fontSize: "clamp(1.2rem, 2vw, 2.7rem)",
               opacity: 0.85,
               marginTop: "20px",
             }}
           >
-            "NOVA - Dein star"
+            "NOVA — Dein Star"
           </p>
         </motion.div>
       </section>
@@ -137,11 +137,13 @@ export default function team() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: "80px",
+          gap: "clamp(40px, 6vw, 80px)",
           flexWrap: "wrap",
           width: "100%",
           margin: "0 auto",
           padding: "160px clamp(20px, 6vw, 100px)",
+          position:"relative",
+          overflow:"hidden",
         }}
       >
         {/* glowing background orb */}
@@ -172,9 +174,10 @@ export default function team() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             whileHover={{
-                y:-8,
-                scale: 1.02,
-              }}
+              y: -12,
+              scale: 1.03,
+              rotateY: -2,
+            }}
           >
             <Image
               src="/images/product/novad.png"
@@ -189,7 +192,7 @@ export default function team() {
                 borderRadius: "clamp(25px, 4vw, 45px)",
                 boxShadow:
                   "0px 20px 60px rgba(0,0,0,0.45)",
-                transform: "perspective(1600px) readOrCreateRouteCacheEntry(60deg)",
+                transform: "perspective(1600px) rotateY(-60deg)",
               }}
             />
           </motion.div>
@@ -243,7 +246,8 @@ export default function team() {
             transition={{ delay: 0.4, duration: 1 }}
             style={{
               fontSize: "clamp(0.7rem, 2.5vw, 1.3rem)",
-              maxWidth: "900px",
+              font:"Inter",
+              maxWidth: "650px",
               margin: "0 auto",
               opacity: 0.9,
               lineHeight: "1.2",
@@ -272,19 +276,38 @@ export default function team() {
           color: "black",
           maxWidth: "1600px",
           margin: "0 auto",
+          position:"relative",
+          overflow:"hidden",
         }}
       >
+      {/*Label above */}
+        <motion.p
+          style={{
+            color: "#798ca4",
+            letterSpacing: "3px",
+            textTransform: "uppercase",
+            fontWeight: "600",
+            marginBottom: "20px",
+            opacity: 0.9,
+          }}
+        >
+          Pitch Video
+        </motion.p>
         {/* Video */}
         <video
           src="/videos/Demo.mp4"
           poster="/images/product/demo-preview.jpg"
           controls
           playsInline
+          preload="metadata"
           style={{
             width: "100%",
-            maxWidth: "1300px",
+            maxWidth: "1500px",
+            margin:"0 auto",
             borderRadius: "20px",
             objectFit: "cover",
+            boxShadow: "0px 25px 80px rgba(0,0,0,0.35)",
+            border: "1px solid rgba(255,255,255,0.08)",
           }}
         />
       </section>
@@ -298,6 +321,8 @@ export default function team() {
         justifyContent: "center",
         maxWidth: "1600px",
         margin: "0 auto",
+        position:"relative",
+        overflow:"hidden",
       }}
     >
       {/* CARD */}
