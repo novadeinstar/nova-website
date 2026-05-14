@@ -10,24 +10,20 @@ export default function Home() {
       style={{
         width: "100%",
         overflowX: "hidden",
-        boxSizing:"border-box",
         background: "#000",
-        paddingLeft: "env(safe-area-inset-left)",
-        paddingRight: "env(safe-area-inset-right)",
       }}
     >
       {/* HERO SECTION */}
       <section
         style={{
-          minHeight: "auto",
+          minHeight: "100vh",
           display: "flex",
           flexWrap: "wrap",
-          flexDirection:"column",
           alignItems: "center",
           justifyContent: "center",
           gap: "clamp(40px, 8vw, 120px)",
           padding:
-            "140px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
+            "120px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
           position: "relative",
           background:
             "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
@@ -61,7 +57,6 @@ export default function Home() {
             maxWidth: "800px",
             zIndex: 1,
             textAlign: "center",
-            width:"100%",
           }}
         >
           {/* TITLE */}
@@ -70,7 +65,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             style={{
-              fontSize: "clamp(2.5rem, 10vw, 6.7rem)",
+              fontSize: "clamp(3rem, 10vw, 6.7rem)",
               marginBottom: "20px",
               lineHeight: "1",
               background:
@@ -134,7 +129,7 @@ export default function Home() {
               width={400}
               height={400}
               style={{
-                width: "min(90vw, 450px)",
+                width: "clamp(350px, 40vw, 450px)",
                 maxWidth: "550px",
                 height: "auto",
                 borderRadius: "clamp(25px, 4vw, 45px)",
@@ -149,13 +144,11 @@ export default function Home() {
       {/* video SECTION */}
       <section
         style={{
-          width:"100%",
-          minHeight: "auto",
+          minHeight: "100vh",
           display: "flex",
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "center",
-          flexDirection:"column",
           gap: "20px",
           padding:
             "clamp(30px, 8vw, 60px) clamp(20px, 6vw, 80px)",
@@ -189,7 +182,7 @@ export default function Home() {
           playsInline
           style={{
             width: "100%",
-            maxWidth: "100%",
+            maxWidth: "1300px",
             borderRadius: "20px",
             objectFit: "cover",
           }}
@@ -199,7 +192,6 @@ export default function Home() {
       {/* FINAL SECTION */}
       <section
       style={{
-        width:"100%",
         padding:
           "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
         background: "#020617",
@@ -217,9 +209,8 @@ export default function Home() {
           display: "flex",
           flexWrap: "wrap",
           alignItems: "center",
-          flexDirection:"column",
-          gap: "30px",
-          padding: "clamp(30px,5vw,40px)",
+          gap: "60px",
+          padding: "40px",
           borderRadius: "32px",
           background:
             "rgba(81, 24, 99, 0.17)",
