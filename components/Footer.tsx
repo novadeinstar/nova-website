@@ -8,7 +8,7 @@ export default function Footer() {
         background: "#041042",
         color: "white",
         padding:
-          "clamp(20px, 6vw, 50px) clamp(20px, 6vw, 80px)",
+          "clamp(15px, 3vw, 35px) clamp(20px, 6vw, 80px)",
       }}
     >
       {/* TOP AREA */}
@@ -17,7 +17,7 @@ export default function Footer() {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-between",
-          gap: "20px",
+          gap: "15px",
         }}
       >
         {/* BRAND */}
@@ -55,7 +55,7 @@ export default function Footer() {
             }}
           >
             NextGen Observtional Voice Assistant
-                    "NOVA - Dein Star"
+            <br />"NOVA - Dein Star"
           </p>
         </div>
 
@@ -106,7 +106,7 @@ export default function Footer() {
         >
           <h3
             style={{
-              marginBottom: "18px",
+              marginBottom: "10px",
             }}
           >
             Social Media

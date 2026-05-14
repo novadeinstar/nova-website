@@ -93,7 +93,7 @@ export default function Home() {
             }}
           >
             NextGen Observational Voice Assistant
-            Helping you to be more productive in your life!
+            <br />Helping you to be more productive in your life!
           </motion.p>
 
           {/* BUTTON */}

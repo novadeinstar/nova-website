@@ -37,65 +37,96 @@ export default function team() {
         }}
       />
 
-      {/* title */}
-      <motion.h1
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+      <section
         style={{
-          fontSize: "3rem",
-          marginBottom: "20px",
-          zIndex: 1,
-          background: "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          fontWeight: "bold",
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        Product
-      </motion.h1>
+        <motion.video
+          autoPlay
+          muted
+          loop
+          playsInline
+          src="/videos/Drehen.mp4"
+          animate={{
+            scale:[1,1.05,1]
+          }}
+          transition={{
+            duration:10,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            filter: "blur(1px) brightness(0.4)",
+            zIndex: 0,
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7))",
+            zIndex: 1,
+          }}>
+        </div>
+        <motion.div
+          initial={{
+            opacity:0,
+            y:40,
+          }}
+          animate={{
+            opacity:1,
+            y:0,
+          }}
+          transition={{
+            duration:1,
+          }}
+          style={{
+            position: "relative",
+            zIndex: 2,
+            textAlign: "center",
+            color: "white",
+            padding: "20px",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "3rem",
+              marginBottom: "20px",
+              zIndex: 1,
+              background: "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              fontWeight: "bold",
+            }}
+          >
+            NOVA
+          </h1>
 
-      {/* subtitle */}
-      <motion.p
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 1 }}
-        style={{
-          fontSize: "1.2rem",
-          maxWidth: "600px",
-          opacity: 0.9,
-          zIndex: 1,
-        }}
-      >
-        NextGen Observational Voice Assistant — private, local, and truly intelligent.
-      </motion.p>
-
-      {/* animated button */}
-      <motion.button
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 1 }}
-        whileHover={{
-          scale: 1.08,
-          boxShadow: "0px 0px 25px rgba(99,102,241,0.8)",
-        }}
-        whileTap={{ scale: 0.96 }}
-        style={{
-          marginTop: "40px",
-          padding: "14px 28px",
-          fontSize: "1rem",
-          borderRadius: "12px",
-          border: "1px solid rgba(255,255,255,0.2)",
-          cursor: "pointer",
-          background: "rgba(255,255,255,0.05)",
-          backdropFilter: "blur(10px)",
-          color: "white",
-          zIndex: 1,
-          transition: "0.2s",
-        }}
-      >
-        Learn more
-      </motion.button>
+          <p
+            style={{
+              fontSize: "clamp(1rem, 2vw, 1.4rem)",
+              opacity: 0.85,
+              marginTop: "20px",
+            }}
+          >
+            Next-generation observational AI systems
+          </p>
+        </motion.div>
+      </section>
     </main>
   );
 }
