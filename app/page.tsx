@@ -166,7 +166,8 @@ export default function Home() {
               letterSpacing: "3px",
               textTransform: "uppercase",
               fontWeight: "600",
-              marginBottom: "20px",
+              marginBottom: "2px",
+              flexDirection: "column",
               opacity: 0.9,
             }}
           >

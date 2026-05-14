@@ -11,10 +11,7 @@ export default function team() {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
         fontFamily: "Arial",
-        textAlign: "center",
         padding: "0px",
         background:
           "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
@@ -50,6 +47,8 @@ export default function team() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          maxWidth: "1500px",
+          margin: "0 auto",
         }}
       >
         <motion.video
@@ -104,6 +103,7 @@ export default function team() {
             textAlign: "center",
             color: "white",
             padding: "20px",
+            maxWidth: "1000px",
           }}
         >
           <h1
@@ -115,7 +115,6 @@ export default function team() {
                 "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              transform: "translateY(-40px)",
             }}
           >
             Our Robot
@@ -144,6 +143,7 @@ export default function team() {
           padding: "160px clamp(20px, 6vw, 100px)",
           position:"relative",
           overflow:"hidden",
+          maxWidth: "1500px",
         }}
       >
         {/* glowing background orb */}
@@ -192,7 +192,6 @@ export default function team() {
                 borderRadius: "clamp(25px, 4vw, 45px)",
                 boxShadow:
                   "0px 20px 60px rgba(0,0,0,0.45)",
-                transform: "perspective(1600px) rotateY(-60deg)",
               }}
             />
           </motion.div>
@@ -246,11 +245,12 @@ export default function team() {
             transition={{ delay: 0.4, duration: 1 }}
             style={{
               fontSize: "clamp(0.7rem, 2.5vw, 1.3rem)",
-              font:"Inter",
+              fontFamily: "Inter, sans-serif",
               maxWidth: "650px",
-              margin: "0 auto",
+              margin: "0",
+              textAlign:"left",
               opacity: 0.9,
-              lineHeight: "1.2",
+              lineHeight: "1.7",
             }}
           >
             Distractions and mental overload reduce our productivity and
@@ -265,7 +265,7 @@ export default function team() {
         style={{
           minHeight: "100vh",
           display: "flex",
-          flexWrap: "wrap",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           gap: "clamp(40px, 8vw, 100px)",
@@ -274,10 +274,10 @@ export default function team() {
           background:
             "linear-gradient(to bottom, #d0eee2, #bae9ed)",
           color: "black",
-          maxWidth: "1600px",
-          margin: "0 auto",
           position:"relative",
           overflow:"hidden",
+          maxWidth: "1500px",
+          margin: "0 auto",
         }}
       >
       {/*Label above */}
@@ -288,10 +288,11 @@ export default function team() {
             textTransform: "uppercase",
             fontWeight: "600",
             marginBottom: "20px",
+            flexDirection: "column",
             opacity: 0.9,
           }}
         >
-          Pitch Video
+          Demo Video
         </motion.p>
         {/* Video */}
         <video
@@ -314,15 +315,12 @@ export default function team() {
       {/* FINAL SECTION */}
       <section
       style={{
+        width: "100%",
         padding:
           "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
         background: "#1b5051",
         display: "flex",
         justifyContent: "center",
-        maxWidth: "1600px",
-        margin: "0 auto",
-        position:"relative",
-        overflow:"hidden",
       }}
     >
       {/* CARD */}
@@ -370,7 +368,7 @@ export default function team() {
               marginBottom: "30px",
             }}
           >
-            We want to build a StartUp and bring NOVA to you!
+            We want to build a StartUp and bring NOVA to people worldwide!
           </p>
 
           <Button
