@@ -348,6 +348,13 @@ export default function team() {
           style={{
             flex: "1 1 350px",
             color: "white",
+
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+
+            textAlign: "center",
+            alignItems: "center",
           }}
         >
           <h2
@@ -379,19 +386,28 @@ export default function team() {
         <div
           style={{
             flex: "1 1 500px",
+
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Image
             src="/images/product/Produkt.png"
             alt="NOVA Technology"
-            width={500}
-            height={400}
+            width={900}
+            height={600}
             style={{
+              width: "100%",
+              maxWidth: "700px",
+              aspectRatio: "3 / 2",
+              objectFit: "cover",
+
               display: "block",
-              flex: "1 1 320px",
               borderRadius: "24px",
-              overflow: "hidden",
-              minHeight: "420px",
+
+              boxShadow:
+                "0px 20px 50px rgba(0,0,0,0.35)",
             }}
           />
         </div>
