@@ -52,12 +52,13 @@ export default function Datenschutz() {
         <h1
           style={{
             fontSize: "clamp(1rem, 7vw, 3rem)",
-            marginBottom: "24px",
+            marginBottom: "30px",
             background:
               "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             fontWeight: "bold",
+            marginTop: "35px",
           }}
         >
           Congratulations!! You've found this website's Easter egg. Contact us and you will get 20€! (≈100% )
@@ -68,7 +69,7 @@ export default function Datenschutz() {
             fontSize: "clamp(1rem, 2vw, 1.3rem)",
             opacity: 0.8,
             lineHeight: "1.8",
-            marginBottom:"16px",
+            marginBottom:"35px",
           }}
         >
           You are smart!
