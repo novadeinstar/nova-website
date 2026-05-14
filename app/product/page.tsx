@@ -160,6 +160,8 @@ export default function team() {
             zIndex: 0,
           }}
         />
+
+        {/*section2*/}
         {/* Left SIDE */}
         <div
           style={{
@@ -171,10 +173,63 @@ export default function team() {
             initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            whileHover={{
-              y: -12,
-              scale: 1.03,
-              rotateY: -2,
+            whileHover="hover"
+            style={{
+              position: "relative",
+            }}
+          >
+          {/* INFO BOX */}
+          <motion.div
+            variants={{
+              hover: {
+                opacity: 1,
+                y: 0,
+              },
+            }}
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            transition={{
+              duration: 0.35,
+            }}
+            style={{
+              position: "absolute",
+              bottom: "30px",
+              left: "30px",
+
+              padding: "18px 22px",
+              borderRadius: "20px",
+
+              background: "rgba(10,10,10,0.65)",
+              backdropFilter: "blur(14px)",
+
+              border: "1px solid rgba(255,255,255,0.15)",
+
+              color: "white",
+              maxWidth: "320px",
+
+              boxShadow: "0px 10px 40px rgba(0,0,0,0.35)",
+            }}
+          >
+
+            <p
+              style={{
+                fontSize: "0.95rem",
+                lineHeight: "1.6",
+                opacity: 0.85,
+              }}
+            >
+              The structure is a selfmade, modular 3D print
+            </p>
+          </motion.div>
+          <motion.div
+            variants={{
+              hover: {
+                y: -12,
+                scale: 1.03,
+                rotateY: -2,
+              },
             }}
           >
             <Image
@@ -193,6 +248,7 @@ export default function team() {
               }}
             />
           </motion.div>
+        </motion.div>
         </div>
         {/* Right SIDE */}
         <div
@@ -259,6 +315,7 @@ export default function team() {
           </motion.p>
         </div>
       </section>
+      {/*section3 */}
       <section
         style={{
           minHeight: "100vh",
