@@ -205,7 +205,7 @@ export default function Footer() {
                 width={140}
                 height={60}
                 style={{
-                  width: "120px",
+                  width: "140px",
                   height: "auto",
                   objectFit: "contain",
                 }}
@@ -213,13 +213,9 @@ export default function Footer() {
               <span>Akquinet</span>
             </a>
             
-            <h3
-            style={{
-              marginBottom: "18px",
-            }}
-          >
+            <h3>
             Technology Sponsor
-          </h3>
+            </h3>
 
             <a
               href="https://easyeda.com/"
@@ -233,7 +229,7 @@ export default function Footer() {
                 width={100}
                 height={40}
                 style={{
-                  width: "120px",
+                  width: "70px",
                   height: "auto",
                   objectFit: "contain",
                 }}
