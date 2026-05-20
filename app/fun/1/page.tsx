@@ -61,7 +61,7 @@ export default function Datenschutz() {
             marginTop: "50px",
           }}
         >
-          Congratulations!! You've found this website's Easter egg. Contact us and you will get 20€! (≈100% )
+          Congratulations!! You've found this website's Easter egg. Contact us!
         </h1>
 
         <p
@@ -74,7 +74,7 @@ export default function Datenschutz() {
         >
           You are smart!
         </p>
-        <Button text="Get your money" href="/contact"/>
+        <Button text="Contact" href="/contact"/>
       </motion.div>
     </main>
   );

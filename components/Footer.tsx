@@ -162,7 +162,7 @@ export default function Footer() {
               marginBottom: "18px",
             }}
           >
-            Sponsors & Partners
+            Goldsponsoren
           </h3>
 
           <div
@@ -212,6 +212,14 @@ export default function Footer() {
               />
               <span>Akquinet</span>
             </a>
+            
+            <h3
+            style={{
+              marginBottom: "18px",
+            }}
+          >
+            Technology Sponsor
+          </h3>
 
             <a
               href="https://easyeda.com/"
@@ -222,8 +230,8 @@ export default function Footer() {
               <Image
                 src="/images/sponsors/EasyEDA.png"
                 alt="EasyEDA"
-                width={140}
-                height={60}
+                width={100}
+                height={40}
                 style={{
                   width: "120px",
                   height: "auto",
