@@ -8,7 +8,7 @@ export default function Footer() {
         background: "#041042",
         color: "white",
         padding:
-          "clamp(15px, 3vw, 35px) clamp(20px, 6vw, 80px)",
+          "clamp(15px, 3vw, 30px) clamp(20px, 6vw, 80px)",
       }}
     >
       {/* TOP AREA */}
