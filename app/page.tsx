@@ -217,11 +217,11 @@ export default function Home() {
             letterSpacing: "6px",
             textTransform: "uppercase",
             fontWeight: "700",
-            marginBottom: "45px",
+            marginBottom: "40px",
             textAlign: "center",
             opacity: 0.95,
-            fontSize: "clamp(2.2rem, 6vw, 4.5rem)",
-            lineHeight: "1",
+            fontSize: "clamp(3rem, 6vw, 6rem)",
+            lineHeight: "2",
           }}
         >
           News
@@ -410,7 +410,7 @@ export default function Home() {
 
                 <Button
                   text="The Robot"
-                  href="/technology"
+                  href="/product"
                 />
               </div>
             </div>
@@ -510,8 +510,8 @@ export default function Home() {
           padding:
             "clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px)",
           background:
-            "linear-gradient(to bottom, #3f4769, #626a7c)",
-          color: "white",
+            "linear-gradient(to bottom, #cadcf3, #ffffff)",
+          color: "black",
           textAlign: "center",
           maxWidth: "1600px",
           margin: "0 auto",
