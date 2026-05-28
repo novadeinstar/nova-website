@@ -104,7 +104,13 @@ export default function Home() {
           >
             <Button
               text="News"
-              href="#News"
+              onClick={() => {
+                document
+                  .getElementById("News")
+                  ?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+              }}
             />
           </div>
         </div>
@@ -188,109 +194,435 @@ export default function Home() {
           }}
         />
       </section>
-
-    {/* FINAL SECTION */}
-    <section 
-      id= "News"
-      style={{
-        padding:
-          "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
-        background: "#020617",
-        display: "flex",
-        justifyContent: "center",
-        maxWidth: "1600px",
-        margin: "0 auto",
-      }}
-    >
-      {/*Label above */}
-      <motion.p
+      {/* FINAL NEWS SECTION */}
+      <section
+        id="News"
         style={{
-          color: "#798ca4",
-          letterSpacing: "4px",
-          textTransform: "uppercase",
-          fontWeight: "600",
-          marginBottom: "6px",
-          marginTop: "0px",
-          lineHeight: "3",
-          opacity: 0.9,
+          padding:
+            "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
+          background: "#020617",
+          maxWidth: "1600px",
+          margin: "0 auto",
+          overflow: "hidden",
         }}
       >
-        News
-      </motion.p>
-      {/* CARD */}
-      <motion.div
+        {/* TITLE */}
+        <motion.p
+          style={{
+            color: "#798ca4",
+            letterSpacing: "4px",
+            textTransform: "uppercase",
+            fontWeight: "600",
+            marginBottom: "30px",
+            textAlign: "center",
+            opacity: 0.9,
+          }}
+        >
+          News
+        </motion.p>
+
+        {/* BUTTONS */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            marginBottom: "30px",
+          }}
+        >
+          <button
+            onClick={() => {
+              document
+                .getElementById("newsScroller")
+                ?.scrollBy({
+                  left: -500,
+                  behavior: "smooth",
+                });
+            }}
+            style={{
+              padding: "12px 20px",
+              borderRadius: "14px",
+              border: "none",
+              cursor: "pointer",
+              background: "#1e293b",
+              color: "white",
+              fontWeight: "600",
+            }}
+          >
+            ← Previous
+          </button>
+
+          <button
+            onClick={() => {
+              document
+                .getElementById("newsScroller")
+                ?.scrollBy({
+                  left: 500,
+                  behavior: "smooth",
+                });
+            }}
+            style={{
+              padding: "12px 20px",
+              borderRadius: "14px",
+              border: "none",
+              cursor: "pointer",
+              background: "#2563eb",
+              color: "white",
+              fontWeight: "600",
+            }}
+          >
+            Next →
+          </button>
+        </div>
+
+        {/* HORIZONTAL SCROLLER */}
+        <div
+          id="newsScroller"
+          style={{
+            display: "flex",
+            gap: "30px",
+            overflowX: "auto",
+            scrollBehavior: "smooth",
+            scrollSnapType: "x mandatory",
+            paddingBottom: "20px",
+            WebkitOverflowScrolling: "touch",
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
+        >
+          {/* CARD 1 */}
+          <motion.div
+            whileHover={{ y: -6 }}
+            style={{
+              minWidth: "100%",
+              flex: "0 0 100%",
+              scrollSnapAlign: "center",
+              borderRadius: "32px",
+              background:
+                "rgba(81, 24, 99, 0.17)",
+              border:
+                "1px solid rgba(255,255,255,0.1)",
+              backdropFilter: "blur(10px)",
+              boxShadow:
+                "0px 20px 60px rgba(86,86,86,0.3)",
+              padding: "40px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                gap: "50px",
+              }}
+            >
+              {/* IMAGE */}
+              <div
+                style={{
+                  flex: "1 1 320px",
+                }}
+              >
+                <Image
+                  src="/images/homepage/JuFo.jpg"
+                  alt="Jugend Forscht"
+                  width={500}
+                  height={400}
+                  style={{
+                    width: "100%",
+                    borderRadius: "24px",
+                    height: "auto",
+                  }}
+                />
+              </div>
+
+              {/* TEXT */}
+              <div
+                style={{
+                  flex: "1 1 400px",
+                  color: "white",
+                }}
+              >
+                <h2
+                  style={{
+                    fontSize:
+                      "clamp(2rem, 4vw, 2.7rem)",
+                    marginBottom: "20px",
+                  }}
+                >
+                  3rd Prize at Jugend Forscht
+                </h2>
+
+                <p
+                  style={{
+                    lineHeight: "1.8",
+                    opacity: 0.82,
+                    marginBottom: "30px",
+                    fontSize: "1.05rem",
+                  }}
+                >
+                  Perfect teamwork combined with
+                  individual strengths makes NOVA
+                  a successful project. Our vision
+                  goes far beyond today's
+                  possibilities.
+                </p>
+
+                <Button
+                  text="Our Team"
+                  href="/team"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* CARD 2 */}
+          <motion.div
+            whileHover={{ y: -6 }}
+            style={{
+              minWidth: "100%",
+              flex: "0 0 100%",
+              scrollSnapAlign: "center",
+              borderRadius: "32px",
+              background:
+                "rgba(37, 99, 235, 0.12)",
+              border:
+                "1px solid rgba(255,255,255,0.1)",
+              backdropFilter: "blur(10px)",
+              boxShadow:
+                "0px 20px 60px rgba(86,86,86,0.3)",
+              padding: "40px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                gap: "50px",
+              }}
+            >
+              {/* IMAGE */}
+              <div
+                style={{
+                  flex: "1 1 320px",
+                }}
+              >
+                <Image
+                  src="/images/homepage/nova.jpeg"
+                  alt="New PCB"
+                  width={500}
+                  height={400}
+                  style={{
+                    width: "100%",
+                    borderRadius: "24px",
+                    height: "auto",
+                  }}
+                />
+              </div>
+
+              {/* TEXT */}
+              <div
+                style={{
+                  flex: "1 1 400px",
+                  color: "white",
+                }}
+              >
+                <h2
+                  style={{
+                    fontSize:
+                      "clamp(2rem, 4vw, 2.7rem)",
+                    marginBottom: "20px",
+                  }}
+                >
+                  New PCB Generation
+                </h2>
+
+                <p
+                  style={{
+                    lineHeight: "1.8",
+                    opacity: 0.82,
+                    marginBottom: "30px",
+                    fontSize: "1.05rem",
+                  }}
+                >
+                  Using advanced engineering and
+                  optimized manufacturing, our
+                  latest hardware generation is
+                  faster, smaller and more
+                  efficient than ever before.
+                </p>
+
+                <Button
+                  text="Learn More"
+                  href="/technology"
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SPONSOR SECTION */}
+      <section
         style={{
-          width: "100%",
-          maxWidth: "1200px",
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          gap: "60px",
-          padding: "40px",
-          borderRadius: "32px",
+          padding:
+            "clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px)",
           background:
-            "rgba(81, 24, 99, 0.17)",
-          border:
-            "1px solid rgba(255, 255, 255, 0.1)",
-          backdropFilter: "blur(10px)",
-          boxShadow:
-            "0px 20px 60px rgba(86, 86, 86, 0.3)",
+            "linear-gradient(to bottom, #020617, #000)",
+          color: "white",
+          textAlign: "center",
+          maxWidth: "1600px",
+          margin: "0 auto",
         }}
       >
-        {/* LEFT IMAGE */}
-        <div
+        <motion.p
           style={{
-            flex: "1 1 320px",
+            color: "#798ca4",
+            letterSpacing: "4px",
+            textTransform: "uppercase",
+            fontWeight: "600",
+            marginBottom: "20px",
+            opacity: 0.9,
           }}
         >
-          <Image
-            src="/images/homepage/JuFo.jpg"
-            alt="NOVA Technology"
-            width={500}
-            height={400}
+          Sponsors & Supporters
+        </motion.p>
+
+        <h2
+          style={{
+            fontSize:
+              "clamp(2rem, 5vw, 3rem)",
+            marginBottom: "25px",
+          }}
+        >
+          Supported by Industry & Innovation
+        </h2>
+
+        <p
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto 60px auto",
+            lineHeight: "1.8",
+            opacity: 0.75,
+            fontSize: "1.1rem",
+          }}
+        >
+          NOVA is proudly supported by partners
+          and organizations that believe in
+          innovation, technology and the next
+          generation of engineering talent.
+        </p>
+
+        {/* SPONSOR GRID */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "25px",
+          }}
+        >
+          {/* GOLD SPONSORS */}
+          <div
             style={{
-              width: "100%",
-              height: "auto",
+              padding: "30px",
               borderRadius: "24px",
-              objectFit: "cover",
-            }}
-          />
-        </div>
-
-        {/* RIGHT TEXT */}
-        <div
-          style={{
-            flex: "1 1 400px",
-            color: "white",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "clamp(2rem, 4vw, 2.5rem)",
-              marginBottom: "20px",
+              background:
+                "rgba(255,255,255,0.04)",
+              border:
+                "1px solid rgba(255,255,255,0.08)",
             }}
           >
-            3. prize on state level of "Jugend Forscht" competition 
-          </h2>
+            <p
+              style={{
+                color: "#fbbf24",
+                fontWeight: "700",
+                marginBottom: "10px",
+                letterSpacing: "2px",
+              }}
+            >
+              GOLD SPONSOR
+            </p>
 
-          <p
+            <h3>SFZ</h3>
+          </div>
+
+          <div
             style={{
-              fontSize: "1.1rem",
-              lineHeight: "1.8",
-              opacity: 0.8,
-              marginBottom: "30px",
+              padding: "30px",
+              borderRadius: "24px",
+              background:
+                "rgba(255,255,255,0.04)",
+              border:
+                "1px solid rgba(255,255,255,0.08)",
             }}
           >
-            Perfect teamwork combined with individuall strength makes NOVA a successful project. Our vision is going far beyond!
-          </p>
+            <p
+              style={{
+                color: "#fbbf24",
+                fontWeight: "700",
+                marginBottom: "10px",
+                letterSpacing: "2px",
+              }}
+            >
+              GOLD SPONSOR
+            </p>
 
-          <Button
-            text="Our Team"
-            href="/team"
-          />
+            <h3>akquinet</h3>
+          </div>
+
+          {/* TECHNOLOGY SPONSOR */}
+          <div
+            style={{
+              padding: "30px",
+              borderRadius: "24px",
+              background:
+                "rgba(255,255,255,0.04)",
+              border:
+                "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            <p
+              style={{
+                color: "#60a5fa",
+                fontWeight: "700",
+                marginBottom: "10px",
+                letterSpacing: "2px",
+              }}
+            >
+              TECHNOLOGY SPONSOR
+            </p>
+
+            <h3>EasyEDA</h3>
+          </div>
+
+          {/* SUPPORTER */}
+          <div
+            style={{
+              padding: "30px",
+              borderRadius: "24px",
+              background:
+                "rgba(255,255,255,0.04)",
+              border:
+                "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            <p
+              style={{
+                color: "#c084fc",
+                fontWeight: "700",
+                marginBottom: "10px",
+                letterSpacing: "2px",
+              }}
+            >
+              SUPPORTER
+            </p>
+
+            <h3>Aric</h3>
+          </div>
         </div>
-      </motion.div>
-    </section>
+      </section>
+
     </main>
   );
 }

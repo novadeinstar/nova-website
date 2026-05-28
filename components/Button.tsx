@@ -91,7 +91,7 @@ export default function Button({
     </motion.button>
   );
 
-  if (href) {
+  if (href && !onClick) {
     return <Link href={href}>{buttonContent}</Link>;
   }
 
