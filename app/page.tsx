@@ -29,8 +29,6 @@ export default function Home() {
             "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
           color: "white",
           overflow: "hidden",
-          maxWidth: "1600px",
-          margin: "0 auto",
         }}
       >
         {/* glowing background orb */}
@@ -161,8 +159,6 @@ export default function Home() {
           background:
             "linear-gradient(to bottom, #f8fafc, #e2e8f0)",
           color: "black",
-          maxWidth: "1600px",
-          margin: "0 auto",
         }}
       >
         {/*Label above */}
@@ -204,8 +200,6 @@ export default function Home() {
           padding:
             "clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px)",
           background: "#020617",
-          maxWidth: "1600px",
-          margin: "0 auto",
           overflow: "hidden",
           position: "relative",
         }}
@@ -360,7 +354,8 @@ export default function Home() {
               backdropFilter: "blur(10px)",
               boxShadow:
                 "0px 20px 60px rgba(86,86,86,0.3)",
-              padding: "40px",
+              padding:
+                "clamp(28px, 4vw, 50px)",
             }}
           >
             <div
@@ -439,7 +434,8 @@ export default function Home() {
               backdropFilter: "blur(10px)",
               boxShadow:
                 "0px 20px 60px rgba(86,86,86,0.3)",
-              padding: "40px",
+              padding:
+                "clamp(28px, 4vw, 50px)",
             }}
           >
             <div
@@ -516,22 +512,24 @@ export default function Home() {
       {/* SPONSOR SECTION */}
       <section
         style={{
+          width: "100%",
           padding:
-            "clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px)",
+            "clamp(50px, 6vw, 90px) clamp(20px, 5vw, 80px)",
           background:
-            "linear-gradient(to bottom, #cadcf3, #ffffff)",
+            "linear-gradient(to bottom, #dbeafe 0%, #f8fafc 45%, #ffffff 100%)",
           color: "black",
           textAlign: "center",
-          maxWidth: "1600px",
-          margin: "0 auto",
         }}
       >
-
         <h2
           style={{
             fontSize:
-              "clamp(2rem, 5vw, 3rem)",
-            marginBottom: "25px",
+              "clamp(2.4rem, 6vw, 4.2rem)",
+            marginBottom: "22px",
+            fontWeight: "800",
+            letterSpacing: "-2px",
+            color: "#0f172a",
+            lineHeight: "1",
           }}
         >
           Supported by Industry & Innovation
@@ -540,10 +538,11 @@ export default function Home() {
         <p
           style={{
             maxWidth: "900px",
-            margin: "0 auto 60px auto",
-            lineHeight: "1.8",
-            opacity: 0.75,
-            fontSize: "1.1rem",
+            margin: "0 auto 70px auto",
+            lineHeight: "1.9",
+            opacity: 0.72,
+            fontSize: "1.15rem",
+            color: "#334155",
           }}
         >
           NOVA is proudly supported by partners
@@ -557,188 +556,228 @@ export default function Home() {
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "25px",
+              "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "28px",
+            alignItems: "stretch",
           }}
         >
-          {/* GOLD SPONSORS */}
-          <div
+          {/* SFZ */}
+          <motion.div
+            whileHover={{
+              y: -8,
+              scale: 1.02,
+              boxShadow:
+                "0 20px 60px rgba(37,99,235,0.18)",
+            }}
             style={{
               padding: "34px",
               borderRadius: "28px",
               background:
-                "linear-gradient(to bottom right, rgba(255,255,255,0.72), rgba(255,255,255,0.92))",
+                "linear-gradient(to bottom right, rgba(255,255,255,0.75), rgba(255,255,255,0.96))",
               border:
-                "1.5px solid rgba(37, 99, 235, 0.22)",
+                "1.5px solid rgba(37,99,235,0.22)",
               boxShadow:
-                "0 12px 40px rgba(30, 41, 59, 0.10)",
+                "0 12px 40px rgba(30,41,59,0.10)",
               transition: "all 0.28s ease",
               backdropFilter: "blur(10px)",
-              WebkitBackdropFilter: "blur(10px)",
             }}
           >
             <p
               style={{
-                color: "#fbbf24",
+                color: "#f59e0b",
                 fontWeight: "700",
-                marginBottom: "10px",
+                marginBottom: "12px",
                 letterSpacing: "2px",
               }}
             >
               GOLD SPONSOR
             </p>
 
-            <Image
-              src="/images/sponsors/SFZ.png"
-              alt="SFZ"
-              width={70}
-              height={70}
-              style={{
-                      width: "100%",
-                      maxWidth: "180px",
-                      height: "90px",
-                      objectFit: "contain",
-                      margin: "20px auto 0 auto",
-                      display: "block",
-                      filter:
-                        "drop-shadow(0px 6px 20px rgba(255,255,255,0.08))",
-                    }}
-            />
-          </div>
-
-          <div
-           style={{
-            padding: "34px",
-            borderRadius: "28px",
-            background:
-              "linear-gradient(to bottom right, rgba(255,255,255,0.72), rgba(255,255,255,0.92))",
-            border:
-              "1.5px solid rgba(37, 99, 235, 0.22)",
-            boxShadow:
-              "0 12px 40px rgba(30, 41, 59, 0.10)",
-            transition: "all 0.28s ease",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
-          }}
-          >
-            <p
-              style={{
-                color: "#fbbf24",
-                fontWeight: "700",
-                marginBottom: "10px",
-                letterSpacing: "2px",
-              }}
+            <a
+              href="https://www.sfz.de/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              GOLD SPONSOR
-            </p>
+              <Image
+                src="/images/sponsors/SFZ.png"
+                alt="SFZ"
+                width={400}
+                height={180}
+                style={{
+                  width: "100%",
+                  maxWidth: "220px",
+                  height: "110px",
+                  objectFit: "contain",
+                  margin: "22px auto 0 auto",
+                  display: "block",
+                  filter:
+                    "drop-shadow(0px 10px 30px rgba(37,99,235,0.10))",
+                }}
+              />
+            </a>
+          </motion.div>
 
-            <Image
-              src="/images/sponsors/Akquinet.png"
-              alt="Akquinet"
-              width={70}
-              height={70}
-              style={{
-                      width: "100%",
-                      maxWidth: "180px",
-                      height: "90px",
-                      objectFit: "contain",
-                      margin: "20px auto 0 auto",
-                      display: "block",
-                      filter:
-                        "drop-shadow(0px 6px 20px rgba(255,255,255,0.08))",
-                    }}
-            />
-          </div>
-
-          {/* TECHNOLOGY SPONSOR */}
-          <div
-           style={{
+          {/* AKQUINET */}
+          <motion.div
+            whileHover={{
+              y: -8,
+              scale: 1.02,
+              boxShadow:
+                "0 20px 60px rgba(37,99,235,0.18)",
+            }}
+            style={{
               padding: "34px",
               borderRadius: "28px",
               background:
-                "linear-gradient(to bottom right, rgba(255,255,255,0.72), rgba(255,255,255,0.92))",
+                "linear-gradient(to bottom right, rgba(255,255,255,0.75), rgba(255,255,255,0.96))",
               border:
-                "1.5px solid rgba(37, 99, 235, 0.22)",
+                "1.5px solid rgba(37,99,235,0.22)",
               boxShadow:
-                "0 12px 40px rgba(30, 41, 59, 0.10)",
-              transition: "all 0.28s ease",
-              backdropFilter: "blur(10px)",
-              WebkitBackdropFilter: "blur(10px)",
+                "0 12px 40px rgba(30,41,59,0.10)",
             }}
           >
             <p
               style={{
-                color: "#60a5fa",
+                color: "#f59e0b",
                 fontWeight: "700",
-                marginBottom: "10px",
+                marginBottom: "12px",
+                letterSpacing: "2px",
+              }}
+            >
+              GOLD SPONSOR
+            </p>
+
+            <a
+              href="https://www.akquinet.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/images/sponsors/Akquinet.png"
+                alt="Akquinet"
+                width={400}
+                height={180}
+                style={{
+                  width: "100%",
+                  maxWidth: "220px",
+                  height: "110px",
+                  objectFit: "contain",
+                  margin: "22px auto 0 auto",
+                  display: "block",
+                  filter:
+                    "drop-shadow(0px 10px 30px rgba(37,99,235,0.10))",
+                }}
+              />
+            </a>
+          </motion.div>
+
+          {/* EASYEDA */}
+          <motion.div
+            whileHover={{
+              y: -8,
+              scale: 1.02,
+              boxShadow:
+                "0 20px 60px rgba(37,99,235,0.18)",
+            }}
+            style={{
+              padding: "34px",
+              borderRadius: "28px",
+              background:
+                "linear-gradient(to bottom right, rgba(255,255,255,0.75), rgba(255,255,255,0.96))",
+              border:
+                "1.5px solid rgba(37,99,235,0.22)",
+              boxShadow:
+                "0 12px 40px rgba(30,41,59,0.10)",
+            }}
+          >
+            <p
+              style={{
+                color: "#3b82f6",
+                fontWeight: "700",
+                marginBottom: "12px",
                 letterSpacing: "2px",
               }}
             >
               TECHNOLOGY SPONSOR
             </p>
 
-            <Image
-              src="/images/sponsors/EasyEDA.png"
-              alt="SFZ"
-              width={70}
-              height={70}
-              style={{
-                width: "100%",
-                maxWidth: "180px",
-                height: "90px",
-                objectFit: "contain",
-                margin: "20px auto 0 auto",
-                display: "block",
-                filter:
-                  "drop-shadow(0px 6px 20px rgba(255,255,255,0.08))",
-              }}
-            />
-          </div>
+            <a
+              href="https://easyeda.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/images/sponsors/EasyEDA.png"
+                alt="EasyEDA"
+                width={400}
+                height={180}
+                style={{
+                  width: "100%",
+                  maxWidth: "220px",
+                  height: "110px",
+                  objectFit: "contain",
+                  margin: "22px auto 0 auto",
+                  display: "block",
+                  filter:
+                    "drop-shadow(0px 10px 30px rgba(37,99,235,0.10))",
+                }}
+              />
+            </a>
+          </motion.div>
 
-          {/* SUPPORTER */}
-          <div
+          {/* ARIC */}
+          <motion.div
+            whileHover={{
+              y: -8,
+              scale: 1.02,
+              boxShadow:
+                "0 20px 60px rgba(37,99,235,0.18)",
+            }}
             style={{
               padding: "34px",
               borderRadius: "28px",
               background:
-                "linear-gradient(to bottom right, rgba(255,255,255,0.72), rgba(255,255,255,0.92))",
+                "linear-gradient(to bottom right, rgba(255,255,255,0.75), rgba(255,255,255,0.96))",
               border:
-                "1.5px solid rgba(37, 99, 235, 0.22)",
+                "1.5px solid rgba(37,99,235,0.22)",
               boxShadow:
-                "0 12px 40px rgba(30, 41, 59, 0.10)",
-              transition: "all 0.28s ease",
-              backdropFilter: "blur(10px)",
-              WebkitBackdropFilter: "blur(10px)",
+                "0 12px 40px rgba(30,41,59,0.10)",
             }}
           >
             <p
               style={{
-                color: "#c084fc",
+                color: "#a855f7",
                 fontWeight: "700",
-                marginBottom: "10px",
+                marginBottom: "12px",
                 letterSpacing: "2px",
               }}
             >
               SUPPORTER
             </p>
 
-            <Image
-              src="/images/sponsors/Aric.png"
-              alt="Aric"
-              width={70}
-              height={70}
-              style={{
-                width: "100%",
-                maxWidth: "180px",
-                height: "90px",
-                objectFit: "contain",
-                margin: "20px auto 0 auto",
-                display: "block",
-                filter:
-                  "drop-shadow(0px 6px 20px rgba(255,255,255,0.08))",
-              }}
-            />
-          </div>
+            <a
+              href="https://example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/images/sponsors/Aric.png"
+                alt="Aric"
+                width={400}
+                height={180}
+                style={{
+                  width: "100%",
+                  maxWidth: "220px",
+                  height: "110px",
+                  objectFit: "contain",
+                  margin: "22px auto 0 auto",
+                  display: "block",
+                  filter:
+                    "drop-shadow(0px 10px 30px rgba(37,99,235,0.10))",
+                }}
+              />
+            </a>
+          </motion.div>
         </div>
       </section>
 
