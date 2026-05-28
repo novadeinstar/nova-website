@@ -213,13 +213,15 @@ export default function Home() {
         {/* TITLE */}
         <motion.p
           style={{
-            color: "#798ca4",
-            letterSpacing: "4px",
+            color: "#cbd5e1",
+            letterSpacing: "6px",
             textTransform: "uppercase",
-            fontWeight: "600",
-            marginBottom: "30px",
+            fontWeight: "700",
+            marginBottom: "45px",
             textAlign: "center",
-            opacity: 0.9,
+            opacity: 0.95,
+            fontSize: "clamp(2.2rem, 6vw, 4.5rem)",
+            lineHeight: "1",
           }}
         >
           News
@@ -231,45 +233,47 @@ export default function Home() {
             document
               .getElementById("newsScroller")
               ?.scrollBy({
-                left: -500,
+                left: -700,
                 behavior: "smooth",
               });
           }}
           style={{
             position: "absolute",
-            left: "20px",
+            left: "28px",
             top: "50%",
             transform: "translateY(-50%)",
-            width: "54px",
-            height: "54px",
-            borderRadius: "50%",
-            border: "1px solid rgba(255,255,255,0.15)",
-            background: "rgba(255,255,255,0.06)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
+            width: "74px",
+            height: "74px",
+            borderRadius: "999px",
+            border:
+              "1px solid rgba(255,255,255,0.12)",
+            background:
+              "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))",
+            backdropFilter: "blur(18px)",
+            WebkitBackdropFilter: "blur(18px)",
             color: "white",
-            fontSize: "1.5rem",
-            fontWeight: "300",
+            fontSize: "2.6rem",
+            fontWeight: "200",
             cursor: "pointer",
-            zIndex: 10,
+            zIndex: 20,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             transition: "all 0.25s ease",
             boxShadow:
-              "0 8px 30px rgba(0,0,0,0.25)",
+              "0 12px 40px rgba(0,0,0,0.35)",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background =
-              "rgba(255,255,255,0.14)";
             e.currentTarget.style.transform =
-              "translateY(-50%) scale(1.08)";
+              "translateY(-50%) scale(1.12)";
+            e.currentTarget.style.background =
+              "linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0.08))";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background =
-              "rgba(255,255,255,0.06)";
             e.currentTarget.style.transform =
               "translateY(-50%) scale(1)";
+            e.currentTarget.style.background =
+              "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))";
           }}
         >
           ‹
@@ -280,45 +284,47 @@ export default function Home() {
             document
               .getElementById("newsScroller")
               ?.scrollBy({
-                left: 500,
+                left: 700,
                 behavior: "smooth",
               });
           }}
           style={{
             position: "absolute",
-            right: "20px",
+            right: "28px",
             top: "50%",
             transform: "translateY(-50%)",
-            width: "54px",
-            height: "54px",
-            borderRadius: "50%",
-            border: "1px solid rgba(255,255,255,0.15)",
-            background: "rgba(255,255,255,0.06)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
+            width: "74px",
+            height: "74px",
+            borderRadius: "999px",
+            border:
+              "1px solid rgba(255,255,255,0.12)",
+            background:
+              "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))",
+            backdropFilter: "blur(18px)",
+            WebkitBackdropFilter: "blur(18px)",
             color: "white",
-            fontSize: "1.5rem",
-            fontWeight: "300",
+            fontSize: "2.6rem",
+            fontWeight: "200",
             cursor: "pointer",
-            zIndex: 10,
+            zIndex: 20,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             transition: "all 0.25s ease",
             boxShadow:
-              "0 8px 30px rgba(0,0,0,0.25)",
+              "0 12px 40px rgba(0,0,0,0.35)",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background =
-              "rgba(255,255,255,0.14)";
             e.currentTarget.style.transform =
-              "translateY(-50%) scale(1.08)";
+              "translateY(-50%) scale(1.12)";
+            e.currentTarget.style.background =
+              "linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0.08))";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background =
-              "rgba(255,255,255,0.06)";
             e.currentTarget.style.transform =
               "translateY(-50%) scale(1)";
+            e.currentTarget.style.background =
+              "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))";
           }}
         >
           ›
@@ -369,13 +375,13 @@ export default function Home() {
               <a href="https://www.startupteens.de/" target="_blank" rel="noopener noreferrer" style={{ flex: "1 1 320px", display: "flex", justifyContent: "center", alignItems: "center", transition: "transform 0.25s ease", }} > <Image src="/images/homepage/STLogo.png" alt="StartUp Teens" width={500} height={400} style={{ width: "100%", maxWidth: "420px", borderRadius: "24px", height: "auto", cursor: "pointer", }} /> </a>
 
               {/* TEXT */}
-              <h1>28.05.2026</h1>
               <div
                 style={{
                   flex: "1 1 400px",
                   color: "white",
                 }}
               >
+                <p style={{ color: "#94a3b8", fontSize: "0.95rem", letterSpacing: "2px", marginBottom: "12px", textTransform: "uppercase", fontWeight: "600", }} > 28.05.2026 </p>
                 <h2>
                   Vote for NOVA at{" "}
                   <a
@@ -455,13 +461,13 @@ export default function Home() {
               </div>
 
               {/* TEXT */}
-              <h1>21.03.2026</h1>
               <div
                 style={{
                   flex: "1 1 400px",
                   color: "white",
                 }}
               >
+                <p style={{ color: "#94a3b8", fontSize: "0.95rem", letterSpacing: "2px", marginBottom: "12px", textTransform: "uppercase", fontWeight: "600", }} > 10.04.2026 </p>
                 <h2
                   style={{
                     fontSize:
@@ -504,7 +510,7 @@ export default function Home() {
           padding:
             "clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px)",
           background:
-            "linear-gradient(to bottom, #020617, #000)",
+            "linear-gradient(to bottom, #3f4769, #626a7c)",
           color: "white",
           textAlign: "center",
           maxWidth: "1600px",
