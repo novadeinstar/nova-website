@@ -145,50 +145,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* video SECTION */}
+      {/* VIDEO SECTION */}
       <section
         style={{
           minHeight: "100vh",
           display: "flex",
-          flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "center",
-          gap: "20px",
           padding:
-            "clamp(30px, 8vw, 60px) clamp(20px, 6vw, 80px)",
+            "clamp(40px, 7vw, 80px) clamp(20px, 5vw, 80px)",
           background:
             "linear-gradient(to bottom, #f8fafc, #e2e8f0)",
           color: "black",
+          width: "100%",
         }}
       >
-        {/*Label above */}
+        {/* CONTENT WRAPPER */}
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {/* LABEL */}
           <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
             style={{
-              color: "#798ca4",
-              letterSpacing: "3px",
+              color: "#64748b",
+              letterSpacing: "4px",
               textTransform: "uppercase",
-              fontWeight: "600",
-              marginBottom: "6px",
-              marginTop: "0px",
+              fontWeight: "700",
+              marginBottom: "28px",
               lineHeight: "1",
-              opacity: 0.9,
+              fontSize: "0.95rem",
             }}
           >
             Pitch Video
           </motion.p>
-        {/* Video */}
-        <video
-          src="/videos/Nova_video.mp4"
-          poster="/images/homepage/video-preview.png"
-          controls
-          playsInline
-          style={{
-            width: "100%",
-            maxWidth: "1300px",
-            borderRadius: "20px",
-            objectFit: "cover",
-          }}
-        />
+
+          {/* VIDEO */}
+          <motion.video
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+            viewport={{ once: true }}
+            src="/videos/Nova_video.mp4"
+            poster="/images/homepage/video-preview.png"
+            controls
+            playsInline
+            style={{
+              width: "100%",
+              maxWidth: "1400px",
+              borderRadius: "28px",
+              objectFit: "cover",
+              boxShadow:
+                "0 25px 70px rgba(15,23,42,0.18)",
+            }}
+          />
+        </div>
       </section>
 
 
@@ -756,7 +775,7 @@ export default function Home() {
             </p>
 
             <a
-              href="https://example.com"
+              href="https://aric-hamburg.de/"
               target="_blank"
               rel="noopener noreferrer"
             >
