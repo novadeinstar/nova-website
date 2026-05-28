@@ -103,8 +103,8 @@ export default function Home() {
             }}
           >
             <Button
-              text="Our Robot"
-              href="/product"
+              text="News"
+              href="#News"
             />
           </div>
         </div>
@@ -189,8 +189,9 @@ export default function Home() {
         />
       </section>
 
-      {/* FINAL SECTION */}
-      <section
+    {/* FINAL SECTION */}
+    <section 
+      id= "News"
       style={{
         padding:
           "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
@@ -201,6 +202,21 @@ export default function Home() {
         margin: "0 auto",
       }}
     >
+      {/*Label above */}
+      <motion.p
+        style={{
+          color: "#798ca4",
+          letterSpacing: "4px",
+          textTransform: "uppercase",
+          fontWeight: "600",
+          marginBottom: "6px",
+          marginTop: "0px",
+          lineHeight: "3",
+          opacity: 0.9,
+        }}
+      >
+        News
+      </motion.p>
       {/* CARD */}
       <motion.div
         style={{
