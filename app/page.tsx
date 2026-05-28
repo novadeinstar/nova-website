@@ -202,7 +202,7 @@ export default function Home() {
         id="News"
         style={{
           padding:
-            "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
+            "clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px)",
           background: "#020617",
           maxWidth: "1600px",
           margin: "0 auto",
@@ -382,6 +382,15 @@ export default function Home() {
                 }}
               >
                 <p style={{ color: "#94a3b8", fontSize: "0.95rem", letterSpacing: "2px", marginBottom: "12px", textTransform: "uppercase", fontWeight: "600", }} > 28.05.2026 </p>
+                <h2
+                  style={{
+                    fontSize:
+                      "clamp(2rem, 4vw, 2.7rem)",
+                    marginBottom: "20px",
+                  }}
+                >
+                 TOP 5 Germany StartUp Teens
+                </h2>
                 <h2>
                   Vote for NOVA at{" "}
                   <a
