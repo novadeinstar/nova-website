@@ -194,6 +194,9 @@ export default function Home() {
           }}
         />
       </section>
+
+
+
       {/* FINAL NEWS SECTION */}
       <section
         id="News"
@@ -204,6 +207,7 @@ export default function Home() {
           maxWidth: "1600px",
           margin: "0 auto",
           overflow: "hidden",
+          position: "relative",
         }}
       >
         {/* TITLE */}
@@ -213,7 +217,7 @@ export default function Home() {
             letterSpacing: "4px",
             textTransform: "uppercase",
             fontWeight: "600",
-            marginBottom: "30px",
+            marginBottom: "3px",
             textAlign: "center",
             opacity: 0.9,
           }}
@@ -221,59 +225,104 @@ export default function Home() {
           News
         </motion.p>
 
-        {/* BUTTONS */}
-        <div
+        {/* NAVIGATION BUTTONS */}
+        <button
+          onClick={() => {
+            document
+              .getElementById("newsScroller")
+              ?.scrollBy({
+                left: -500,
+                behavior: "smooth",
+              });
+          }}
           style={{
+            position: "absolute",
+            left: "20px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "54px",
+            height: "54px",
+            borderRadius: "50%",
+            border: "1px solid rgba(255,255,255,0.15)",
+            background: "rgba(255,255,255,0.06)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            color: "white",
+            fontSize: "1.5rem",
+            fontWeight: "300",
+            cursor: "pointer",
+            zIndex: 10,
             display: "flex",
+            alignItems: "center",
             justifyContent: "center",
-            gap: "20px",
-            marginBottom: "30px",
+            transition: "all 0.25s ease",
+            boxShadow:
+              "0 8px 30px rgba(0,0,0,0.25)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background =
+              "rgba(255,255,255,0.14)";
+            e.currentTarget.style.transform =
+              "translateY(-50%) scale(1.08)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background =
+              "rgba(255,255,255,0.06)";
+            e.currentTarget.style.transform =
+              "translateY(-50%) scale(1)";
           }}
         >
-          <button
-            onClick={() => {
-              document
-                .getElementById("newsScroller")
-                ?.scrollBy({
-                  left: -500,
-                  behavior: "smooth",
-                });
-            }}
-            style={{
-              padding: "12px 20px",
-              borderRadius: "14px",
-              border: "none",
-              cursor: "pointer",
-              background: "#1e293b",
-              color: "white",
-              fontWeight: "600",
-            }}
-          >
-            ← Previous
-          </button>
+          ‹
+        </button>
 
-          <button
-            onClick={() => {
-              document
-                .getElementById("newsScroller")
-                ?.scrollBy({
-                  left: 500,
-                  behavior: "smooth",
-                });
-            }}
-            style={{
-              padding: "12px 20px",
-              borderRadius: "14px",
-              border: "none",
-              cursor: "pointer",
-              background: "#2563eb",
-              color: "white",
-              fontWeight: "600",
-            }}
-          >
-            Next →
-          </button>
-        </div>
+        <button
+          onClick={() => {
+            document
+              .getElementById("newsScroller")
+              ?.scrollBy({
+                left: 500,
+                behavior: "smooth",
+              });
+          }}
+          style={{
+            position: "absolute",
+            right: "20px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "54px",
+            height: "54px",
+            borderRadius: "50%",
+            border: "1px solid rgba(255,255,255,0.15)",
+            background: "rgba(255,255,255,0.06)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            color: "white",
+            fontSize: "1.5rem",
+            fontWeight: "300",
+            cursor: "pointer",
+            zIndex: 10,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "all 0.25s ease",
+            boxShadow:
+              "0 8px 30px rgba(0,0,0,0.25)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background =
+              "rgba(255,255,255,0.14)";
+            e.currentTarget.style.transform =
+              "translateY(-50%) scale(1.08)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background =
+              "rgba(255,255,255,0.06)";
+            e.currentTarget.style.transform =
+              "translateY(-50%) scale(1)";
+          }}
+        >
+          ›
+        </button>
 
         {/* HORIZONTAL SCROLLER */}
         <div
@@ -290,7 +339,7 @@ export default function Home() {
             msOverflowStyle: "none",
           }}
         >
-          {/* CARD 1 */}
+          {/*  JuFo */}
           <motion.div
             whileHover={{ y: -6 }}
             style={{
@@ -336,6 +385,7 @@ export default function Home() {
               </div>
 
               {/* TEXT */}
+              <h1>21.03.2026</h1>
               <div
                 style={{
                   flex: "1 1 400px",
@@ -408,8 +458,8 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src="/images/homepage/nova.jpeg"
-                  alt="New PCB"
+                  src="/images/homepage/STLogo.png"
+                  alt="STLogo"
                   width={500}
                   height={400}
                   style={{
@@ -421,6 +471,7 @@ export default function Home() {
               </div>
 
               {/* TEXT */}
+              <h1>28.05.2026</h1>
               <div
                 style={{
                   flex: "1 1 400px",
@@ -434,7 +485,7 @@ export default function Home() {
                     marginBottom: "20px",
                   }}
                 >
-                  New PCB Generation
+                  Vote at https://www.startupteens.de/
                 </h2>
 
                 <p
@@ -445,15 +496,11 @@ export default function Home() {
                     fontSize: "1.05rem",
                   }}
                 >
-                  Using advanced engineering and
-                  optimized manufacturing, our
-                  latest hardware generation is
-                  faster, smaller and more
-                  efficient than ever before.
+                  We reached the TOP 5 in the national competition StartUp Teens. For the next round be need to gather as much votes as possible.
                 </p>
 
                 <Button
-                  text="Learn More"
+                  text="The Robot"
                   href="/technology"
                 />
               </div>
@@ -461,6 +508,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
 
       {/* SPONSOR SECTION */}
       <section
@@ -475,18 +523,6 @@ export default function Home() {
           margin: "0 auto",
         }}
       >
-        <motion.p
-          style={{
-            color: "#798ca4",
-            letterSpacing: "4px",
-            textTransform: "uppercase",
-            fontWeight: "600",
-            marginBottom: "20px",
-            opacity: 0.9,
-          }}
-        >
-          Sponsors & Supporters
-        </motion.p>
 
         <h2
           style={{
@@ -545,6 +581,17 @@ export default function Home() {
             </p>
 
             <h3>SFZ</h3>
+            <Image
+              src="/images/sponsors/SFZ.png"
+              alt="SFZ"
+              width={70}
+              height={70}
+              style={{
+                marginBottom: "10px",
+                width: "clamp(50px, 6vw, 70px)",
+                height: "auto",
+              }}
+            />
           </div>
 
           <div
@@ -568,7 +615,18 @@ export default function Home() {
               GOLD SPONSOR
             </p>
 
-            <h3>akquinet</h3>
+            <h3>AKQUINET</h3>
+            <Image
+              src="/images/sponsors/Akquinet.png"
+              alt="Akquinet"
+              width={70}
+              height={70}
+              style={{
+                marginBottom: "10px",
+                width: "clamp(50px, 6vw, 70px)",
+                height: "auto",
+              }}
+            />
           </div>
 
           {/* TECHNOLOGY SPONSOR */}
@@ -594,6 +652,17 @@ export default function Home() {
             </p>
 
             <h3>EasyEDA</h3>
+            <Image
+              src="/images/sponsors/EasyEDA.png"
+              alt="SFZ"
+              width={70}
+              height={70}
+              style={{
+                marginBottom: "10px",
+                width: "clamp(50px, 6vw, 70px)",
+                height: "auto",
+              }}
+            />
           </div>
 
           {/* SUPPORTER */}
@@ -619,6 +688,17 @@ export default function Home() {
             </p>
 
             <h3>Aric</h3>
+            <Image
+              src="/images/sponsors/Aric.png"
+              alt="Aric"
+              width={70}
+              height={70}
+              style={{
+                marginBottom: "10px",
+                width: "clamp(50px, 6vw, 70px)",
+                height: "auto",
+              }}
+            />
           </div>
         </div>
       </section>
