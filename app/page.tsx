@@ -217,10 +217,10 @@ export default function Home() {
             letterSpacing: "6px",
             textTransform: "uppercase",
             fontWeight: "700",
-            marginBottom: "40px",
+            marginBottom: "10px",
             textAlign: "center",
             opacity: 0.95,
-            fontSize: "clamp(3rem, 6vw, 6rem)",
+            fontSize: "clamp(2.5rem, 6vw, 5.2rem)",
             lineHeight: "2",
           }}
         >
@@ -555,12 +555,17 @@ export default function Home() {
           {/* GOLD SPONSORS */}
           <div
             style={{
-              padding: "30px",
-              borderRadius: "24px",
+              padding: "34px",
+              borderRadius: "28px",
               background:
-                "rgba(255,255,255,0.04)",
+                "linear-gradient(to bottom right, rgba(255,255,255,0.72), rgba(255,255,255,0.92))",
               border:
-                "1px solid rgba(255,255,255,0.08)",
+                "1.5px solid rgba(37, 99, 235, 0.22)",
+              boxShadow:
+                "0 12px 40px rgba(30, 41, 59, 0.10)",
+              transition: "all 0.28s ease",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
             }}
           >
             <p
@@ -593,14 +598,19 @@ export default function Home() {
           </div>
 
           <div
-            style={{
-              padding: "30px",
-              borderRadius: "24px",
-              background:
-                "rgba(255,255,255,0.04)",
-              border:
-                "1px solid rgba(255,255,255,0.08)",
-            }}
+           style={{
+            padding: "34px",
+            borderRadius: "28px",
+            background:
+              "linear-gradient(to bottom right, rgba(255,255,255,0.72), rgba(255,255,255,0.92))",
+            border:
+              "1.5px solid rgba(37, 99, 235, 0.22)",
+            boxShadow:
+              "0 12px 40px rgba(30, 41, 59, 0.10)",
+            transition: "all 0.28s ease",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+          }}
           >
             <p
               style={{
@@ -633,13 +643,18 @@ export default function Home() {
 
           {/* TECHNOLOGY SPONSOR */}
           <div
-            style={{
-              padding: "30px",
-              borderRadius: "24px",
+           style={{
+              padding: "34px",
+              borderRadius: "28px",
               background:
-                "rgba(255,255,255,0.04)",
+                "linear-gradient(to bottom right, rgba(255,255,255,0.72), rgba(255,255,255,0.92))",
               border:
-                "1px solid rgba(255,255,255,0.08)",
+                "1.5px solid rgba(37, 99, 235, 0.22)",
+              boxShadow:
+                "0 12px 40px rgba(30, 41, 59, 0.10)",
+              transition: "all 0.28s ease",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
             }}
           >
             <p
@@ -674,12 +689,17 @@ export default function Home() {
           {/* SUPPORTER */}
           <div
             style={{
-              padding: "30px",
-              borderRadius: "24px",
+              padding: "34px",
+              borderRadius: "28px",
               background:
-                "rgba(255,255,255,0.04)",
+                "linear-gradient(to bottom right, rgba(255,255,255,0.72), rgba(255,255,255,0.92))",
               border:
-                "1px solid rgba(255,255,255,0.08)",
+                "1.5px solid rgba(37, 99, 235, 0.22)",
+              boxShadow:
+                "0 12px 40px rgba(30, 41, 59, 0.10)",
+              transition: "all 0.28s ease",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
             }}
           >
             <p
