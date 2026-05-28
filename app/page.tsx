@@ -217,7 +217,7 @@ export default function Home() {
             letterSpacing: "4px",
             textTransform: "uppercase",
             fontWeight: "600",
-            marginBottom: "3px",
+            marginBottom: "30px",
             textAlign: "center",
             opacity: 0.9,
           }}
@@ -339,6 +339,76 @@ export default function Home() {
             msOverflowStyle: "none",
           }}
         >
+          {/* StartUp Teens 2 */}
+          <motion.div
+            whileHover={{ y: -6 }}
+            style={{
+              minWidth: "100%",
+              flex: "0 0 100%",
+              scrollSnapAlign: "center",
+              borderRadius: "32px",
+              background:
+                "rgba(37, 99, 235, 0.12)",
+              border:
+                "1px solid rgba(255,255,255,0.1)",
+              backdropFilter: "blur(10px)",
+              boxShadow:
+                "0px 20px 60px rgba(86,86,86,0.3)",
+              padding: "40px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                gap: "50px",
+              }}
+            >
+              {/* IMAGE */}
+              <a href="https://www.startupteens.de/" target="_blank" rel="noopener noreferrer" style={{ flex: "1 1 320px", display: "flex", justifyContent: "center", alignItems: "center", transition: "transform 0.25s ease", }} > <Image src="/images/homepage/STLogo.png" alt="StartUp Teens" width={500} height={400} style={{ width: "100%", maxWidth: "420px", borderRadius: "24px", height: "auto", cursor: "pointer", }} /> </a>
+
+              {/* TEXT */}
+              <h1>28.05.2026</h1>
+              <div
+                style={{
+                  flex: "1 1 400px",
+                  color: "white",
+                }}
+              >
+                <h2>
+                  Vote for NOVA at{" "}
+                  <a
+                    href="https://www.startupteens.de/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "#60a5fa",
+                      textDecoration: "none",
+                    }}
+                  >
+                    StartUp Teens
+                  </a>
+                </h2>
+
+                <p
+                  style={{
+                    lineHeight: "1.8",
+                    opacity: 0.82,
+                    marginBottom: "30px",
+                    fontSize: "1.05rem",
+                  }}
+                >
+                  We reached the TOP 5 in the national competition StartUp Teens. For the next round be need to gather as much votes as possible.
+                </p>
+
+                <Button
+                  text="The Robot"
+                  href="/technology"
+                />
+              </div>
+            </div>
+          </motion.div>
           {/*  JuFo */}
           <motion.div
             whileHover={{ y: -6 }}
@@ -424,88 +494,6 @@ export default function Home() {
               </div>
             </div>
           </motion.div>
-
-          {/* CARD 2 */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            style={{
-              minWidth: "100%",
-              flex: "0 0 100%",
-              scrollSnapAlign: "center",
-              borderRadius: "32px",
-              background:
-                "rgba(37, 99, 235, 0.12)",
-              border:
-                "1px solid rgba(255,255,255,0.1)",
-              backdropFilter: "blur(10px)",
-              boxShadow:
-                "0px 20px 60px rgba(86,86,86,0.3)",
-              padding: "40px",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "center",
-                gap: "50px",
-              }}
-            >
-              {/* IMAGE */}
-              <div
-                style={{
-                  flex: "1 1 320px",
-                }}
-              >
-                <Image
-                  src="/images/homepage/STLogo.png"
-                  alt="STLogo"
-                  width={500}
-                  height={400}
-                  style={{
-                    width: "100%",
-                    borderRadius: "24px",
-                    height: "auto",
-                  }}
-                />
-              </div>
-
-              {/* TEXT */}
-              <h1>28.05.2026</h1>
-              <div
-                style={{
-                  flex: "1 1 400px",
-                  color: "white",
-                }}
-              >
-                <h2
-                  style={{
-                    fontSize:
-                      "clamp(2rem, 4vw, 2.7rem)",
-                    marginBottom: "20px",
-                  }}
-                >
-                  Vote at https://www.startupteens.de/
-                </h2>
-
-                <p
-                  style={{
-                    lineHeight: "1.8",
-                    opacity: 0.82,
-                    marginBottom: "30px",
-                    fontSize: "1.05rem",
-                  }}
-                >
-                  We reached the TOP 5 in the national competition StartUp Teens. For the next round be need to gather as much votes as possible.
-                </p>
-
-                <Button
-                  text="The Robot"
-                  href="/technology"
-                />
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -580,17 +568,21 @@ export default function Home() {
               GOLD SPONSOR
             </p>
 
-            <h3>SFZ</h3>
             <Image
               src="/images/sponsors/SFZ.png"
               alt="SFZ"
               width={70}
               height={70}
               style={{
-                marginBottom: "10px",
-                width: "clamp(50px, 6vw, 70px)",
-                height: "auto",
-              }}
+                      width: "100%",
+                      maxWidth: "180px",
+                      height: "90px",
+                      objectFit: "contain",
+                      margin: "20px auto 0 auto",
+                      display: "block",
+                      filter:
+                        "drop-shadow(0px 6px 20px rgba(255,255,255,0.08))",
+                    }}
             />
           </div>
 
@@ -615,17 +607,21 @@ export default function Home() {
               GOLD SPONSOR
             </p>
 
-            <h3>AKQUINET</h3>
             <Image
               src="/images/sponsors/Akquinet.png"
               alt="Akquinet"
               width={70}
               height={70}
               style={{
-                marginBottom: "10px",
-                width: "clamp(50px, 6vw, 70px)",
-                height: "auto",
-              }}
+                      width: "100%",
+                      maxWidth: "180px",
+                      height: "90px",
+                      objectFit: "contain",
+                      margin: "20px auto 0 auto",
+                      display: "block",
+                      filter:
+                        "drop-shadow(0px 6px 20px rgba(255,255,255,0.08))",
+                    }}
             />
           </div>
 
@@ -651,16 +647,20 @@ export default function Home() {
               TECHNOLOGY SPONSOR
             </p>
 
-            <h3>EasyEDA</h3>
             <Image
               src="/images/sponsors/EasyEDA.png"
               alt="SFZ"
               width={70}
               height={70}
               style={{
-                marginBottom: "10px",
-                width: "clamp(50px, 6vw, 70px)",
-                height: "auto",
+                width: "100%",
+                maxWidth: "180px",
+                height: "90px",
+                objectFit: "contain",
+                margin: "20px auto 0 auto",
+                display: "block",
+                filter:
+                  "drop-shadow(0px 6px 20px rgba(255,255,255,0.08))",
               }}
             />
           </div>
@@ -687,16 +687,20 @@ export default function Home() {
               SUPPORTER
             </p>
 
-            <h3>Aric</h3>
             <Image
               src="/images/sponsors/Aric.png"
               alt="Aric"
               width={70}
               height={70}
               style={{
-                marginBottom: "10px",
-                width: "clamp(50px, 6vw, 70px)",
-                height: "auto",
+                width: "100%",
+                maxWidth: "180px",
+                height: "90px",
+                objectFit: "contain",
+                margin: "20px auto 0 auto",
+                display: "block",
+                filter:
+                  "drop-shadow(0px 6px 20px rgba(255,255,255,0.08))",
               }}
             />
           </div>
