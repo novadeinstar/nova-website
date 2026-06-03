@@ -23,9 +23,9 @@ const newsData = [
     imageLink: "https://www.startupteens.de/",
     buttonText: "The Robot",
     buttonHref: "/product",
-    bgColor: "rgba(37, 99, 235, 0.12)",
-    borderColor: "rgba(255,255,255,0.1)",
-    shadowColor: "rgba(86,86,86,0.3)",
+    bgColor: "rgba(37, 99, 235, 0.08)",
+    borderColor: "rgba(59, 130, 246, 0.25)",
+    shadowColor: "rgba(37, 99, 235, 0.15)",
   },
   {
     id: "jufo",
@@ -36,9 +36,9 @@ const newsData = [
     imageAlt: "Jugend Forscht",
     buttonText: "Our Team",
     buttonHref: "/team",
-    bgColor: "rgba(81, 24, 99, 0.17)",
-    borderColor: "rgba(255,255,255,0.1)",
-    shadowColor: "rgba(86,86,86,0.3)",
+    bgColor: "rgba(139, 92, 246, 0.08)",
+    borderColor: "rgba(139, 92, 246, 0.25)",
+    shadowColor: "rgba(139, 92, 246, 0.15)",
   },
 ];
 
@@ -77,30 +77,36 @@ export default function Home() {
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "center",
-          gap: "clamp(30px, 6vw, 120px)",
+          gap: "clamp(30px, 6vw, 80px)",
           padding: isMobile
-            ? "120px 20px 60px 20px"
+            ? "140px 16px 60px 16px"
             : "140px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
           position: "relative",
           background:
-            "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
+            "radial-gradient(circle at 50% 30%, #0d1224 0%, #020617 60%, #000 100%)",
           color: "white",
           overflow: "hidden",
         }}
       >
-        {/* glowing background orb */}
+        {/* glowing pulsing background orb */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          transition={{ duration: 2 }}
+          animate={{
+            scale: [1, 1.12, 1],
+            opacity: [0.35, 0.5, 0.35],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           style={{
             position: "absolute",
-            width: "clamp(300px, 50vw, 700px)",
-            height: "clamp(300px, 50vw, 700px)",
+            width: "clamp(300px, 60vw, 800px)",
+            height: "clamp(300px, 60vw, 800px)",
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, #3b82f6 0%, #8b5cf6 40%, transparent 70%)",
-            filter: "blur(120px)",
+              "radial-gradient(circle, #3b82f6 0%, #8b5cf6 40%, #00f0ff 70%, transparent 100%)",
+            filter: "blur(130px)",
             zIndex: 0,
           }}
         />
@@ -112,23 +118,53 @@ export default function Home() {
             maxWidth: "800px",
             zIndex: 1,
             textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
+          {/* FLOATING FUTURISTIC BADGE */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "6px 16px",
+              borderRadius: "999px",
+              background: "rgba(56, 189, 248, 0.12)",
+              border: "1px solid rgba(56, 189, 248, 0.35)",
+              color: "#38bdf8",
+              fontSize: "clamp(0.75rem, 1.5vw, 0.9rem)",
+              fontWeight: "700",
+              letterSpacing: "2.5px",
+              textTransform: "uppercase",
+              marginBottom: "24px",
+              boxShadow: "0 0 15px rgba(56, 189, 248, 0.15)",
+            }}
+          >
+            <span>⚡</span>
+            <span>Meet The Future of AI</span>
+          </motion.div>
+
           {/* TITLE */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             style={{
-              fontSize: "clamp(3rem, 10vw, 6.7rem)",
+              fontSize: "clamp(3.5rem, 12vw, 7.5rem)",
               marginBottom: "20px",
               lineHeight: "1",
               background:
-                "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
+                "linear-gradient(90deg,#60a5fa,#c084fc,#22d3ee)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              fontWeight: "bold",
-              letterSpacing: "clamp(-1px, -0.15vw, -2px)",
+              fontWeight: "900",
+              letterSpacing: "clamp(-1.5px, -0.2vw, -3px)",
+              textShadow: "0 0 50px rgba(96, 165, 250, 0.1)",
             }}
           >
             NOVA
@@ -145,10 +181,12 @@ export default function Home() {
               margin: "0 auto",
               opacity: 0.9,
               lineHeight: "1.6",
+              fontWeight: "500",
             }}
           >
             NextGen Observational Voice Assistant
-            <br />Helping you to be more productive in your life!
+            <br />
+            <span style={{ color: "#a78bfa" }}>Helping you to be more productive in your life!</span>
           </motion.p>
 
           {/* BUTTON */}
@@ -181,9 +219,9 @@ export default function Home() {
           }}
         >
           <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2 }}
             style={{
               width: "100%",
               display: "flex",
@@ -191,24 +229,23 @@ export default function Home() {
             }}
           >
             <Image
-              src="/images/homepage/nova.jpeg"
-              alt="NOVA AI"
+              src="/images/homepage/robot_front.png"
+              alt="NOVA AI Robot Model"
               width={400}
-              height={400}
+              height={530}
               style={{
-                width: "clamp(280px, 85vw, 450px)", // Adjusted minimum to 280px and fluid width to 85vw to prevent horizontal overflow on mobile
-                maxWidth: "550px",
+                width: "clamp(260px, 80vw, 420px)",
+                maxWidth: "480px",
                 height: "auto",
-                borderRadius: "clamp(25px, 4vw, 45px)",
-                boxShadow:
-                  "0px 20px 60px rgba(0,0,0,0.45)",
+                borderRadius: "32px",
+                filter: "drop-shadow(0 20px 45px rgba(59, 130, 246, 0.35))", // Glowing shadow outline around the robot cutout!
               }}
             />
           </motion.div>
         </div>
       </section>
 
-      {/* VIDEO SECTION */}
+      {/* VIDEO SECTION (Futuristic Dark Slate Theme) */}
       <section
         style={{
           minHeight: isMobile ? "auto" : "100vh",
@@ -216,11 +253,10 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "center",
           padding: isMobile
-            ? "60px 20px"
+            ? "60px 16px"
             : "clamp(40px, 7vw, 80px) clamp(20px, 5vw, 80px)",
-          background:
-            "linear-gradient(to bottom, #f8fafc, #e2e8f0)",
-          color: "black",
+          background: "#030712", // Premium Dark Theme
+          color: "white",
           width: "100%",
         }}
       >
@@ -240,10 +276,10 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
             style={{
-              color: "#64748b",
+              color: "#a78bfa",
               letterSpacing: "4px",
               textTransform: "uppercase",
-              fontWeight: "700",
+              fontWeight: "800",
               marginBottom: "28px",
               lineHeight: "1",
               fontSize: "0.95rem",
@@ -252,7 +288,7 @@ export default function Home() {
             Pitch Video
           </motion.p>
 
-          {/* VIDEO */}
+          {/* VIDEO with Neon glow border */}
           <motion.video
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -264,12 +300,13 @@ export default function Home() {
             playsInline
             style={{
               width: "100%",
-              maxWidth: "1400px",
+              maxWidth: "1100px",
               height: "auto",
-              aspectRatio: "16 / 9", // Force 16:9 to prevent distortion/black bars
-              borderRadius: "28px",
+              aspectRatio: "16 / 9",
+              borderRadius: "24px",
+              border: "1.5px solid rgba(96, 165, 250, 0.35)",
               boxShadow:
-                "0 25px 70px rgba(15,23,42,0.18)",
+                "0 20px 50px rgba(0,0,0,0.55), 0 0 30px rgba(96, 165, 250, 0.15)",
             }}
           />
         </div>
@@ -280,7 +317,7 @@ export default function Home() {
         id="News"
         style={{
           padding: isMobile
-            ? "60px 20px"
+            ? "60px 16px"
             : "clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px)",
           background: "#020617",
           overflow: "hidden",
@@ -436,10 +473,10 @@ export default function Home() {
                 scrollSnapAlign: "center",
                 borderRadius: "32px",
                 background: item.bgColor,
-                border: `1px solid ${item.borderColor}`,
-                backdropFilter: "blur(10px)",
-                boxShadow: `0px 20px 60px ${item.shadowColor}`,
-                padding: "clamp(20px, 4vw, 50px)",
+                border: `1.5px solid ${item.borderColor}`,
+                backdropFilter: "blur(12px)",
+                boxShadow: `0px 15px 45px ${item.shadowColor}`,
+                padding: isMobile ? "24px 20px" : "40px", // reduced padding on mobile for compactness
               }}
             >
               <div
@@ -447,13 +484,13 @@ export default function Home() {
                   display: "flex",
                   flexWrap: "wrap",
                   alignItems: "center",
-                  gap: "clamp(20px, 4vw, 50px)",
+                  gap: isMobile ? "24px" : "50px", // reduced gaps
                 }}
               >
                 {/* IMAGE */}
                 <div
                   style={{
-                    flex: "1 1 280px",
+                    flex: "1 1 250px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -466,7 +503,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       style={{
                         width: "100%",
-                        maxWidth: "420px",
+                        maxWidth: "380px", // slightly smaller to be compact
                         display: "flex",
                         justifyContent: "center",
                         transition: "transform 0.25s ease",
@@ -487,7 +524,7 @@ export default function Home() {
                       />
                     </a>
                   ) : (
-                    <div style={{ width: "100%", maxWidth: "420px" }}>
+                    <div style={{ width: "100%", maxWidth: "380px" }}>
                       <Image
                         src={item.image}
                         alt={item.imageAlt}
@@ -506,25 +543,25 @@ export default function Home() {
                 {/* TEXT */}
                 <div
                   style={{
-                    flex: "1 1 320px",
+                    flex: "1 1 300px",
                     color: "white",
                   }}
                 >
-                  <p style={{ color: "#94a3b8", fontSize: "0.9rem", letterSpacing: "2px", marginBottom: "10px", textTransform: "uppercase", fontWeight: "600" }} >
+                  <p style={{ color: "#a78bfa", fontSize: "0.85rem", letterSpacing: "2px", marginBottom: "8px", textTransform: "uppercase", fontWeight: "700" }} >
                     {item.date}
                   </p>
                   <h2
                     style={{
-                      fontSize: "clamp(1.6rem, 3.5vw, 2.7rem)",
-                      marginBottom: "16px",
-                      fontWeight: "700",
+                      fontSize: "clamp(1.5rem, 3vw, 2.4rem)",
+                      marginBottom: "12px",
+                      fontWeight: "800",
                       lineHeight: "1.2",
                     }}
                   >
                     {item.title}
                   </h2>
                   {item.subtitle && (
-                    <h3 style={{ fontSize: "clamp(1.1rem, 2vw, 1.4rem)", marginBottom: "16px", fontWeight: "500" }}>
+                    <h3 style={{ fontSize: "clamp(1rem, 2vw, 1.3rem)", marginBottom: "12px", fontWeight: "600" }}>
                       {item.subtitle}
                       {item.subtitleLink && (
                         <a
@@ -544,10 +581,10 @@ export default function Home() {
 
                   <p
                     style={{
-                      lineHeight: "1.7",
-                      opacity: 0.82,
-                      marginBottom: "24px",
-                      fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)",
+                      lineHeight: "1.6",
+                      opacity: 0.85,
+                      marginBottom: "20px",
+                      fontSize: "clamp(0.92rem, 1.1vw, 1rem)",
                     }}
                   >
                     {item.content}
@@ -564,27 +601,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SPONSOR SECTION */}
+      {/* SPONSOR SECTION (Futuristic Dark Glassmorphic Grid) */}
       <section
         style={{
           width: "100%",
           padding: isMobile
-            ? "60px 20px"
+            ? "60px 16px"
             : "clamp(50px, 6vw, 90px) clamp(20px, 5vw, 80px)",
-          background:
-            "linear-gradient(to bottom, #dbeafe 0%, #f8fafc 45%, #ffffff 100%)",
-          color: "black",
+          background: "#020617",
+          color: "white",
           textAlign: "center",
+          borderTop: "1px solid rgba(255,255,255,0.05)",
         }}
       >
         <h2
           style={{
             fontSize:
-              "clamp(2rem, 5vw, 4.2rem)",
-            marginBottom: "22px",
+              "clamp(2rem, 5vw, 3.8rem)",
+            marginBottom: "20px",
             fontWeight: "800",
-            letterSpacing: "-2px",
-            color: "#0f172a",
+            letterSpacing: "-1.5px",
+            color: "white",
             lineHeight: "1.1",
           }}
         >
@@ -593,12 +630,12 @@ export default function Home() {
 
         <p
           style={{
-            maxWidth: "900px",
+            maxWidth: "800px",
             margin: "0 auto 40px auto",
-            lineHeight: "1.9",
-            opacity: 0.72,
-            fontSize: "clamp(1rem, 1.5vw, 1.15rem)",
-            color: "#334155",
+            lineHeight: "1.8",
+            opacity: 0.75,
+            fontSize: "clamp(0.95rem, 1.3vw, 1.1rem)",
+            color: "#94a3b8",
           }}
         >
           NOVA is proudly supported by partners and organizations that believe in innovation, technology and the next generation of engineering talent.
@@ -610,7 +647,7 @@ export default function Home() {
             display: "grid",
             gridTemplateColumns:
               "repeat(auto-fit, minmax(min(100%, 250px), 1fr))",
-            gap: "28px",
+            gap: "24px",
             alignItems: "stretch",
           }}
         >
@@ -619,32 +656,30 @@ export default function Home() {
             whileHover={
               hasHover
                 ? {
-                    y: -8,
-                    scale: 1.02,
-                    boxShadow: "0 20px 60px rgba(37,99,235,0.18)",
+                    y: -6,
+                    borderColor: "rgba(245, 158, 11, 0.5)",
+                    boxShadow: "0 15px 40px rgba(245, 158, 11, 0.15)",
                   }
                 : undefined
             }
             style={{
-              padding: "34px",
-              borderRadius: "28px",
-              background:
-                "linear-gradient(to bottom right, rgba(255,255,255,0.75), rgba(255,255,255,0.96))",
-              border:
-                "1.5px solid rgba(37,99,235,0.22)",
-              boxShadow:
-                "0 12px 40px rgba(30,41,59,0.10)",
-              transition: "all 0.28s ease",
-              backdropFilter: "blur(10px)",
+              padding: "28px",
+              borderRadius: "24px",
+              background: "rgba(15, 23, 42, 0.45)",
+              border: "1.5px solid rgba(255, 255, 255, 0.08)",
+              boxShadow: "0 12px 30px rgba(0,0,0,0.45)",
+              transition: "all 0.3s ease",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
             }}
           >
             <p
               style={{
                 color: "#f59e0b",
-                fontWeight: "700",
+                fontWeight: "800",
                 marginBottom: "12px",
-                letterSpacing: "2px",
-                fontSize: "0.85rem",
+                letterSpacing: "2.5px",
+                fontSize: "0.8rem",
               }}
             >
               GOLD SPONSOR
@@ -663,13 +698,11 @@ export default function Home() {
                 height={180}
                 style={{
                   width: "100%",
-                  maxWidth: "220px",
-                  height: "110px",
+                  maxWidth: "200px",
+                  height: "90px",
                   objectFit: "contain",
-                  margin: "22px auto 0 auto",
+                  margin: "12px auto 0 auto",
                   display: "block",
-                  filter:
-                    "drop-shadow(0px 10px 30px rgba(37,99,235,0.10))",
                 }}
               />
             </a>
@@ -680,30 +713,30 @@ export default function Home() {
             whileHover={
               hasHover
                 ? {
-                    y: -8,
-                    scale: 1.02,
-                    boxShadow: "0 20px 60px rgba(37,99,235,0.18)",
+                    y: -6,
+                    borderColor: "rgba(245, 158, 11, 0.5)",
+                    boxShadow: "0 15px 40px rgba(245, 158, 11, 0.15)",
                   }
                 : undefined
             }
             style={{
-              padding: "34px",
-              borderRadius: "28px",
-              background:
-                "linear-gradient(to bottom right, rgba(255,255,255,0.75), rgba(255,255,255,0.96))",
-              border:
-                "1.5px solid rgba(37,99,235,0.22)",
-              boxShadow:
-                "0 12px 40px rgba(30,41,59,0.10)",
+              padding: "28px",
+              borderRadius: "24px",
+              background: "rgba(15, 23, 42, 0.45)",
+              border: "1.5px solid rgba(255, 255, 255, 0.08)",
+              boxShadow: "0 12px 30px rgba(0,0,0,0.45)",
+              transition: "all 0.3s ease",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
             }}
           >
             <p
               style={{
                 color: "#f59e0b",
-                fontWeight: "700",
+                fontWeight: "800",
                 marginBottom: "12px",
-                letterSpacing: "2px",
-                fontSize: "0.85rem",
+                letterSpacing: "2.5px",
+                fontSize: "0.8rem",
               }}
             >
               GOLD SPONSOR
@@ -722,13 +755,11 @@ export default function Home() {
                 height={180}
                 style={{
                   width: "100%",
-                  maxWidth: "220px",
-                  height: "110px",
+                  maxWidth: "200px",
+                  height: "90px",
                   objectFit: "contain",
-                  margin: "22px auto 0 auto",
+                  margin: "12px auto 0 auto",
                   display: "block",
-                  filter:
-                    "drop-shadow(0px 10px 30px rgba(37,99,235,0.10))",
                 }}
               />
             </a>
@@ -739,30 +770,30 @@ export default function Home() {
             whileHover={
               hasHover
                 ? {
-                    y: -8,
-                    scale: 1.02,
-                    boxShadow: "0 20px 60px rgba(37,99,235,0.18)",
+                    y: -6,
+                    borderColor: "rgba(59, 130, 246, 0.5)",
+                    boxShadow: "0 15px 40px rgba(59, 130, 246, 0.15)",
                   }
                 : undefined
             }
             style={{
-              padding: "34px",
-              borderRadius: "28px",
-              background:
-                "linear-gradient(to bottom right, rgba(255,255,255,0.75), rgba(255,255,255,0.96))",
-              border:
-                "1.5px solid rgba(37,99,235,0.22)",
-              boxShadow:
-                "0 12px 40px rgba(30,41,59,0.10)",
+              padding: "28px",
+              borderRadius: "24px",
+              background: "rgba(15, 23, 42, 0.45)",
+              border: "1.5px solid rgba(255, 255, 255, 0.08)",
+              boxShadow: "0 12px 30px rgba(0,0,0,0.45)",
+              transition: "all 0.3s ease",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
             }}
           >
             <p
               style={{
                 color: "#3b82f6",
-                fontWeight: "700",
+                fontWeight: "800",
                 marginBottom: "12px",
-                letterSpacing: "2px",
-                fontSize: "0.85rem",
+                letterSpacing: "2.5px",
+                fontSize: "0.8rem",
               }}
             >
               TECHNOLOGY SPONSOR
@@ -781,13 +812,11 @@ export default function Home() {
                 height={180}
                 style={{
                   width: "100%",
-                  maxWidth: "220px",
-                  height: "110px",
+                  maxWidth: "200px",
+                  height: "90px",
                   objectFit: "contain",
-                  margin: "22px auto 0 auto",
+                  margin: "12px auto 0 auto",
                   display: "block",
-                  filter:
-                    "drop-shadow(0px 10px 30px rgba(37,99,235,0.10))",
                 }}
               />
             </a>
@@ -798,30 +827,30 @@ export default function Home() {
             whileHover={
               hasHover
                 ? {
-                    y: -8,
-                    scale: 1.02,
-                    boxShadow: "0 20px 60px rgba(37,99,235,0.18)",
+                    y: -6,
+                    borderColor: "rgba(168, 85, 247, 0.5)",
+                    boxShadow: "0 15px 40px rgba(168, 85, 247, 0.15)",
                   }
                 : undefined
             }
             style={{
-              padding: "34px",
-              borderRadius: "28px",
-              background:
-                "linear-gradient(to bottom right, rgba(255,255,255,0.75), rgba(255,255,255,0.96))",
-              border:
-                "1.5px solid rgba(37,99,235,0.22)",
-              boxShadow:
-                "0 12px 40px rgba(30,41,59,0.10)",
+              padding: "28px",
+              borderRadius: "24px",
+              background: "rgba(15, 23, 42, 0.45)",
+              border: "1.5px solid rgba(255, 255, 255, 0.08)",
+              boxShadow: "0 12px 30px rgba(0,0,0,0.45)",
+              transition: "all 0.3s ease",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
             }}
           >
             <p
               style={{
                 color: "#a855f7",
-                fontWeight: "700",
+                fontWeight: "800",
                 marginBottom: "12px",
-                letterSpacing: "2px",
-                fontSize: "0.85rem",
+                letterSpacing: "2.5px",
+                fontSize: "0.8rem",
               }}
             >
               SUPPORTER
@@ -840,13 +869,11 @@ export default function Home() {
                 height={180}
                 style={{
                   width: "100%",
-                  maxWidth: "220px",
-                  height: "110px",
+                  maxWidth: "200px",
+                  height: "90px",
                   objectFit: "contain",
-                  margin: "22px auto 0 auto",
+                  margin: "12px auto 0 auto",
                   display: "block",
-                  filter:
-                    "drop-shadow(0px 10px 30px rgba(37,99,235,0.10))",
                 }}
               />
             </a>

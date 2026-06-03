@@ -1,48 +1,69 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <footer
       style={{
         background: "#041042",
         color: "white",
-        padding:
-          "clamp(15px, 3vw, 30px) clamp(20px, 6vw, 80px)",
+        padding: isMobile
+          ? "30px 16px 20px 16px"
+          : "clamp(15px, 3vw, 30px) clamp(20px, 6vw, 80px)",
       }}
     >
       {/* TOP AREA */}
       <div
         style={{
-          display: "flex",
-          flexWrap: "wrap",
+          display: isMobile ? "grid" : "flex",
+          gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : undefined,
+          flexWrap: isMobile ? undefined : "wrap",
           justifyContent: "space-between",
-          gap: "15px",
+          gap: isMobile ? "24px 16px" : "15px",
         }}
       >
-        {/* BRAND */}
+        {/* BRAND (Full width on mobile grid span 2 to look clean, or 1 column depending on design. Let's make it span 2 so it sits nicely at the top, or keep it in grid) */}
         <div
           style={{
+            gridColumn: isMobile ? "span 2" : "auto",
             flex: "1 1 250px",
-            maxWidth: "350px",
+            maxWidth: isMobile ? "none" : "350px",
+            borderBottom: isMobile ? "1px solid rgba(255,255,255,0.06)" : "none",
+            paddingBottom: isMobile ? "16px" : "0px",
+            marginBottom: isMobile ? "-8px" : "0px",
           }}
         >
           <Image
             src="/images/logo.png"
             alt="NOVA Logo"
-            width={70}
-            height={70}
+            width={isMobile ? 45 : 70}
+            height={isMobile ? 45 : 70}
             style={{
-              marginBottom: "10px",
-              width: "clamp(50px, 6vw, 70px)",
+              marginBottom: "8px",
+              width: isMobile ? "45px" : "70px",
               height: "auto",
             }}
           />
 
           <h2
             style={{
-              fontSize: "1.5rem",
-              marginBottom: "12px",
+              fontSize: isMobile ? "1.2rem" : "1.5rem",
+              marginBottom: "6px",
+              fontWeight: "700",
             }}
           >
             NOVA
@@ -51,10 +72,11 @@ export default function Footer() {
           <p
             style={{
               opacity: 0.75,
-              lineHeight: "1.7",
+              lineHeight: "1.5",
+              fontSize: "0.85rem",
             }}
           >
-            NextGen Observtional Voice Assistant
+            NextGen Observational Voice Assistant
             <br />"NOVA - Dein Star"
           </p>
         </div>
@@ -62,12 +84,15 @@ export default function Footer() {
         {/* NAVIGATION */}
         <div
           style={{
-            flex: "1 1 180px",
+            flex: "1 1 120px",
           }}
         >
           <h3
             style={{
-              marginBottom: "18px",
+              marginBottom: "12px",
+              fontSize: "0.95rem",
+              fontWeight: "700",
+              color: "#60a5fa",
             }}
           >
             Navigation
@@ -77,7 +102,8 @@ export default function Footer() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "12px",
+              gap: "8px",
+              fontSize: "0.85rem",
             }}
           >
             <Link href="/" style={linkStyle}>
@@ -101,12 +127,15 @@ export default function Footer() {
         {/* SOCIAL MEDIA */}
         <div
           style={{
-            flex: "1 1 180px",
+            flex: "1 1 150px",
           }}
         >
           <h3
             style={{
-              marginBottom: "10px",
+              marginBottom: "12px",
+              fontSize: "0.95rem",
+              fontWeight: "700",
+              color: "#60a5fa",
             }}
           >
             Social Media
@@ -116,13 +145,14 @@ export default function Footer() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "12px",
+              gap: "8px",
+              fontSize: "0.85rem",
+              wordBreak: "break-word",
             }}
           >
-            {/* LINKS */}
-            <a>  
+            <span style={{ color: "rgba(255,255,255,0.75)" }}>
               Email: novadeinstar@gmail.com
-            </a>
+            </span>
             <a
               href="https://www.linkedin.com/in/david-shi-b845563b5"
               target="_blank"
@@ -138,15 +168,15 @@ export default function Footer() {
               rel="noopener noreferrer"
               style={linkStyle}
             >
-              YouTube (comming soon)
+              YouTube
             </a>
             <a
               href="https://instagram.com/"
-              target= "_blank"
+              target="_blank"
               rel="noopener noreferrer"
               style={linkStyle}
-            >  
-              Instagram (comming soon)
+            >
+              Instagram
             </a>
           </div>
         </div>
@@ -154,22 +184,30 @@ export default function Footer() {
         {/* SPONSORS */}
         <div
           style={{
+            gridColumn: isMobile ? "span 2" : "auto",
             flex: "1 1 220px",
+            borderTop: isMobile ? "1px solid rgba(255,255,255,0.06)" : "none",
+            paddingTop: isMobile ? "16px" : "0px",
           }}
         >
           <h3
             style={{
-              marginBottom: "18px",
+              marginBottom: "12px",
+              fontSize: "0.95rem",
+              fontWeight: "700",
+              color: "#60a5fa",
             }}
           >
-            Goldsponsoren
+            Sponsoren
           </h3>
 
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              gap: "12px",
+              flexDirection: isMobile ? "row" : "column",
+              flexWrap: "wrap",
+              gap: "16px",
+              fontSize: "0.85rem",
             }}
           >
             <a
@@ -181,16 +219,15 @@ export default function Footer() {
               <Image
                 src="/images/sponsors/SFZ.png"
                 alt="SFZ Hamburg"
-                width={140}
-                height={60}
+                width={100}
+                height={40}
                 style={{
-                  width: "120px",
+                  width: "70px",
                   height: "auto",
                   objectFit: "contain",
                 }}
               />
-
-              <span>SFZ Hamburg</span>
+              <span style={{ fontSize: "0.8rem" }}>SFZ Hamburg</span>
             </a>
 
             <a
@@ -202,20 +239,16 @@ export default function Footer() {
               <Image
                 src="/images/sponsors/Akquinet.png"
                 alt="akquinet"
-                width={140}
-                height={60}
+                width={100}
+                height={40}
                 style={{
-                  width: "140px",
+                  width: "80px",
                   height: "auto",
                   objectFit: "contain",
                 }}
               />
-              <span>Akquinet</span>
+              <span style={{ fontSize: "0.8rem" }}>Akquinet</span>
             </a>
-            
-            <h3>
-            Technology Sponsor
-            </h3>
 
             <a
               href="https://easyeda.com/"
@@ -226,16 +259,15 @@ export default function Footer() {
               <Image
                 src="/images/sponsors/EasyEDA.png"
                 alt="EasyEDA"
-                width={100}
-                height={40}
+                width={80}
+                height={30}
                 style={{
-                  width: "70px",
+                  width: "50px",
                   height: "auto",
                   objectFit: "contain",
                 }}
               />
-
-              <span>EasyEDA</span>
+              <span style={{ fontSize: "0.8rem" }}>EasyEDA</span>
             </a>
           </div>
         </div>
@@ -244,18 +276,15 @@ export default function Footer() {
       {/* BOTTOM AREA */}
       <div
         style={{
-          marginTop: "30px",
-          paddingTop: "20px",
-          borderTop:
-            "1px solid rgba(255,255,255,0.08)",
-
+          marginTop: isMobile ? "24px" : "30px",
+          paddingTop: "16px",
+          borderTop: "1px solid rgba(255,255,255,0.08)",
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-between",
-          gap: "20px",
-
+          gap: "12px",
           opacity: 0.7,
-          fontSize: "0.95rem",
+          fontSize: "0.8rem",
         }}
       >
         {/* LEGAL */}
@@ -263,7 +292,7 @@ export default function Footer() {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            gap: "20px",
+            gap: "16px",
           }}
         >
           <Link href="/legal/impressum" style={linkStyle}>
@@ -298,15 +327,14 @@ export default function Footer() {
 const linkStyle = {
   color: "rgba(255,255,255,0.75)",
   textDecoration: "none",
-  transition: "0.2s",
+  transition: "color 0.2s ease",
 };
+
 const sponsorStyle = {
   display: "flex",
   alignItems: "center",
-  gap: "14px",
-
+  gap: "10px",
   color: "rgba(255,255,255,0.8)",
   textDecoration: "none",
-
-  padding: "10px 0px",
+  padding: "4px 0",
 };

@@ -20,6 +20,33 @@ export default function Product() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  const features = [
+    {
+      title: "Proactive AI Prompts",
+      content:
+        "Distractions and mental overload reduce our productivity. NOVA solves this with a proactive, AI-powered assistant that recognizes situations and provides the right prompt at the right time.",
+      icon: "🧠",
+      borderColor: "rgba(96, 165, 250, 0.25)",
+      shadowColor: "rgba(59, 130, 246, 0.15)",
+    },
+    {
+      title: "100% Local Processing",
+      content:
+        "Thanks to local data processing, we guarantee assistance without the need for the cloud. Your data remains secure on your local device for maximum privacy.",
+      icon: "🔒",
+      borderColor: "rgba(139, 92, 246, 0.25)",
+      shadowColor: "rgba(139, 92, 246, 0.15)",
+    },
+    {
+      title: "Supernova Efficiency",
+      content:
+        "Optimize your focus and transform your workflow into a supernova of efficiency! Keep your momentum and stay in the zone without interruptions.",
+      icon: "⚡",
+      borderColor: "rgba(34, 211, 238, 0.25)",
+      shadowColor: "rgba(34, 211, 238, 0.15)",
+    },
+  ];
+
   return (
     <main
       style={{
@@ -147,7 +174,7 @@ export default function Product() {
         </motion.div>
       </section>
 
-      {/* DESCRIPTION SECTION */}
+      {/* DESCRIPTION SECTION (Two Columns on Desktop, Stacked on Mobile) */}
       <section
         style={{
           display: "flex",
@@ -157,9 +184,7 @@ export default function Product() {
           flexWrap: "wrap",
           width: "100%",
           margin: "0 auto",
-          padding: isMobile
-            ? "80px 20px"
-            : "160px clamp(20px, 6vw, 100px)",
+          padding: isMobile ? "60px 16px" : "120px clamp(20px, 6vw, 100px)",
           position: "relative",
           overflow: "hidden",
         }}
@@ -167,7 +192,7 @@ export default function Product() {
         {/* glowing background orb */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
+          animate={{ opacity: 0.3 }}
           transition={{ duration: 2 }}
           style={{
             position: "absolute",
@@ -232,7 +257,7 @@ export default function Product() {
               />
             </motion.div>
 
-            {/* INFO BOX (Always visible on touch devices, hover-controlled on desktop) */}
+            {/* INFO BOX */}
             <motion.div
               variants={
                 hasHover
@@ -260,7 +285,7 @@ export default function Product() {
                 marginTop: isMobile ? "20px" : "0px",
                 padding: "18px 22px",
                 borderRadius: "20px",
-                background: "rgba(15, 23, 42, 0.8)", // slate-900 with glassmorphism
+                background: "rgba(15, 23, 42, 0.8)",
                 backdropFilter: "blur(14px)",
                 WebkitBackdropFilter: "blur(14px)",
                 border: "1px solid rgba(255,255,255,0.15)",
@@ -282,7 +307,7 @@ export default function Product() {
           </motion.div>
         </div>
 
-        {/* Right SIDE */}
+        {/* Right SIDE (Flashy Feature Card Grid) */}
         <div
           style={{
             flex: "1 1 300px",
@@ -298,8 +323,9 @@ export default function Product() {
               letterSpacing: "3px",
               textTransform: "uppercase",
               fontWeight: "600",
-              marginBottom: "20px",
+              marginBottom: "12px",
               opacity: 0.9,
+              fontSize: "0.85rem",
             }}
           >
             AI Robotics Platform
@@ -311,7 +337,7 @@ export default function Product() {
             transition={{ duration: 1 }}
             style={{
               fontSize: "clamp(2.4rem, 10vw, 4.2rem)",
-              marginBottom: "20px",
+              marginBottom: "24px",
               lineHeight: "1.1",
               background:
                 "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
@@ -324,23 +350,62 @@ export default function Product() {
             NOVA
           </motion.h2>
 
-          {/* SUBTITLE */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 1 }}
+          {/* FLASHY GRID OF 3 CARDS INSTEAD OF BLOCK PARAGRAPH */}
+          <div
             style={{
-              fontSize: "clamp(0.95rem, 2vw, 1.25rem)",
-              fontFamily: "Inter, sans-serif",
-              maxWidth: "650px",
-              margin: "0",
-              textAlign: "left",
-              opacity: 0.9,
-              lineHeight: "1.7",
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              width: "100%",
             }}
           >
-            Distractions and mental overload reduce our productivity and lead to procrastination. NOVA solves this problem with a proactive, AI-powered assistant that recognizes situations and provides the right prompt at the right time. Thanks to local data processing, we guarantee assistance without the need for the cloud. Optimize your focus and transform your workflow into a supernova of efficiency!
-          </motion.p>
+            {features.map((feat, idx) => (
+              <motion.div
+                key={feat.title}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.8 }}
+                whileHover={hasHover ? { scale: 1.01, x: 5 } : undefined}
+                style={{
+                  padding: "20px",
+                  borderRadius: "20px",
+                  background: "rgba(15, 23, 42, 0.45)",
+                  border: `1.5px solid ${feat.borderColor}`,
+                  boxShadow: `0 10px 30px rgba(0,0,0,0.35), 0 0 15px ${feat.shadowColor}`,
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                  display: "flex",
+                  gap: "16px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div style={{ fontSize: "2rem", lineHeight: "1" }}>{feat.icon}</div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "1.15rem",
+                      fontWeight: "700",
+                      marginBottom: "6px",
+                      color: "white",
+                    }}
+                  >
+                    {feat.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.92rem",
+                      lineHeight: "1.5",
+                      opacity: 0.85,
+                      margin: 0,
+                    }}
+                  >
+                    {feat.content}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -355,7 +420,7 @@ export default function Product() {
           justifyContent: "center",
           gap: "20px",
           padding: isMobile
-            ? "60px 20px"
+            ? "60px 16px"
             : "clamp(30px, 8vw, 60px) clamp(20px, 6vw, 80px)",
           background:
             "linear-gradient(to bottom, #d0eee2, #bae9ed)",
@@ -389,12 +454,12 @@ export default function Product() {
           preload="metadata"
           style={{
             width: "100%",
-            maxWidth: "1500px",
+            maxWidth: "1100px", // shrunken slightly to match pitch video layout
             margin: "0 auto",
             borderRadius: "20px",
             height: "auto",
-            aspectRatio: "16 / 9", // Keep original 16:9 ratio to prevent distortion/cropping
-            boxShadow: "0px 25px 80px rgba(0,0,0,0.35)",
+            aspectRatio: "16 / 9",
+            boxShadow: "0px 20px 60px rgba(0,0,0,0.35)",
             border: "1px solid rgba(255,255,255,0.08)",
           }}
         />
@@ -405,7 +470,7 @@ export default function Product() {
         style={{
           width: "100%",
           padding: isMobile
-            ? "60px 20px"
+            ? "60px 16px"
             : "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
           background: "#1b5051",
           display: "flex",

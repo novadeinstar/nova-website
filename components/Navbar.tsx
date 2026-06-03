@@ -2,34 +2,43 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Handle scroll behavior to hide/show navbar
+  const lastScrollYRef = useRef(0);
+
+  // Handle scroll behavior to hide/show navbar stably
   useEffect(() => {
     const controlNavbar = () => {
       // If mobile menu is open, don't hide navbar
       if (isMobileMenuOpen) return;
 
-      if (window.scrollY > lastScrollY && window.scrollY > 80) {
+      const currentScrollY = window.scrollY;
+
+      // Always show navbar near the top of the page
+      if (currentScrollY <= 50) {
+        setShowNavbar(true);
+      } else if (currentScrollY > lastScrollYRef.current) {
+        // Scrolling down -> hide navbar
         setShowNavbar(false);
       } else {
+        // Scrolling up -> show navbar
         setShowNavbar(true);
       }
-      setLastScrollY(window.scrollY);
+
+      lastScrollYRef.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", controlNavbar);
+    window.addEventListener("scroll", controlNavbar, { passive: true });
     return () => {
       window.removeEventListener("scroll", controlNavbar);
     };
-  }, [lastScrollY, isMobileMenuOpen]);
+  }, [isMobileMenuOpen]);
 
   // Handle responsive check
   useEffect(() => {
@@ -59,8 +68,8 @@ export default function Navbar() {
           y: showNavbar ? 0 : -120,
         }}
         transition={{
-          duration: 0.35,
-          ease: "easeInOut",
+          duration: 0.3,
+          ease: "easeOut",
         }}
         style={{
           width: "100%",
@@ -68,9 +77,9 @@ export default function Navbar() {
           justifyContent: "space-between",
           alignItems: "center",
           padding: "clamp(12px, 2.5vw, 20px) clamp(20px, 6vw, 80px)",
-          background: "rgba(10, 10, 10, 0.75)",
-          backdropFilter: "blur(14px)",
-          WebkitBackdropFilter: "blur(14px)",
+          background: "rgba(10, 10, 10, 0.8)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           position: "fixed",
           left: 0,
           top: 0,
@@ -79,28 +88,30 @@ export default function Navbar() {
         }}
       >
         {/* LOGO (Positioned left on mobile, right on desktop) */}
-        {isMobile && (
-          <Link href="/" style={{ display: "flex", alignItems: "center" }}>
-            <Image
-              src="/images/logo.png"
-              alt="NOVA Logo"
-              width={45}
-              height={45}
-              style={{
-                width: "42px",
-                height: "auto",
-              }}
-            />
-          </Link>
-        )}
+        <Link href="/" style={{ display: "flex", alignItems: "center" }}>
+          <Image
+            src="/images/logo.png"
+            alt="NOVA Logo"
+            width={isMobile ? 42 : 50}
+            height={isMobile ? 42 : 50}
+            style={{
+              width: isMobile ? "42px" : "50px",
+              height: "auto",
+              transition: "transform 0.3s ease",
+            }}
+            onMouseEnter={(e) => !isMobile && (e.currentTarget.style.transform = "scale(1.05)")}
+            onMouseLeave={(e) => !isMobile && (e.currentTarget.style.transform = "scale(1)")}
+          />
+        </Link>
 
-        {/* DESKTOP LINKS (Left side) */}
+        {/* DESKTOP LINKS (Left side of the logo on desktop) */}
         {!isMobile && (
           <div
             style={{
               display: "flex",
               alignItems: "center",
               gap: "clamp(20px, 3.5vw, 50px)",
+              marginRight: "20px",
             }}
           >
             {navLinks.map((link) => (
@@ -111,7 +122,7 @@ export default function Navbar() {
                   color: "white",
                   textDecoration: "none",
                   fontSize: "clamp(0.95rem, 1.3vw, 1.1rem)",
-                  fontWeight: 500,
+                  fontWeight: 600,
                   letterSpacing: "0.5px",
                   transition: "color 0.25s ease",
                 }}
@@ -121,32 +132,6 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-          </div>
-        )}
-
-        {/* DESKTOP LOGO (Right side) */}
-        {!isMobile && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Link href="/" style={{ display: "flex" }}>
-              <Image
-                src="/images/logo.png"
-                alt="NOVA Logo"
-                width={50}
-                height={50}
-                style={{
-                  width: "50px",
-                  height: "auto",
-                  transition: "transform 0.3s ease",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-                onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-              />
-            </Link>
           </div>
         )}
 
