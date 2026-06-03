@@ -62,7 +62,7 @@ export default function VoteButton() {
         >
           {/* Main button text/link */}
           <a
-            href="https://www.startupteens.de/"
+            href="https://www.startupteens.de/challenge-2026/voting/"
             target="_blank"
             rel="noopener noreferrer"
             style={{

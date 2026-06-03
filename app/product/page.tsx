@@ -25,7 +25,6 @@ export default function Product() {
       title: "Proactive AI Prompts",
       content:
         "Distractions and mental overload reduce our productivity. NOVA solves this with a proactive, AI-powered assistant that recognizes situations and provides the right prompt at the right time.",
-      icon: "🧠",
       borderColor: "rgba(96, 165, 250, 0.25)",
       shadowColor: "rgba(59, 130, 246, 0.15)",
     },
@@ -33,7 +32,6 @@ export default function Product() {
       title: "100% Local Processing",
       content:
         "Thanks to local data processing, we guarantee assistance without the need for the cloud. Your data remains secure on your local device for maximum privacy.",
-      icon: "🔒",
       borderColor: "rgba(139, 92, 246, 0.25)",
       shadowColor: "rgba(139, 92, 246, 0.15)",
     },
@@ -41,7 +39,6 @@ export default function Product() {
       title: "Supernova Efficiency",
       content:
         "Optimize your focus and transform your workflow into a supernova of efficiency! Keep your momentum and stay in the zone without interruptions.",
-      icon: "⚡",
       borderColor: "rgba(34, 211, 238, 0.25)",
       shadowColor: "rgba(34, 211, 238, 0.15)",
     },

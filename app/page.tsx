@@ -15,12 +15,12 @@ const newsData = [
     date: "28.05.2026",
     title: "TOP 5 Germany StartUp Teens",
     subtitle: "Vote for NOVA at ",
-    subtitleLink: "https://www.startupteens.de/",
+    subtitleLink: "https://www.startupteens.de/challenge-2026/voting/",
     subtitleLinkText: "StartUp Teens",
     content: "We reached the TOP 5 in the national competition StartUp Teens. For the next round we need to gather as many votes as possible.",
     image: "/images/homepage/STLogo.png",
     imageAlt: "StartUp Teens Logo",
-    imageLink: "https://www.startupteens.de/",
+    imageLink: "https://www.startupteens.de/challenge-2026/voting/",
     buttonText: "The Robot",
     buttonHref: "/product",
     bgColor: "rgba(37, 99, 235, 0.08)",
@@ -123,31 +123,6 @@ export default function Home() {
             alignItems: "center",
           }}
         >
-          {/* FLOATING FUTURISTIC BADGE */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "6px 16px",
-              borderRadius: "999px",
-              background: "rgba(56, 189, 248, 0.12)",
-              border: "1px solid rgba(56, 189, 248, 0.35)",
-              color: "#38bdf8",
-              fontSize: "clamp(0.75rem, 1.5vw, 0.9rem)",
-              fontWeight: "700",
-              letterSpacing: "2.5px",
-              textTransform: "uppercase",
-              marginBottom: "24px",
-              boxShadow: "0 0 15px rgba(56, 189, 248, 0.15)",
-            }}
-          >
-            <span>⚡</span>
-            <span>Meet The Future of AI</span>
-          </motion.div>
 
           {/* TITLE */}
           <motion.h1
