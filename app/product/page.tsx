@@ -377,7 +377,7 @@ export default function Product() {
                   alignItems: "flex-start",
                 }}
               >
-                <div style={{ fontSize: "2rem", lineHeight: "1" }}>{feat.icon}</div>
+                <div style={{ fontSize: "2rem", lineHeight: "1" }}></div>
                 <div>
                   <h3
                     style={{
