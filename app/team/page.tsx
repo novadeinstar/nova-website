@@ -10,24 +10,26 @@ export default function Team() {
   const [hoveredE, setHoveredE] = useState(false);
   const [hoveredA, setHoveredA] = useState(false);
 
-  // MOBILE DETECTION
-  const [isMobile, setIsMobile] = useState(false);
+  // HOVER SUPPORT DETECTION (True for mouse, false for touch devices like mobile & iPad)
+  const [hasHover, setHasHover] = useState(true);
 
-  // MOBILE OPEN STATES
+  // MOBILE/TOUCH OPEN STATES
   const [openD, setOpenD] = useState(false);
   const [openE, setOpenE] = useState(false);
   const [openA, setOpenA] = useState(false);
 
-  // DETECT SCREEN SIZE
+  // DETECT HOVER SUPPORT AND SCREEN SIZE
+  useEffect(() => {
+    setHasHover(window.matchMedia("(hover: hover)").matches);
+  }, []);
+
+  const [isMobileLayout, setIsMobileLayout] = useState(false);
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobileLayout(window.innerWidth <= 768);
     };
-
     checkMobile();
-
     window.addEventListener("resize", checkMobile);
-
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
@@ -99,8 +101,7 @@ export default function Team() {
             opacity: 0.8,
           }}
         >
-          NOVA is built by a passionate interdisciplinary team
-          combining AI, robotics, and modern software engineering.
+          NOVA is built by a passionate interdisciplinary team combining AI, robotics, and modern software engineering.
         </motion.p>
       </section>
 
@@ -111,21 +112,23 @@ export default function Team() {
           display: "grid",
           gridTemplateColumns:
             "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
-          gap: "40px",
+          gap: "50px 40px",
           position: "relative",
           zIndex: 1,
         }}
       >
-
         {/* DAVID */}
         <motion.div
-          onHoverStart={() => !isMobile && setHoveredD(true)}
-          onHoverEnd={() => !isMobile && setHoveredD(false)}
-          onClick={() => isMobile && setOpenD(!openD)}
+          onHoverStart={() => hasHover && setHoveredD(true)}
+          onHoverEnd={() => hasHover && setHoveredD(false)}
+          onClick={() => !hasHover && setOpenD(!openD)}
           style={{
             position: "relative",
-            height: isMobile ? "auto" : "clamp(620px, 80vw, 820px)",
-            cursor: isMobile ? "pointer" : "default",
+            width: "100%",
+            maxWidth: "400px", // Prevent card stretching to huge sizes in single-column
+            margin: "0 auto",
+            height: isMobileLayout ? "auto" : "clamp(550px, 70vw, 750px)",
+            cursor: !hasHover ? "pointer" : "default",
           }}
           initial={{
             opacity: 0,
@@ -141,12 +144,12 @@ export default function Team() {
             ease: "easeOut",
           }}
           whileHover={
-            !isMobile
+            hasHover
               ? {
                   y: -10,
                   scale: 1.02,
                 }
-              : {}
+              : undefined
           }
         >
           {/* IMAGE */}
@@ -166,20 +169,13 @@ export default function Team() {
           {/* INFO BOX */}
           <motion.div
             animate={{
-              y:
-                hoveredD || openD
-                  ? -25
-                  : 0,
-
-              scale:
-                hoveredD || openD
-                  ? 1.03
-                  : 1,
-
+              y: hoveredD || openD ? -25 : 0,
+              scale: hoveredD || openD ? 1.03 : 1,
               boxShadow:
                 hoveredD || openD
                   ? "0px 25px 60px rgba(59,130,246,0.25)"
                   : "0px 20px 50px rgba(0,0,0,0.35)",
+              minHeight: hoveredD || openD ? "170px" : "120px",
             }}
             transition={{
               type: "spring",
@@ -187,9 +183,9 @@ export default function Team() {
               damping: 18,
             }}
             style={{
-              position: isMobile ? "relative" : "absolute",
+              position: isMobileLayout ? "relative" : "absolute",
               overflow: "hidden",
-              marginTop: isMobile ? "-40px" : "-60px",
+              marginTop: isMobileLayout ? "-40px" : "-60px",
               marginLeft: "auto",
               marginRight: "auto",
               left: 0,
@@ -197,48 +193,25 @@ export default function Team() {
               width: "85%",
               padding: "24px",
               borderRadius: "24px",
-              background:
-                "rgba(80, 83, 83, 0.41)",
+              background: "rgba(30, 30, 30, 0.75)", // dark aesthetic matching design system
               backdropFilter: "blur(14px)",
-              border:
-                "1px solid rgba(255,255,255,0.08)",
-              boxShadow:
-                "0px 20px 50px rgba(0,0,0,0.35)",
-              minHeight:
-                hoveredD || openD
-                  ? "170px"
-                  : "120px",
+              WebkitBackdropFilter: "blur(14px)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              boxShadow: "0px 20px 50px rgba(0,0,0,0.35)",
             }}
           >
-            <h2
-              style={{
-                fontSize: "1.4rem",
-                marginBottom: "8px",
-              }}
-            >
+            <h2 style={{ fontSize: "1.4rem", marginBottom: "8px", fontWeight: "700" }}>
               David Shi
             </h2>
 
-            <p
-              style={{
-                opacity: 0.75,
-                marginBottom: "12px",
-              }}
-            >
+            <p style={{ opacity: 0.75, marginBottom: "12px", fontSize: "0.95rem" }}>
               Co-Founder - Hardware & Electronics
             </p>
 
             <motion.p
               animate={{
-                y:
-                  hoveredD || openD
-                    ? 0
-                    : 10,
-
-                opacity:
-                  hoveredD || openD
-                    ? 1
-                    : 0,
+                y: hoveredD || openD ? 0 : 10,
+                opacity: hoveredD || openD ? 1 : 0,
               }}
               transition={{
                 duration: 0.3,
@@ -251,21 +224,23 @@ export default function Team() {
                 lineHeight: "1.6",
               }}
             >
-              Specialized in customized PCBs,
-              robotics, and modular 3D constructions.
+              Specialized in customized PCBs, robotics, and modular 3D constructions.
             </motion.p>
           </motion.div>
         </motion.div>
 
         {/* EMIL */}
         <motion.div
-          onHoverStart={() => !isMobile && setHoveredE(true)}
-          onHoverEnd={() => !isMobile && setHoveredE(false)}
-          onClick={() => isMobile && setOpenE(!openE)}
+          onHoverStart={() => hasHover && setHoveredE(true)}
+          onHoverEnd={() => hasHover && setHoveredE(false)}
+          onClick={() => !hasHover && setOpenE(!openE)}
           style={{
             position: "relative",
-            height: isMobile ? "auto" : "clamp(620px, 80vw, 820px)",
-            cursor: isMobile ? "pointer" : "default",
+            width: "100%",
+            maxWidth: "400px", // Prevent card stretching to huge sizes in single-column
+            margin: "0 auto",
+            height: isMobileLayout ? "auto" : "clamp(550px, 70vw, 750px)",
+            cursor: !hasHover ? "pointer" : "default",
           }}
           initial={{
             opacity: 0,
@@ -281,14 +256,15 @@ export default function Team() {
             ease: "easeOut",
           }}
           whileHover={
-            !isMobile
+            hasHover
               ? {
                   y: -10,
                   scale: 1.02,
                 }
-              : {}
+              : undefined
           }
         >
+          {/* IMAGE */}
           <Image
             src="/images/team/Emil.jpeg"
             alt="Emil Raba"
@@ -302,22 +278,16 @@ export default function Team() {
             }}
           />
 
+          {/* INFO BOX */}
           <motion.div
             animate={{
-              y:
-                hoveredE || openE
-                  ? -25
-                  : 0,
-
-              scale:
-                hoveredE || openE
-                  ? 1.03
-                  : 1,
-
+              y: hoveredE || openE ? -25 : 0,
+              scale: hoveredE || openE ? 1.03 : 1,
               boxShadow:
                 hoveredE || openE
                   ? "0px 25px 60px rgba(59,130,246,0.25)"
                   : "0px 20px 50px rgba(0,0,0,0.35)",
+              minHeight: hoveredE || openE ? "170px" : "120px",
             }}
             transition={{
               type: "spring",
@@ -325,9 +295,9 @@ export default function Team() {
               damping: 18,
             }}
             style={{
-              position: isMobile ? "relative" : "absolute",
+              position: isMobileLayout ? "relative" : "absolute",
               overflow: "hidden",
-              marginTop: isMobile ? "-40px" : "-60px",
+              marginTop: isMobileLayout ? "-40px" : "-60px",
               marginLeft: "auto",
               marginRight: "auto",
               left: 0,
@@ -335,48 +305,25 @@ export default function Team() {
               width: "85%",
               padding: "24px",
               borderRadius: "24px",
-              background:
-                "rgba(80, 83, 83, 0.41)",
+              background: "rgba(30, 30, 30, 0.75)",
               backdropFilter: "blur(14px)",
-              border:
-                "1px solid rgba(255,255,255,0.08)",
-              boxShadow:
-                "0px 20px 50px rgba(0,0,0,0.35)",
-              minHeight:
-                hoveredE || openE
-                  ? "170px"
-                  : "120px",
+              WebkitBackdropFilter: "blur(14px)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              boxShadow: "0px 20px 50px rgba(0,0,0,0.35)",
             }}
           >
-            <h2
-              style={{
-                fontSize: "1.4rem",
-                marginBottom: "8px",
-              }}
-            >
+            <h2 style={{ fontSize: "1.4rem", marginBottom: "8px", fontWeight: "700" }}>
               Emil Raba
             </h2>
 
-            <p
-              style={{
-                opacity: 0.75,
-                marginBottom: "12px",
-              }}
-            >
+            <p style={{ opacity: 0.75, marginBottom: "12px", fontSize: "0.95rem" }}>
               Co-Founder - AI Engineering
             </p>
 
             <motion.p
               animate={{
-                y:
-                  hoveredE || openE
-                    ? 0
-                    : 10,
-
-                opacity:
-                  hoveredE || openE
-                    ? 1
-                    : 0,
+                y: hoveredE || openE ? 0 : 10,
+                opacity: hoveredE || openE ? 1 : 0,
               }}
               transition={{
                 duration: 0.3,
@@ -396,13 +343,16 @@ export default function Team() {
 
         {/* AARUSH */}
         <motion.div
-          onHoverStart={() => !isMobile && setHoveredA(true)}
-          onHoverEnd={() => !isMobile && setHoveredA(false)}
-          onClick={() => isMobile && setOpenA(!openA)}
+          onHoverStart={() => hasHover && setHoveredA(true)}
+          onHoverEnd={() => hasHover && setHoveredA(false)}
+          onClick={() => !hasHover && setOpenA(!openA)}
           style={{
             position: "relative",
-            height: isMobile ? "auto" : "clamp(620px, 80vw, 820px)",
-            cursor: isMobile ? "pointer" : "default",
+            width: "100%",
+            maxWidth: "400px", // Prevent card stretching to huge sizes in single-column
+            margin: "0 auto",
+            height: isMobileLayout ? "auto" : "clamp(550px, 70vw, 750px)",
+            cursor: !hasHover ? "pointer" : "default",
           }}
           initial={{
             opacity: 0,
@@ -418,14 +368,15 @@ export default function Team() {
             ease: "easeOut",
           }}
           whileHover={
-            !isMobile
+            hasHover
               ? {
                   y: -10,
                   scale: 1.02,
                 }
-              : {}
+              : undefined
           }
         >
+          {/* IMAGE */}
           <Image
             src="/images/team/Aarush.jpeg"
             alt="Aarush Mayya"
@@ -439,22 +390,16 @@ export default function Team() {
             }}
           />
 
+          {/* INFO BOX */}
           <motion.div
             animate={{
-              y:
-                hoveredA || openA
-                  ? -25
-                  : 0,
-
-              scale:
-                hoveredA || openA
-                  ? 1.03
-                  : 1,
-
+              y: hoveredA || openA ? -25 : 0,
+              scale: hoveredA || openA ? 1.03 : 1,
               boxShadow:
                 hoveredA || openA
                   ? "0px 25px 60px rgba(59,130,246,0.25)"
                   : "0px 20px 50px rgba(0,0,0,0.35)",
+              minHeight: hoveredA || openA ? "170px" : "120px",
             }}
             transition={{
               type: "spring",
@@ -462,9 +407,9 @@ export default function Team() {
               damping: 18,
             }}
             style={{
-              position: isMobile ? "relative" : "absolute",
+              position: isMobileLayout ? "relative" : "absolute",
               overflow: "hidden",
-              marginTop: isMobile ? "-40px" : "-60px",
+              marginTop: isMobileLayout ? "-40px" : "-60px",
               marginLeft: "auto",
               marginRight: "auto",
               left: 0,
@@ -472,48 +417,25 @@ export default function Team() {
               width: "85%",
               padding: "24px",
               borderRadius: "24px",
-              background:
-                "rgba(80, 83, 83, 0.41)",
+              background: "rgba(30, 30, 30, 0.75)",
               backdropFilter: "blur(14px)",
-              border:
-                "1px solid rgba(255,255,255,0.08)",
-              boxShadow:
-                "0px 20px 50px rgba(0,0,0,0.35)",
-              minHeight:
-                hoveredA || openA
-                  ? "170px"
-                  : "120px",
+              WebkitBackdropFilter: "blur(14px)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              boxShadow: "0px 20px 50px rgba(0,0,0,0.35)",
             }}
           >
-            <h2
-              style={{
-                fontSize: "1.4rem",
-                marginBottom: "8px",
-              }}
-            >
+            <h2 style={{ fontSize: "1.4rem", marginBottom: "8px", fontWeight: "700" }}>
               Aarush Mayya
             </h2>
 
-            <p
-              style={{
-                opacity: 0.75,
-                marginBottom: "12px",
-              }}
-            >
+            <p style={{ opacity: 0.75, marginBottom: "12px", fontSize: "0.95rem" }}>
               Co-Founder - Software & App
             </p>
 
             <motion.p
               animate={{
-                y:
-                  hoveredA || openA
-                    ? 0
-                    : 10,
-
-                opacity:
-                  hoveredA || openA
-                    ? 1
-                    : 0,
+                y: hoveredA || openA ? 0 : 10,
+                opacity: hoveredA || openA ? 1 : 0,
               }}
               transition={{
                 duration: 0.3,
@@ -530,7 +452,6 @@ export default function Team() {
             </motion.p>
           </motion.div>
         </motion.div>
-
       </section>
     </main>
   );

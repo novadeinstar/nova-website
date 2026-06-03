@@ -1,10 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image"
+import Image from "next/image";
 import Button from "@/components/Button";
+import { useState, useEffect } from "react";
 
-export default function team() {
+export default function Product() {
+  const [hasHover, setHasHover] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setHasHover(window.matchMedia("(hover: hover)").matches);
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <main
       style={{
@@ -34,10 +49,11 @@ export default function team() {
           filter: "blur(120px)",
           zIndex: 0,
           backgroundSize: "200% 200%",
-          animation: "gradientMove 12s infinite"
+          animation: "gradientMove 12s infinite",
         }}
       />
 
+      {/* BACKGROUND VIDEO SECTION */}
       <section
         style={{
           position: "relative",
@@ -57,10 +73,10 @@ export default function team() {
           playsInline
           src="/videos/Drehen.mp4"
           animate={{
-            scale:[1,1.05,1]
+            scale: [1, 1.05, 1],
           }}
           transition={{
-            duration:10,
+            duration: 10,
             repeat: Infinity,
             ease: "linear",
           }}
@@ -82,19 +98,19 @@ export default function team() {
             background:
               "linear-gradient(to bottom, rgba(40, 39, 39, 0.07), rgba(45, 45, 45, 0.37))",
             zIndex: 1,
-          }}>
-        </div>
+          }}
+        />
         <motion.div
           initial={{
-            opacity:0,
-            y:40,
+            opacity: 0,
+            y: 40,
           }}
           animate={{
-            opacity:1,
-            y:0,
+            opacity: 1,
+            y: 0,
           }}
           transition={{
-            duration:1,
+            duration: 1,
           }}
           style={{
             position: "relative",
@@ -130,6 +146,8 @@ export default function team() {
           </p>
         </motion.div>
       </section>
+
+      {/* DESCRIPTION SECTION */}
       <section
         style={{
           display: "flex",
@@ -139,9 +157,11 @@ export default function team() {
           flexWrap: "wrap",
           width: "100%",
           margin: "0 auto",
-          padding: "160px clamp(20px, 6vw, 100px)",
-          position:"relative",
-          overflow:"hidden",
+          padding: isMobile
+            ? "80px 20px"
+            : "160px clamp(20px, 6vw, 100px)",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
         {/* glowing background orb */}
@@ -161,104 +181,117 @@ export default function team() {
           }}
         />
 
-        {/*section2*/}
-        {/* Left SIDE */}
+        {/* Left SIDE (Image & Info Box) */}
         <div
           style={{
-            flex: "1 1 500px",
+            flex: "1 1 300px",
             position: "relative",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
           }}
         >
           <motion.div
-            initial={{ opacity: 0, x: 80 }}
+            initial={{ opacity: 0, x: -80 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            whileHover="hover"
+            whileHover={hasHover ? "hover" : undefined}
             style={{
               position: "relative",
+              width: "100%",
+              maxWidth: "750px",
             }}
           >
-          {/* INFO BOX */}
-          <motion.div
-            variants={{
-              hover: {
-                opacity: 1,
-                y: 0,
-              },
-            }}
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            transition={{
-              duration: 0.35,
-            }}
-            style={{
-              position: "absolute",
-              bottom: "-30px",
-              left: "30px",
-              right: "30px",
-              padding: "18px 22px",
-              borderRadius: "20px",
-              background: "rgba(10, 10, 10, 0.35)",
-              backdropFilter: "blur(14px)",
-              border: "1px solid rgba(255,255,255,0.15)",
+            {/* IMAGE */}
+            <motion.div
+              variants={
+                hasHover
+                  ? {
+                      hover: {
+                        y: -12,
+                        scale: 1.03,
+                        rotateY: -2,
+                      },
+                    }
+                  : undefined
+              }
+            >
+              <Image
+                src="/images/product/novad.png"
+                alt="NOVA AI Description"
+                width={400}
+                height={400}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  aspectRatio: "16 / 9",
+                  objectFit: "cover",
+                  borderRadius: "clamp(25px, 4vw, 45px)",
+                  boxShadow: "0px 20px 60px rgba(0,0,0,0.45)",
+                }}
+              />
+            </motion.div>
 
-              color: "white",
-              maxWidth: "700px",
-
-              boxShadow: "0px 10px 40px rgba(0,0,0,0.35)",
-            }}
-          >
-
-            <p
+            {/* INFO BOX (Always visible on touch devices, hover-controlled on desktop) */}
+            <motion.div
+              variants={
+                hasHover
+                  ? {
+                      hover: {
+                        opacity: 1,
+                        y: 0,
+                      },
+                    }
+                  : undefined
+              }
+              initial={{
+                opacity: hasHover ? 0 : 1,
+                y: hasHover ? 20 : 0,
+              }}
+              animate={!hasHover ? { opacity: 1, y: 0 } : undefined}
+              transition={{
+                duration: 0.35,
+              }}
               style={{
-                fontSize: "0.95rem",
-                lineHeight: "1",
-                opacity: 0.85,
-                textAlign: "center",
+                position: isMobile ? "relative" : "absolute",
+                bottom: isMobile ? "auto" : "-30px",
+                left: isMobile ? "auto" : "30px",
+                right: isMobile ? "auto" : "30px",
+                marginTop: isMobile ? "20px" : "0px",
+                padding: "18px 22px",
+                borderRadius: "20px",
+                background: "rgba(15, 23, 42, 0.8)", // slate-900 with glassmorphism
+                backdropFilter: "blur(14px)",
+                WebkitBackdropFilter: "blur(14px)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                color: "white",
+                boxShadow: "0px 10px 40px rgba(0,0,0,0.35)",
               }}
             >
-              The structure is a selfmade, modular 3D print
-            </p>
+              <p
+                style={{
+                  fontSize: "0.95rem",
+                  lineHeight: "1.4",
+                  opacity: 0.9,
+                  textAlign: "center",
+                }}
+              >
+                The structure is a selfmade, modular 3D print
+              </p>
+            </motion.div>
           </motion.div>
-          <motion.div
-            variants={{
-              hover: {
-                y: -12,
-                scale: 1.03,
-                rotateY: -2,
-              },
-            }}
-          >
-            <Image
-              src="/images/product/novad.png"
-              alt="NOVA AI"
-              width={400}
-              height={400}
-              style={{
-                width: "100%",
-                maxWidth: "750px",
-                aspectRatio:"16/9",
-                objectFit: "cover",
-                borderRadius: "clamp(25px, 4vw, 45px)",
-                boxShadow:
-                  "0px 20px 60px rgba(0,0,0,0.45)",
-              }}
-            />
-          </motion.div>
-        </motion.div>
         </div>
+
         {/* Right SIDE */}
         <div
           style={{
-            flex: "1 1 500px",
+            flex: "1 1 300px",
             maxWidth: "800px",
             zIndex: 1,
             textAlign: "left",
           }}
         >
-          {/*Label above */}
+          {/* Label above */}
           <motion.p
             style={{
               color: "#798ca4",
@@ -272,14 +305,14 @@ export default function team() {
             AI Robotics Platform
           </motion.p>
           {/* TITLE */}
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             style={{
               fontSize: "clamp(2.4rem, 10vw, 4.2rem)",
               marginBottom: "20px",
-              lineHeight: "1",
+              lineHeight: "1.1",
               background:
                 "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
               WebkitBackgroundClip: "text",
@@ -289,7 +322,7 @@ export default function team() {
             }}
           >
             NOVA
-          </motion.h1>
+          </motion.h2>
 
           {/* SUBTITLE */}
           <motion.p
@@ -297,44 +330,42 @@ export default function team() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
             style={{
-              fontSize: "clamp(0.7rem, 2.5vw, 1.3rem)",
+              fontSize: "clamp(0.95rem, 2vw, 1.25rem)",
               fontFamily: "Inter, sans-serif",
               maxWidth: "650px",
               margin: "0",
-              textAlign:"left",
+              textAlign: "left",
               opacity: 0.9,
               lineHeight: "1.7",
             }}
           >
-            Distractions and mental overload reduce our productivity and
-            lead to procrastination. NOVA solves this problem with a proactive, AI-powered assistant
-            that recognizes situations and provides the right prompt at the right time. Thanks to local data processing,
-            we guarantee assistance without the need for the cloud. Optimize your focus and transform your
-            workflow into a supernova of efficiency!
+            Distractions and mental overload reduce our productivity and lead to procrastination. NOVA solves this problem with a proactive, AI-powered assistant that recognizes situations and provides the right prompt at the right time. Thanks to local data processing, we guarantee assistance without the need for the cloud. Optimize your focus and transform your workflow into a supernova of efficiency!
           </motion.p>
         </div>
       </section>
-      {/*section3 */}
+
+      {/* DEMO VIDEO SECTION */}
       <section
         style={{
-          minHeight: "100vh",
+          minHeight: isMobile ? "auto" : "100vh",
           width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           gap: "20px",
-          padding:
-            "clamp(30px, 8vw, 60px) clamp(20px, 6vw, 80px)",
+          padding: isMobile
+            ? "60px 20px"
+            : "clamp(30px, 8vw, 60px) clamp(20px, 6vw, 80px)",
           background:
             "linear-gradient(to bottom, #d0eee2, #bae9ed)",
           color: "black",
-          position:"relative",
-          overflow:"hidden",
+          position: "relative",
+          overflow: "hidden",
           margin: "0 auto",
         }}
       >
-      {/*Label above */}
+        {/* Label above */}
         <motion.p
           style={{
             color: "#798ca4",
@@ -359,116 +390,108 @@ export default function team() {
           style={{
             width: "100%",
             maxWidth: "1500px",
-            margin:"0 auto",
+            margin: "0 auto",
             borderRadius: "20px",
-            objectFit: "cover",
+            height: "auto",
+            aspectRatio: "16 / 9", // Keep original 16:9 ratio to prevent distortion/cropping
             boxShadow: "0px 25px 80px rgba(0,0,0,0.35)",
             border: "1px solid rgba(255,255,255,0.08)",
           }}
         />
       </section>
+
       {/* FINAL SECTION */}
       <section
-      style={{
-        width: "100%",
-        padding:
-          "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
-        background: "#1b5051",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      {/* CARD */}
-      <motion.div
         style={{
           width: "100%",
-          maxWidth: "1400px",
+          padding: isMobile
+            ? "60px 20px"
+            : "clamp(60px, 8vw, 120px) clamp(20px, 6vw, 80px)",
+          background: "#1b5051",
           display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          gap: "60px",
-          padding: "40px",
-          borderRadius: "32px",
-          background:
-            "rgba(81, 24, 99, 0.29)",
-          border:
-            "1px solid rgba(255, 255, 255, 0.3)",
-          backdropFilter: "blur(10px)",
-          boxShadow:
-            "0px 20px 60px rgba(86, 86, 86, 0.32)",
+          justifyContent: "center",
         }}
       >
-
-        {/* Left TEXT */}
-        <div
+        {/* CARD */}
+        <motion.div
           style={{
-            flex: "1 1 350px",
-            color: "white",
-
+            width: "100%",
+            maxWidth: "1400px",
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-
-            textAlign: "center",
+            flexWrap: "wrap",
             alignItems: "center",
+            gap: "40px",
+            padding: isMobile ? "24px" : "40px",
+            borderRadius: "32px",
+            background: "rgba(81, 24, 99, 0.29)",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
+            backdropFilter: "blur(10px)",
+            boxShadow: "0px 20px 60px rgba(86, 86, 86, 0.32)",
           }}
         >
-          <h2
+          {/* Left TEXT */}
+          <div
             style={{
-              fontSize: "clamp(2rem, 4vw, 2.5rem)",
-              marginBottom: "20px",
+              flex: "1 1 300px",
+              color: "white",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              textAlign: "center",
+              alignItems: "center",
             }}
           >
-            Our Vision 
-          </h2>
+            <h2
+              style={{
+                fontSize: "clamp(2rem, 4vw, 2.5rem)",
+                marginBottom: "20px",
+              }}
+            >
+              Our Vision
+            </h2>
 
-          <p
+            <p
+              style={{
+                fontSize: "1.1rem",
+                lineHeight: "1.8",
+                opacity: 0.8,
+                marginBottom: "30px",
+              }}
+            >
+              We want to build a StartUp and bring NOVA to people worldwide!
+            </p>
+
+            <Button text="Support Us" href="/contact" />
+          </div>
+
+          {/* Right IMAGE */}
+          <div
             style={{
-              fontSize: "1.1rem",
-              lineHeight: "1.8",
-              opacity: 0.8,
-              marginBottom: "30px",
-            }}
-          >
-            We want to build a StartUp and bring NOVA to people worldwide!
-          </p>
-
-          <Button
-            text="Support Us"
-            href="/contact"
-          />
-        </div>
-        {/* Right IMAGE */}
-        <div
-          style={{
-            flex: "1 1 500px",
-
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Image
-            src="/images/product/Produkt.png"
-            alt="NOVA Technology"
-            width={900}
-            height={600}
-            style={{
+              flex: "1 1 300px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
               width: "100%",
-              maxWidth: "700px",
-              aspectRatio: "3 / 2",
-              objectFit: "cover",
-
-              display: "block",
-              borderRadius: "24px",
-
-              boxShadow:
-                "0px 20px 50px rgba(0,0,0,0.35)",
             }}
-          />
-        </div>
-      </motion.div>
-    </section>
+          >
+            <Image
+              src="/images/product/Produkt.png"
+              alt="NOVA Technology Card"
+              width={900}
+              height={600}
+              style={{
+                width: "100%",
+                maxWidth: "700px",
+                aspectRatio: "3 / 2",
+                objectFit: "cover",
+                display: "block",
+                borderRadius: "24px",
+                boxShadow: "0px 20px 50px rgba(0,0,0,0.35)",
+              }}
+            />
+          </div>
+        </motion.div>
+      </section>
     </main>
   );
 }

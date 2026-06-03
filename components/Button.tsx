@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 type ButtonProps = {
   text: string;
@@ -14,6 +15,12 @@ export default function Button({
   href,
   onClick,
 }: ButtonProps) {
+  const [hasHover, setHasHover] = useState(false);
+
+  useEffect(() => {
+    setHasHover(window.matchMedia("(hover: hover)").matches);
+  }, []);
+
   const buttonContent = (
     <motion.button
       initial={{
@@ -30,11 +37,15 @@ export default function Button({
         type: "spring",
         stiffness: 120,
       }}
-      whileHover={{
-        scale: 1.08,
-        y: -2,
-        boxShadow: "0px 0px 30px rgba(127, 128, 222, 0.7)",
-      }}
+      whileHover={
+        hasHover
+          ? {
+              scale: 1.08,
+              y: -2,
+              boxShadow: "0px 0px 30px rgba(127, 128, 222, 0.7)",
+            }
+          : undefined
+      }
       whileTap={{
         scale: 0.94,
       }}

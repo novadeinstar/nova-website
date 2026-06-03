@@ -3,8 +3,61 @@
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import VoteButton from "@/components/VoteButton";
+
+// ==========================================
+// MODULAR NEWS DATA: Add new items here
+// ==========================================
+const newsData = [
+  {
+    id: "startupteens",
+    date: "28.05.2026",
+    title: "TOP 5 Germany StartUp Teens",
+    subtitle: "Vote for NOVA at ",
+    subtitleLink: "https://www.startupteens.de/",
+    subtitleLinkText: "StartUp Teens",
+    content: "We reached the TOP 5 in the national competition StartUp Teens. For the next round we need to gather as many votes as possible.",
+    image: "/images/homepage/STLogo.png",
+    imageAlt: "StartUp Teens Logo",
+    imageLink: "https://www.startupteens.de/",
+    buttonText: "The Robot",
+    buttonHref: "/product",
+    bgColor: "rgba(37, 99, 235, 0.12)",
+    borderColor: "rgba(255,255,255,0.1)",
+    shadowColor: "rgba(86,86,86,0.3)",
+  },
+  {
+    id: "jufo",
+    date: "10.04.2026",
+    title: "3rd Prize at Jugend Forscht",
+    content: "Perfect teamwork combined with individual strengths makes NOVA a successful project. Our vision goes far beyond today's possibilities.",
+    image: "/images/homepage/JuFo.jpg",
+    imageAlt: "Jugend Forscht",
+    buttonText: "Our Team",
+    buttonHref: "/team",
+    bgColor: "rgba(81, 24, 99, 0.17)",
+    borderColor: "rgba(255,255,255,0.1)",
+    shadowColor: "rgba(86,86,86,0.3)",
+  },
+];
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [hasHover, setHasHover] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    setHasHover(window.matchMedia("(hover: hover)").matches);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <main
       style={{
@@ -13,17 +66,21 @@ export default function Home() {
         background: "#000",
       }}
     >
+      {/* VOTE BANNER (Pops up and links to Startup Teens) */}
+      <VoteButton />
+
       {/* HERO SECTION */}
       <section
         style={{
-          minHeight: "100vh",
+          minHeight: isMobile ? "auto" : "100vh",
           display: "flex",
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "center",
-          gap: "clamp(40px, 8vw, 120px)",
-          padding:
-            "120px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
+          gap: "clamp(30px, 6vw, 120px)",
+          padding: isMobile
+            ? "120px 20px 60px 20px"
+            : "140px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
           position: "relative",
           background:
             "radial-gradient(circle at 50% 30%, #111827 0%, #020617 60%, #000 100%)",
@@ -51,7 +108,7 @@ export default function Home() {
         {/* LEFT SIDE */}
         <div
           style={{
-            flex: "1 1 500px",
+            flex: "1 1 300px",
             maxWidth: "800px",
             zIndex: 1,
             textAlign: "center",
@@ -116,16 +173,22 @@ export default function Home() {
         {/* RIGHT SIDE */}
         <div
           style={{
-            flex: "1 1 300px",
+            flex: "1 1 280px",
             display: "flex",
             justifyContent: "center",
             zIndex: 1,
+            width: "100%",
           }}
         >
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
             <Image
               src="/images/homepage/nova.jpeg"
@@ -133,12 +196,12 @@ export default function Home() {
               width={400}
               height={400}
               style={{
-                width: "clamp(350px, 40vw, 450px)",
+                width: "clamp(280px, 85vw, 450px)", // Adjusted minimum to 280px and fluid width to 85vw to prevent horizontal overflow on mobile
                 maxWidth: "550px",
                 height: "auto",
                 borderRadius: "clamp(25px, 4vw, 45px)",
                 boxShadow:
-                  "0px 20px 60px rgba(0,0,0,0.45)"
+                  "0px 20px 60px rgba(0,0,0,0.45)",
               }}
             />
           </motion.div>
@@ -148,12 +211,13 @@ export default function Home() {
       {/* VIDEO SECTION */}
       <section
         style={{
-          minHeight: "100vh",
+          minHeight: isMobile ? "auto" : "100vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding:
-            "clamp(40px, 7vw, 80px) clamp(20px, 5vw, 80px)",
+          padding: isMobile
+            ? "60px 20px"
+            : "clamp(40px, 7vw, 80px) clamp(20px, 5vw, 80px)",
           background:
             "linear-gradient(to bottom, #f8fafc, #e2e8f0)",
           color: "black",
@@ -201,8 +265,9 @@ export default function Home() {
             style={{
               width: "100%",
               maxWidth: "1400px",
+              height: "auto",
+              aspectRatio: "16 / 9", // Force 16:9 to prevent distortion/black bars
               borderRadius: "28px",
-              objectFit: "cover",
               boxShadow:
                 "0 25px 70px rgba(15,23,42,0.18)",
             }}
@@ -210,14 +275,13 @@ export default function Home() {
         </div>
       </section>
 
-
-
       {/* FINAL NEWS SECTION */}
       <section
         id="News"
         style={{
-          padding:
-            "clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px)",
+          padding: isMobile
+            ? "60px 20px"
+            : "clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px)",
           background: "#020617",
           overflow: "hidden",
           position: "relative",
@@ -240,108 +304,112 @@ export default function Home() {
           News
         </motion.p>
 
-        {/* NAVIGATION BUTTONS */}
-        <button
-          onClick={() => {
-            document
-              .getElementById("newsScroller")
-              ?.scrollBy({
-                left: -700,
-                behavior: "smooth",
-              });
-          }}
-          style={{
-            position: "absolute",
-            left: "28px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            width: "74px",
-            height: "74px",
-            borderRadius: "999px",
-            border:
-              "1px solid rgba(255,255,255,0.12)",
-            background:
-              "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))",
-            backdropFilter: "blur(18px)",
-            WebkitBackdropFilter: "blur(18px)",
-            color: "white",
-            fontSize: "2.6rem",
-            fontWeight: "200",
-            cursor: "pointer",
-            zIndex: 20,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            transition: "all 0.25s ease",
-            boxShadow:
-              "0 12px 40px rgba(0,0,0,0.35)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform =
-              "translateY(-50%) scale(1.12)";
-            e.currentTarget.style.background =
-              "linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0.08))";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform =
-              "translateY(-50%) scale(1)";
-            e.currentTarget.style.background =
-              "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))";
-          }}
-        >
-          ‹
-        </button>
+        {/* NAVIGATION BUTTONS (Hidden on mobile/tablet) */}
+        {!isMobile && (
+          <>
+            <button
+              onClick={() => {
+                document
+                  .getElementById("newsScroller")
+                  ?.scrollBy({
+                    left: -700,
+                    behavior: "smooth",
+                  });
+              }}
+              style={{
+                position: "absolute",
+                left: "28px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "74px",
+                height: "74px",
+                borderRadius: "999px",
+                border:
+                  "1px solid rgba(255,255,255,0.12)",
+                background:
+                  "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))",
+                backdropFilter: "blur(18px)",
+                WebkitBackdropFilter: "blur(18px)",
+                color: "white",
+                fontSize: "2.6rem",
+                fontWeight: "200",
+                cursor: "pointer",
+                zIndex: 20,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.25s ease",
+                boxShadow:
+                  "0 12px 40px rgba(0,0,0,0.35)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform =
+                  "translateY(-50%) scale(1.12)";
+                e.currentTarget.style.background =
+                  "linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0.08))";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform =
+                  "translateY(-50%) scale(1)";
+                e.currentTarget.style.background =
+                  "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))";
+              }}
+            >
+              ‹
+            </button>
 
-        <button
-          onClick={() => {
-            document
-              .getElementById("newsScroller")
-              ?.scrollBy({
-                left: 700,
-                behavior: "smooth",
-              });
-          }}
-          style={{
-            position: "absolute",
-            right: "28px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            width: "74px",
-            height: "74px",
-            borderRadius: "999px",
-            border:
-              "1px solid rgba(255,255,255,0.12)",
-            background:
-              "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))",
-            backdropFilter: "blur(18px)",
-            WebkitBackdropFilter: "blur(18px)",
-            color: "white",
-            fontSize: "2.6rem",
-            fontWeight: "200",
-            cursor: "pointer",
-            zIndex: 20,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            transition: "all 0.25s ease",
-            boxShadow:
-              "0 12px 40px rgba(0,0,0,0.35)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform =
-              "translateY(-50%) scale(1.12)";
-            e.currentTarget.style.background =
-              "linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0.08))";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform =
-              "translateY(-50%) scale(1)";
-            e.currentTarget.style.background =
-              "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))";
-          }}
-        >
-          ›
-        </button>
+            <button
+              onClick={() => {
+                document
+                  .getElementById("newsScroller")
+                  ?.scrollBy({
+                    left: 700,
+                    behavior: "smooth",
+                  });
+              }}
+              style={{
+                position: "absolute",
+                right: "28px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "74px",
+                height: "74px",
+                borderRadius: "999px",
+                border:
+                  "1px solid rgba(255,255,255,0.12)",
+                background:
+                  "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))",
+                backdropFilter: "blur(18px)",
+                WebkitBackdropFilter: "blur(18px)",
+                color: "white",
+                fontSize: "2.6rem",
+                fontWeight: "200",
+                cursor: "pointer",
+                zIndex: 20,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.25s ease",
+                boxShadow:
+                  "0 12px 40px rgba(0,0,0,0.35)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform =
+                  "translateY(-50%) scale(1.12)";
+                e.currentTarget.style.background =
+                  "linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0.08))";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform =
+                  "translateY(-50%) scale(1)";
+                e.currentTarget.style.background =
+                  "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(255,255,255,0.04))";
+              }}
+            >
+              ›
+            </button>
+          </>
+        )}
 
         {/* HORIZONTAL SCROLLER */}
         <div
@@ -358,182 +426,151 @@ export default function Home() {
             msOverflowStyle: "none",
           }}
         >
-          {/* StartUp Teens 2 */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            style={{
-              minWidth: "100%",
-              flex: "0 0 100%",
-              scrollSnapAlign: "center",
-              borderRadius: "32px",
-              background:
-                "rgba(37, 99, 235, 0.12)",
-              border:
-                "1px solid rgba(255,255,255,0.1)",
-              backdropFilter: "blur(10px)",
-              boxShadow:
-                "0px 20px 60px rgba(86,86,86,0.3)",
-              padding:
-                "clamp(28px, 4vw, 50px)",
-            }}
-          >
-            <div
+          {newsData.map((item) => (
+            <motion.div
+              key={item.id}
+              whileHover={hasHover ? { y: -6 } : undefined}
               style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "center",
-                gap: "50px",
+                minWidth: "100%",
+                flex: "0 0 100%",
+                scrollSnapAlign: "center",
+                borderRadius: "32px",
+                background: item.bgColor,
+                border: `1px solid ${item.borderColor}`,
+                backdropFilter: "blur(10px)",
+                boxShadow: `0px 20px 60px ${item.shadowColor}`,
+                padding: "clamp(20px, 4vw, 50px)",
               }}
             >
-              {/* IMAGE */}
-              <a href="https://www.startupteens.de/" target="_blank" rel="noopener noreferrer" style={{ flex: "1 1 320px", display: "flex", justifyContent: "center", alignItems: "center", transition: "transform 0.25s ease", }} > <Image src="/images/homepage/STLogo.png" alt="StartUp Teens" width={500} height={400} style={{ width: "100%", maxWidth: "420px", borderRadius: "24px", height: "auto", cursor: "pointer", }} /> </a>
-
-              {/* TEXT */}
               <div
                 style={{
-                  flex: "1 1 400px",
-                  color: "white",
+                  display: "flex",
+                  flexWrap: "wrap",
+                  alignItems: "center",
+                  gap: "clamp(20px, 4vw, 50px)",
                 }}
               >
-                <p style={{ color: "#94a3b8", fontSize: "0.95rem", letterSpacing: "2px", marginBottom: "12px", textTransform: "uppercase", fontWeight: "600", }} > 28.05.2026 </p>
-                <h2
+                {/* IMAGE */}
+                <div
                   style={{
-                    fontSize:
-                      "clamp(2rem, 4vw, 2.7rem)",
-                    marginBottom: "20px",
+                    flex: "1 1 280px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                 TOP 5 Germany StartUp Teens
-                </h2>
-                <h2>
-                  Vote for NOVA at{" "}
-                  <a
-                    href="https://www.startupteens.de/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  {item.imageLink ? (
+                    <a
+                      href={item.imageLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        width: "100%",
+                        maxWidth: "420px",
+                        display: "flex",
+                        justifyContent: "center",
+                        transition: "transform 0.25s ease",
+                      }}
+                      onMouseEnter={(e) => hasHover && (e.currentTarget.style.transform = "scale(1.03)")}
+                      onMouseLeave={(e) => hasHover && (e.currentTarget.style.transform = "scale(1)")}
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.imageAlt}
+                        width={500}
+                        height={400}
+                        style={{
+                          width: "100%",
+                          borderRadius: "24px",
+                          height: "auto",
+                        }}
+                      />
+                    </a>
+                  ) : (
+                    <div style={{ width: "100%", maxWidth: "420px" }}>
+                      <Image
+                        src={item.image}
+                        alt={item.imageAlt}
+                        width={500}
+                        height={400}
+                        style={{
+                          width: "100%",
+                          borderRadius: "24px",
+                          height: "auto",
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* TEXT */}
+                <div
+                  style={{
+                    flex: "1 1 320px",
+                    color: "white",
+                  }}
+                >
+                  <p style={{ color: "#94a3b8", fontSize: "0.9rem", letterSpacing: "2px", marginBottom: "10px", textTransform: "uppercase", fontWeight: "600" }} >
+                    {item.date}
+                  </p>
+                  <h2
                     style={{
-                      color: "#60a5fa",
-                      textDecoration: "none",
+                      fontSize: "clamp(1.6rem, 3.5vw, 2.7rem)",
+                      marginBottom: "16px",
+                      fontWeight: "700",
+                      lineHeight: "1.2",
                     }}
                   >
-                    StartUp Teens
-                  </a>
-                </h2>
+                    {item.title}
+                  </h2>
+                  {item.subtitle && (
+                    <h3 style={{ fontSize: "clamp(1.1rem, 2vw, 1.4rem)", marginBottom: "16px", fontWeight: "500" }}>
+                      {item.subtitle}
+                      {item.subtitleLink && (
+                        <a
+                          href={item.subtitleLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: "#60a5fa",
+                            textDecoration: "none",
+                          }}
+                        >
+                          {item.subtitleLinkText}
+                        </a>
+                      )}
+                    </h3>
+                  )}
 
-                <p
-                  style={{
-                    lineHeight: "1.8",
-                    opacity: 0.82,
-                    marginBottom: "30px",
-                    fontSize: "1.05rem",
-                  }}
-                >
-                  We reached the TOP 5 in the national competition StartUp Teens. For the next round be need to gather as much votes as possible.
-                </p>
+                  <p
+                    style={{
+                      lineHeight: "1.7",
+                      opacity: 0.82,
+                      marginBottom: "24px",
+                      fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)",
+                    }}
+                  >
+                    {item.content}
+                  </p>
 
-                <Button
-                  text="The Robot"
-                  href="/product"
-                />
+                  <Button
+                    text={item.buttonText}
+                    href={item.buttonHref}
+                  />
+                </div>
               </div>
-            </div>
-          </motion.div>
-          {/*  JuFo */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            style={{
-              minWidth: "100%",
-              flex: "0 0 100%",
-              scrollSnapAlign: "center",
-              borderRadius: "32px",
-              background:
-                "rgba(81, 24, 99, 0.17)",
-              border:
-                "1px solid rgba(255,255,255,0.1)",
-              backdropFilter: "blur(10px)",
-              boxShadow:
-                "0px 20px 60px rgba(86,86,86,0.3)",
-              padding:
-                "clamp(28px, 4vw, 50px)",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "center",
-                gap: "50px",
-              }}
-            >
-              {/* IMAGE */}
-              <div
-                style={{
-                  flex: "1 1 320px",
-                }}
-              >
-                <Image
-                  src="/images/homepage/JuFo.jpg"
-                  alt="Jugend Forscht"
-                  width={500}
-                  height={400}
-                  style={{
-                    width: "100%",
-                    borderRadius: "24px",
-                    height: "auto",
-                  }}
-                />
-              </div>
-
-              {/* TEXT */}
-              <div
-                style={{
-                  flex: "1 1 400px",
-                  color: "white",
-                }}
-              >
-                <p style={{ color: "#94a3b8", fontSize: "0.95rem", letterSpacing: "2px", marginBottom: "12px", textTransform: "uppercase", fontWeight: "600", }} > 10.04.2026 </p>
-                <h2
-                  style={{
-                    fontSize:
-                      "clamp(2rem, 4vw, 2.7rem)",
-                    marginBottom: "20px",
-                  }}
-                >
-                  3rd Prize at Jugend Forscht
-                </h2>
-
-                <p
-                  style={{
-                    lineHeight: "1.8",
-                    opacity: 0.82,
-                    marginBottom: "30px",
-                    fontSize: "1.05rem",
-                  }}
-                >
-                  Perfect teamwork combined with
-                  individual strengths makes NOVA
-                  a successful project. Our vision
-                  goes far beyond today's
-                  possibilities.
-                </p>
-
-                <Button
-                  text="Our Team"
-                  href="/team"
-                />
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </section>
-
 
       {/* SPONSOR SECTION */}
       <section
         style={{
           width: "100%",
-          padding:
-            "clamp(50px, 6vw, 90px) clamp(20px, 5vw, 80px)",
+          padding: isMobile
+            ? "60px 20px"
+            : "clamp(50px, 6vw, 90px) clamp(20px, 5vw, 80px)",
           background:
             "linear-gradient(to bottom, #dbeafe 0%, #f8fafc 45%, #ffffff 100%)",
           color: "black",
@@ -543,12 +580,12 @@ export default function Home() {
         <h2
           style={{
             fontSize:
-              "clamp(2.4rem, 6vw, 4.2rem)",
+              "clamp(2rem, 5vw, 4.2rem)",
             marginBottom: "22px",
             fontWeight: "800",
             letterSpacing: "-2px",
             color: "#0f172a",
-            lineHeight: "1",
+            lineHeight: "1.1",
           }}
         >
           Supported by Industry & Innovation
@@ -557,17 +594,14 @@ export default function Home() {
         <p
           style={{
             maxWidth: "900px",
-            margin: "0 auto 70px auto",
+            margin: "0 auto 40px auto",
             lineHeight: "1.9",
             opacity: 0.72,
-            fontSize: "1.15rem",
+            fontSize: "clamp(1rem, 1.5vw, 1.15rem)",
             color: "#334155",
           }}
         >
-          NOVA is proudly supported by partners
-          and organizations that believe in
-          innovation, technology and the next
-          generation of engineering talent.
+          NOVA is proudly supported by partners and organizations that believe in innovation, technology and the next generation of engineering talent.
         </p>
 
         {/* SPONSOR GRID */}
@@ -575,19 +609,22 @@ export default function Home() {
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(auto-fit, minmax(260px, 1fr))",
+              "repeat(auto-fit, minmax(min(100%, 250px), 1fr))",
             gap: "28px",
             alignItems: "stretch",
           }}
         >
           {/* SFZ */}
           <motion.div
-            whileHover={{
-              y: -8,
-              scale: 1.02,
-              boxShadow:
-                "0 20px 60px rgba(37,99,235,0.18)",
-            }}
+            whileHover={
+              hasHover
+                ? {
+                    y: -8,
+                    scale: 1.02,
+                    boxShadow: "0 20px 60px rgba(37,99,235,0.18)",
+                  }
+                : undefined
+            }
             style={{
               padding: "34px",
               borderRadius: "28px",
@@ -607,6 +644,7 @@ export default function Home() {
                 fontWeight: "700",
                 marginBottom: "12px",
                 letterSpacing: "2px",
+                fontSize: "0.85rem",
               }}
             >
               GOLD SPONSOR
@@ -616,6 +654,7 @@ export default function Home() {
               href="https://www.sfz.de/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ display: "block" }}
             >
               <Image
                 src="/images/sponsors/SFZ.png"
@@ -638,12 +677,15 @@ export default function Home() {
 
           {/* AKQUINET */}
           <motion.div
-            whileHover={{
-              y: -8,
-              scale: 1.02,
-              boxShadow:
-                "0 20px 60px rgba(37,99,235,0.18)",
-            }}
+            whileHover={
+              hasHover
+                ? {
+                    y: -8,
+                    scale: 1.02,
+                    boxShadow: "0 20px 60px rgba(37,99,235,0.18)",
+                  }
+                : undefined
+            }
             style={{
               padding: "34px",
               borderRadius: "28px",
@@ -661,6 +703,7 @@ export default function Home() {
                 fontWeight: "700",
                 marginBottom: "12px",
                 letterSpacing: "2px",
+                fontSize: "0.85rem",
               }}
             >
               GOLD SPONSOR
@@ -670,6 +713,7 @@ export default function Home() {
               href="https://www.akquinet.de/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ display: "block" }}
             >
               <Image
                 src="/images/sponsors/Akquinet.png"
@@ -692,12 +736,15 @@ export default function Home() {
 
           {/* EASYEDA */}
           <motion.div
-            whileHover={{
-              y: -8,
-              scale: 1.02,
-              boxShadow:
-                "0 20px 60px rgba(37,99,235,0.18)",
-            }}
+            whileHover={
+              hasHover
+                ? {
+                    y: -8,
+                    scale: 1.02,
+                    boxShadow: "0 20px 60px rgba(37,99,235,0.18)",
+                  }
+                : undefined
+            }
             style={{
               padding: "34px",
               borderRadius: "28px",
@@ -715,6 +762,7 @@ export default function Home() {
                 fontWeight: "700",
                 marginBottom: "12px",
                 letterSpacing: "2px",
+                fontSize: "0.85rem",
               }}
             >
               TECHNOLOGY SPONSOR
@@ -724,6 +772,7 @@ export default function Home() {
               href="https://easyeda.com/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ display: "block" }}
             >
               <Image
                 src="/images/sponsors/EasyEDA.png"
@@ -746,12 +795,15 @@ export default function Home() {
 
           {/* ARIC */}
           <motion.div
-            whileHover={{
-              y: -8,
-              scale: 1.02,
-              boxShadow:
-                "0 20px 60px rgba(37,99,235,0.18)",
-            }}
+            whileHover={
+              hasHover
+                ? {
+                    y: -8,
+                    scale: 1.02,
+                    boxShadow: "0 20px 60px rgba(37,99,235,0.18)",
+                  }
+                : undefined
+            }
             style={{
               padding: "34px",
               borderRadius: "28px",
@@ -769,6 +821,7 @@ export default function Home() {
                 fontWeight: "700",
                 marginBottom: "12px",
                 letterSpacing: "2px",
+                fontSize: "0.85rem",
               }}
             >
               SUPPORTER
@@ -778,6 +831,7 @@ export default function Home() {
               href="https://aric-hamburg.de/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ display: "block" }}
             >
               <Image
                 src="/images/sponsors/Aric.png"
@@ -799,7 +853,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
     </main>
   );
 }
