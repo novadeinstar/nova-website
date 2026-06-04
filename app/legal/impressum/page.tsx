@@ -114,7 +114,7 @@ export default function Impressum() {
             <br />
             David Shi
             <br />
-            Hamburg, Germany
+            Grindelallee 117 · 20146 Hamburg · Germany
           </p>
         </div>
 
