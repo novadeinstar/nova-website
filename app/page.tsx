@@ -661,7 +661,7 @@ export default function Home() {
             </p>
 
             <a
-              href="https://www.sfz.de/"
+              href="https://www.sfz-hamburg.de/"
               target="_blank"
               rel="noopener noreferrer"
               style={{ display: "block" }}
