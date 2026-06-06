@@ -161,7 +161,7 @@ export default function Home() {
           >
             NextGen Observational Voice Assistant
             <br />
-            <span style={{ color: "#54d6d6" }}>Helping you to be more productive in your life!</span>
+            <span style={{ color: "#42c976" }}>Helping you to be more productive in your life!</span>
           </motion.p>
 
           {/* BUTTON */}
