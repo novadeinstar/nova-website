@@ -105,7 +105,7 @@ export default function Home() {
             height: "clamp(300px, 60vw, 800px)",
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, #d7e3f6 0%, #94f3cb 40%, #b2e4e8 70%, transparent 100%)",
+              "radial-gradient(circle, #d7e3f6 0%, #8b5cf6 40%, #00f0ff 70%, transparent 100%)",
             filter: "blur(130px)",
             zIndex: 0,
           }}
@@ -134,7 +134,7 @@ export default function Home() {
               marginBottom: "20px",
               lineHeight: "1",
               background:
-                "linear-gradient(90deg,#60a5fa,#c084fc,#22d3ee)",
+                "linear-gradient(90deg,#ebffff,#99f2bb,#a4ede5)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               fontWeight: "900",
