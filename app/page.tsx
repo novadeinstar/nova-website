@@ -134,7 +134,7 @@ export default function Home() {
               marginBottom: "20px",
               lineHeight: "1",
               background:
-                "linear-gradient(90deg,#538a68,#53608a,#53868a)",
+                "linear-gradient(90deg, #00D4FF 0%, #5B7FFF 50%, #8B5CF6 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               fontWeight: "900",
