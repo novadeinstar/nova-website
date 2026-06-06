@@ -134,7 +134,7 @@ export default function Home() {
               marginBottom: "20px",
               lineHeight: "1",
               background:
-                "linear-gradient(90deg,#ebffff,#99f2bb,#a4ede5)",
+                "linear-gradient(90deg,#a4eded,#99f2bb,#a4ede5)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               fontWeight: "900",
@@ -161,7 +161,7 @@ export default function Home() {
           >
             NextGen Observational Voice Assistant
             <br />
-            <span style={{ color: "#a78bfa" }}>Helping you to be more productive in your life!</span>
+            <span style={{ color: "#54d6d6" }}>Helping you to be more productive in your life!</span>
           </motion.p>
 
           {/* BUTTON */}
