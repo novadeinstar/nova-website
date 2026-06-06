@@ -92,8 +92,8 @@ export default function Navbar() {
           <Image
             src="/images/logo.png"
             alt="NOVA Logo"
-            width={isMobile ? 42 : 50}
-            height={isMobile ? 42 : 50}
+            width={isMobile ? 62 : 70}
+            height={isMobile ? 62 : 70}
             style={{
               width: isMobile ? "42px" : "50px",
               height: "auto",
