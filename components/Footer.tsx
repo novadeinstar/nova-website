@@ -50,8 +50,8 @@ export default function Footer() {
           <Image
             src="/images/logo.png"
             alt="NOVA Logo"
-            width={isMobile ? 70 : 95}
-            height={isMobile ? 70 : 95}
+            width={isMobile ? 80 : 125}
+            height={isMobile ? 80 : 125}
             style={{
               marginBottom: "8px",
               width: isMobile ? "65px" : "90px",

@@ -105,7 +105,7 @@ export default function Home() {
             height: "clamp(300px, 60vw, 800px)",
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, #3b82f6 0%, #8b5cf6 40%, #00f0ff 70%, transparent 100%)",
+              "radial-gradient(circle, #d7e3f6 0%, #94f3cb 40%, #b2e4e8 70%, transparent 100%)",
             filter: "blur(130px)",
             zIndex: 0,
           }}
