@@ -54,7 +54,7 @@ export default function Footer() {
             height={isMobile ? 70 : 95}
             style={{
               marginBottom: "8px",
-              width: isMobile ? "45px" : "70px",
+              width: isMobile ? "65px" : "90px",
               height: "auto",
             }}
           />

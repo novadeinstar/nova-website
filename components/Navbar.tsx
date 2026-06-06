@@ -95,7 +95,7 @@ export default function Navbar() {
             width={isMobile ? 62 : 70}
             height={isMobile ? 62 : 70}
             style={{
-              width: isMobile ? "42px" : "50px",
+              width: isMobile ? "62px" : "70px",
               height: "auto",
               transition: "transform 0.3s ease",
             }}
