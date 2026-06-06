@@ -59,15 +59,6 @@ export default function Footer() {
             }}
           />
 
-          <h2
-            style={{
-              fontSize: isMobile ? "1.2rem" : "1.5rem",
-              marginBottom: "6px",
-              fontWeight: "700",
-            }}
-          >
-            NOVA
-          </h2>
 
           <p
             style={{
