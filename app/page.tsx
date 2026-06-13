@@ -66,50 +66,6 @@ export default function Home() {
         background: "#000",
       }}
     >
-      {/* VOTE BANNER (Pops up and links to Startup Teens) */}
-      <VoteButton />
-
-      {/* HERO SECTION */}
-      <section
-        style={{
-          minHeight: isMobile ? "auto" : "100vh",
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "clamp(30px, 6vw, 80px)",
-          padding: isMobile
-            ? "140px 16px 60px 16px"
-            : "140px clamp(20px, 6vw, 80px) clamp(40px, 6vw, 100px)",
-          position: "relative",
-          background:
-            "radial-gradient(circle at 50% 30%, #0d1224 0%, #020617 60%, #000 100%)",
-          color: "white",
-          overflow: "hidden",
-        }}
-      >
-        {/* glowing pulsing background orb */}
-        <motion.div
-          animate={{
-            scale: [1, 1.12, 1],
-            opacity: [0.35, 0.5, 0.35],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{
-            position: "absolute",
-            width: "clamp(300px, 60vw, 800px)",
-            height: "clamp(300px, 60vw, 800px)",
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, #d7e3f6 0%, #8b5cf6 40%, #00f0ff 70%, transparent 100%)",
-            filter: "blur(130px)",
-            zIndex: 0,
-          }}
-        />
 
         {/* LEFT SIDE */}
         <div
